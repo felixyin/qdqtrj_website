@@ -31,3 +31,4 @@ rjsmin==1.1.0
 WeRoBot==1.10.1
 Whoosh==2.7.4
 python-logstash==0.4.6
+pysolr==3.8.1

@@ -58,7 +58,12 @@ INSTALLED_APPS = [
     'oauth',
     'servermanager',
     'owntracks',
-    'compressor'
+    'compressor',
+    'base',
+    'about',
+    'service',
+    'project',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -104,7 +109,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'djangoblog',
+        'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'qdqtrj_website',
         'USER': os.environ.get('DJANGO_MYSQL_USER') or 'root',
         'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD') or 'Ybkk1027',
         'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '127.0.0.1',

@@ -38,7 +38,9 @@ handler500 = 'blog.views.server_error_view'
 handle403 = 'blog.views.permission_denied_view'
 urlpatterns = [
                   url(r'^admin/', admin_site.urls),
-                  url(r'', include('blog.urls', namespace='blog')),
+                  # 网站主模块
+                  url(r'', include('home.urls', namespace='home')),
+                  url(r'blogs', include('blog.urls', namespace='blog')),
                   url(r'mdeditor/', include('mdeditor.urls')),
                   url(r'', include('comments.urls', namespace='comment')),
                   url(r'', include('accounts.urls', namespace='account')),
