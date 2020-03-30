@@ -16,21 +16,31 @@ docker-compose -f ./docker-support/dev-environment-setup.yml up
 ## 构建镜像
 
 ```shell script
-docker build -f .\docker-support\Dockerfile -t <你的 Docker Hub 用户名>/django_blog:latest .
+docker build -f ./docker-support/Dockerfile -t felixyin/qdqtrj_website:latest .
+```
+
+## 发布镜像
+```shell script
+docker push felixyin/qdqtrj_website:0.1   
+```
+
+## 启动镜像
+```shell script
+docker run -p 8888:8888 felixyin/qdqtrj_website:0.1   
 ```
 
 ## 运行自定义指令（例如数据库迁移）
 
 ```shell script
-docker run -it --rm <你的 Docker Hub 用户名>/django_blog:latest <指令>
+docker run -it --rm <你的 Docker Hub 用户名>/qdqtrj_website:latest <指令>
 ```
 
 例如：
 
 ```shell script
-docker run -it --rm -e DJANGO_MYSQL_HOST=192.168.231.50 django_blog/django_blog:latest makemigrations
-docker run -it --rm -e DJANGO_MYSQL_HOST=192.168.231.50 django_blog/django_blog:latest migrate
-docker run -it --rm -e DJANGO_MYSQL_HOST=192.168.231.50 django_blog/django_blog:latest createsuperuser
+docker run -it --rm -e DJANGO_MYSQL_HOST=192.168.231.50 qdqtrj_website/qdqtrj_website:latest makemigrations
+docker run -it --rm -e DJANGO_MYSQL_HOST=192.168.231.50 qdqtrj_website/qdqtrj_website:latest migrate
+docker run -it --rm -e DJANGO_MYSQL_HOST=192.168.231.50 qdqtrj_website/qdqtrj_website:latest createsuperuser
 ```
 
 ## 环境变量清单

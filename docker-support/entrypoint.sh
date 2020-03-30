@@ -7,7 +7,7 @@ if [ $# -eq 0 ]; then
     --name djangoblog \
     --user root \
     --group root \
-    --bind 127.0.0.1:8000 \
+    --bind 127.0.0.1:8888\
     --log-level=debug \
     --log-file=- \
     --workers $(grep -c ^processor /proc/cpuinfo) \
