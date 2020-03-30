@@ -3,7 +3,7 @@ cd /app
 
 if [ $# -eq 0 ]; then
   nginx
-  gunicorn DjangoBlog.wsgi:application \
+  gunicorn website.wsgi:application \
     --name djangoblog \
     --user root \
     --group root \

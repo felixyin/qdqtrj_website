@@ -1,4 +1,4 @@
-from DjangoBlog.settings import *
+from website.settings import *
 
 DATABASES = {
     'default': {

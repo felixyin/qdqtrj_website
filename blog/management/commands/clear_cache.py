@@ -12,7 +12,7 @@
 @file: clear_cache.py
 @time: 2017/2/17 下午10:30
 """
-from DjangoBlog.utils import cache
+from website.utils import cache
 from django.core.management.base import BaseCommand
 
 

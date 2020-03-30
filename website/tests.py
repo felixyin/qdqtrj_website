@@ -16,10 +16,10 @@
 from django.test import Client, RequestFactory, TestCase
 from blog.models import Article, Category, Tag
 from django.contrib.auth import get_user_model
-from DjangoBlog.utils import get_current_site
+from website.utils import get_current_site
 from django.urls import reverse
 import datetime
-from DjangoBlog.utils import *
+from website.utils import *
 
 
 class DjangoBlogTest(TestCase):

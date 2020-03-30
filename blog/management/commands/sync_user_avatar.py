@@ -15,7 +15,7 @@
 
 from django.core.management.base import BaseCommand
 from oauth.models import OAuthUser
-from DjangoBlog.utils import save_user_avatar
+from website.utils import save_user_avatar
 
 
 class Command(BaseCommand):

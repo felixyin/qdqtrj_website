@@ -21,7 +21,7 @@ from servermanager.Api.blogapi import BlogApi
 from servermanager.Api.commonapi import TuLing
 import os
 import json
-from DjangoBlog.utils import get_md5
+from website.utils import get_md5
 from django.conf import settings
 import jsonpickle
 from servermanager.models import commands
@@ -45,7 +45,7 @@ tuling = TuLing()
 def convert_to_articlereply(articles, message):
     reply = ArticlesReply(message=message)
     from blog.templatetags.blog_tags import custom_markdown, truncatechars_content
-    from DjangoBlog.utils import CommonMarkdown
+    from website.utils import CommonMarkdown
     from django.utils.safestring import mark_safe
     for post in articles:
         imgs = re.findall(r'(?:http\:|https\:)?\/\/.*\.(?:png|jpg)', post.body)

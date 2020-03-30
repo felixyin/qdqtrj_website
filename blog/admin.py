@@ -88,7 +88,7 @@ class ArticlelAdmin(admin.ModelAdmin):
             url = obj.get_full_url()
             return url
         else:
-            from DjangoBlog.utils import get_current_site
+            from website.utils import get_current_site
             site = get_current_site().domain
             return site
 

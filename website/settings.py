@@ -76,7 +76,7 @@ MIDDLEWARE = [
     'blog.middleware.OnlineMiddleware'
 ]
 
-ROOT_URLCONF = 'DjangoBlog.urls'
+ROOT_URLCONF = 'website.urls'
 
 TEMPLATES = [
     {
@@ -95,7 +95,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoBlog.wsgi.application'
+WSGI_APPLICATION = 'website.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/zh-hans/3.0/ref/settings/#databases
@@ -150,7 +150,7 @@ USE_TZ = True
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'DjangoBlog.whoosh_cn_backend.WhooshEngine',
+        'ENGINE': 'website.whoosh_cn_backend.WhooshEngine',
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
@@ -236,7 +236,7 @@ LOGGING = {
         'log_file': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'djangoblog.log',
+            'filename': 'website.log',
             'maxBytes': 16777216,  # 16 MB
             'formatter': 'verbose'
         },

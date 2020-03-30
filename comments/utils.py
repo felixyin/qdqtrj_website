@@ -13,8 +13,8 @@
 @time: 2018/10/8 10:24 PM
 """
 
-from DjangoBlog.utils import send_email
-from DjangoBlog.utils import get_current_site
+from website.utils import send_email
+from website.utils import get_current_site
 import logging
 
 logger = logging.getLogger(__name__)

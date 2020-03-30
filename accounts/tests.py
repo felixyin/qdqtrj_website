@@ -1,11 +1,11 @@
 from django.test import Client, RequestFactory, TestCase
 from blog.models import Article, Category, Tag
 from django.contrib.auth import get_user_model
-from DjangoBlog.utils import delete_view_cache, delete_sidebar_cache
+from website.utils import delete_view_cache, delete_sidebar_cache
 import datetime
 from accounts.models import BlogUser
 from django.urls import reverse
-from DjangoBlog.utils import *
+from website.utils import *
 from django.conf import settings
 
 

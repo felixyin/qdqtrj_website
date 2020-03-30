@@ -15,8 +15,8 @@
 
 from django.core.management.base import BaseCommand, CommandError
 from blog.models import Article, Tag, Category
-from DjangoBlog.spider_notify import SpiderNotify
-from DjangoBlog.utils import get_current_site
+from website.spider_notify import SpiderNotify
+from website.utils import get_current_site
 
 site = get_current_site().domain
 

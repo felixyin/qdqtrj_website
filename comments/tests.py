@@ -1,12 +1,12 @@
 from django.test import Client, RequestFactory, TestCase
 from blog.models import Article, Category, Tag
 from django.contrib.auth import get_user_model
-from DjangoBlog.utils import get_current_site
+from website.utils import get_current_site
 from django.urls import reverse
 import datetime
 from accounts.models import BlogUser
 from comments.templatetags.comments_tags import *
-from DjangoBlog.utils import get_max_articleid_commentid
+from website.utils import get_max_articleid_commentid
 
 
 # Create your tests here.

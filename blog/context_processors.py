@@ -13,7 +13,7 @@
 @time: 2016/11/6 下午4:23
 """
 from .models import Category, Article, Tag, BlogSettings
-from DjangoBlog.utils import cache, get_blog_setting
+from website.utils import cache, get_blog_setting
 
 from datetime import datetime
 import logging

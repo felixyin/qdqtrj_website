@@ -176,7 +176,7 @@ class CommonMarkdown():
 
 
 def send_email(emailto, title, content):
-    from DjangoBlog.blog_signals import send_email_signal
+    from website.blog_signals import send_email_signal
     send_email_signal.send(send_email.__class__, emailto=emailto, title=title, content=content)
 
 
