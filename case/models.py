@@ -8,7 +8,7 @@ from django.utils.timezone import now
 # Create your models here.
 
 
-from base.models import BaseModel
+from base.models import BaseModel, BaseTag, BaseAttach
 from service.models import Service
 from website.utils import cache_decorator
 
@@ -23,7 +23,8 @@ class Case(BaseModel):
     cycle = MDTextField(config_name='mini', verbose_name='项目周期', null=True, blank=True)
 
     service = m.ForeignKey(Service, on_delete=m.DO_NOTHING, null=True, blank=True, verbose_name='服务')
-    tags = m.ManyToManyField('ProjectTag', verbose_name='技术标签')
+    tags = m.ManyToManyField(BaseTag, verbose_name='技术标签')
+    files = m.ManyToManyField(BaseAttach, verbose_name='附件')
 
     sequence = m.IntegerField('排列顺序', unique=True, null=False, blank=False)
     begin_time = m.DateTimeField('开始时间', default=now, editable=True)
@@ -60,26 +61,3 @@ class Case(BaseModel):
     def get_related_projects(self):
         return Case.objects.all().filter(related_projects=self)
 
-
-# 项目-技术标签
-class ProjectTag(BaseModel):
-    name = m.CharField(max_length=50, verbose_name='技术标签名称')
-    description = MDTextField(max_length=200, config_name='mini', blank=True, verbose_name='特点简介')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = '项目技术标签'
-        verbose_name_plural = verbose_name
-
-
-# 项目-附件
-class ProjectAttach(BaseModel):
-    file = m.FileField(upload_to="upload/project/thumb/%Y/%m/%d", null=True, verbose_name='附件')
-    name = m.CharField(max_length=50, null=True, verbose_name='附件名称', default=file.name)
-    project = m.ForeignKey(Case, on_delete=m.CASCADE, null=True, verbose_name='项目')
-
-    class Meta:
-        verbose_name = '项目附件'
-        verbose_name_plural = verbose_name

@@ -1,0 +1,24 @@
+{% load static %}
+<!-- Headline -->
+
+<div class="display_show fr" id="custom">
+    <div class="common_title clearfix">
+        <div class="loft fl">
+            <img src="{% static 'images/fz.png' %}"> 合作客户
+        </div>
+        {#            <div class="more fr">#}
+        {#                您当前位置：<a href="index.php.html">网站首页</a> > 联系我们#}
+        {#            </div>#}
+    </div>
+    <div class="about_item">
+        {% for oc in about.ourclient_set.all %}
+            <div class="four columns">
+                <div class="clients" style="padding: 10px 0 ;">
+                    <a href="{{ oc.url }}" target="_blank">
+                        <img src="{{ oc.logo.url }}" style="margin:0 auto;max-height: 110px;" alt=""/>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

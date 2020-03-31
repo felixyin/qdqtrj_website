@@ -23,5 +23,5 @@ from . import views as v
 
 app_name = "about"
 urlpatterns = [
-    path('about/', v.AboutDetailView.as_view(), {'pk': 1}, name='about'),
+    path('', v.AboutDetailView.as_view(), {'pk': 1}, name='index'),
 ]

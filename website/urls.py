@@ -37,14 +37,15 @@ handler404 = 'blog.views.page_not_found_view'
 handler500 = 'blog.views.server_error_view'
 handle403 = 'blog.views.permission_denied_view'
 
-
 app_name = 'website'
 
 urlpatterns = [
                   # 首页
                   url(r'', include('home.urls', namespace='home')),
+                  # 关于
+                  url(r'^about', include('about.urls', namespace='about')),
                   # 博客
-                  url(r'^blogs/', include('blog.urls', namespace='blog')),
+                  url(r'^blog/', include('blog.urls', namespace='blog')),
                   url(r'mdeditor/', include('mdeditor.urls')),
                   url(r'', include('comments.urls', namespace='comment')),
                   url(r'', include('accounts.urls', namespace='account')),

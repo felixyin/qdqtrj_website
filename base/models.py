@@ -33,3 +33,28 @@ class BaseModel(m.Model):
         site = Site.objects.get_current().domain
         url = "http://{site}{path}".format(site=site, path=self.get_absolute_url())
         return url
+
+
+class BaseTag(BaseModel):
+    # 项目-技术标签
+    name = m.CharField(max_length=50, verbose_name='标签名称')
+    description = MDTextField(max_length=200, config_name='mini', blank=True, verbose_name='特点简介')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = '标签'
+        verbose_name_plural = verbose_name
+
+
+class BaseAttach(BaseModel):
+    # 项目-附件
+    file = m.FileField(upload_to="upload/attach/%Y/%m/%d", null=True, verbose_name='附件')
+    name = m.CharField(max_length=50, null=True, verbose_name='附件名称', default=file.name)
+
+    # project = m.ForeignKey(BaseModel, on_delete=m.CASCADE, null=True, verbose_name='项目')
+
+    class Meta:
+        verbose_name = '附件'
+        verbose_name_plural = verbose_name

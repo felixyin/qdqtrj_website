@@ -1,15 +1,7 @@
 from django.contrib.sites.models import Site
 from django.db import models as m
-from django.db.models.signals import post_save, post_delete
-from django.dispatch import receiver
-from django.urls import reverse
-from django.utils.functional import cached_property
-from django.utils.timezone import now
-
 from base.models import BaseModel
 from mdeditor.fields import MDTextField
-
-from website.utils import cache_decorator
 
 
 # Create your models here.
@@ -33,7 +25,7 @@ class About(m.Model):
         verbose_name_plural = verbose_name
 
 
-class Testimonials(BaseModel):
+class Evaluation(BaseModel):
     # 关于-客户评价
     content = MDTextField(max_length=200, config_name='mini', verbose_name='评价内容')
     # author = m.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='作者', on_delete=m.DO_NOTHING)

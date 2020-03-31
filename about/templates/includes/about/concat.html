@@ -1,0 +1,184 @@
+{% load static %}
+<div class="display_show fr" id="contact_us">
+    <div class="common_title clearfix">
+        <div class="loft fl">
+            <img src="{% static 'images/fz.png' %}"> 联系我们
+        </div>
+        {#            <div class="more fr">#}
+        {#                您当前位置：<a href="index.php.html">网站首页</a> > 联系我们#}
+        {#            </div>#}
+    </div>
+    <div class="about_item">
+        <p>
+            欢迎您给我们发邮件或是打电话，让我们听到你的声音!
+        </p>
+        <p>让我们了解您的项目需求，这是一个良好的开始。</p>
+        <div class="ditu-con">
+            <div style="width:100%;height:305px;" id="dituContent"></div>
+            <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+            <script type="text/javascript">
+                //创建和初始化地图函数：
+                function initMap() {
+                    createMap();//创建地图
+                    setMapEvent();//设置地图事件
+                    addMapControl();//向地图添加控件
+                    addMarker();//向地图中添加marker
+                }
+
+                //创建地图函数：
+                function createMap() {
+                    var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+                    var point = new BMap.Point(120.430375, 36.267748);//定义一个中心点坐标
+                    var marker = new BMap.Marker(point);  // 创建标注
+                    map.addOverlay(marker);              // 将标注添加到地图中
+                    var opts = {
+                        width: 200,     // 信息窗口宽度
+                        height: 100,     // 信息窗口高度
+                        title: "青岛前途软件技术有限公司", // 信息窗口标题
+                        enableMessage: true,//设置允许信息窗发送短息
+                        message: "#"
+                    }
+                    var infoWindow = new BMap.InfoWindow("电话：17554153785", opts);  // 创建信息窗口对象
+                    marker.addEventListener("click", function () {
+                        map.openInfoWindow(infoWindow, point); //开启信息窗口
+                    });
+
+                    map.centerAndZoom(point, 17);//设定地图的中心点和坐标并将地图显示在地图容器中
+                    window.map = map;//将map变量存储在全局
+                }
+
+                //地图事件设置函数：
+                function setMapEvent() {
+                    map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+                    {#map.enableScrollWheelZoom();//启用地图滚轮放大缩小#}
+                    map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+                    map.enableKeyboard();//启用键盘上下左右键移动地图
+                }
+
+                //地图控件添加函数：
+                function addMapControl() {
+                    //向地图中添加缩放控件
+                    var ctrl_nav = new BMap.NavigationControl({
+                        anchor: BMAP_ANCHOR_TOP_LEFT,
+                        type: BMAP_NAVIGATION_CONTROL_LARGE
+                    });
+                    map.addControl(ctrl_nav);
+                    //向地图中添加缩略图控件
+                    var ctrl_ove = new BMap.OverviewMapControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1});
+                    map.addControl(ctrl_ove);
+                    //向地图中添加比例尺控件
+                    var ctrl_sca = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
+                    map.addControl(ctrl_sca);
+                }
+
+                //标注点数组
+                var markerArr = [{
+                    title: "青岛前途软件技术有限公司",
+                    content: "：17554153785",
+                    point: "120.430375,36.267748",
+                    isOpen: 0,
+                    icon: {w: 23, h: 25, l: 0, t: 21, x: 9, lb: 12}
+                }
+                ];
+
+                //创建marker
+                function addMarker() {
+                    for (var i = 0; i < markerArr.length; i++) {
+                        var json = markerArr[i];
+                        var p0 = json.point.split("|")[0];
+                        var p1 = json.point.split("|")[1];
+                        var point = new BMap.Point(p0, p1);
+                        var iconImg = createIcon(json.icon);
+                        var marker = new BMap.Marker(point, {icon: iconImg});
+                        var iw = createInfoWindow(i);
+                        var label = new BMap.Label(json.title, {"offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20)});
+                        marker.setLabel(label);
+                        map.addOverlay(marker);
+                        label.setStyle({
+                            borderColor: "#808080",
+                            color: "#333",
+                            cursor: "pointer"
+                        });
+
+                        (function () {
+                            var index = i;
+                            var _iw = createInfoWindow(i);
+                            var _marker = marker;
+                            _marker.addEventListener("click", function () {
+                                this.openInfoWindow(_iw);
+                            });
+                            _iw.addEventListener("open", function () {
+                                _marker.getLabel().hide();
+                            })
+                            _iw.addEventListener("close", function () {
+                                _marker.getLabel().show();
+                            })
+                            label.addEventListener("click", function () {
+                                _marker.openInfoWindow(_iw);
+                            })
+                            if (!!json.isOpen) {
+                                label.hide();
+                                _marker.openInfoWindow(_iw);
+                            }
+                        })()
+                    }
+                }
+
+                //创建InfoWindow
+                function createInfoWindow(i) {
+                    var json = markerArr[i];
+                    var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>" + json.content + "</div>");
+                    return iw;
+                }
+
+                //创建一个Icon
+                function createIcon(json) {
+                    var icon = new BMap.Icon("http://map.baidu.com/image/us_mk_icon.png", new BMap.Size(json.w, json.h), {
+                        imageOffset: new BMap.Size(-json.l, -json.t),
+                        infoWindowOffset: new BMap.Size(json.lb + 5, 1),
+                        offset: new BMap.Size(json.x, json.h)
+                    })
+                    return icon;
+                }
+
+                initMap();//创建和初始化地图
+            </script>
+        </div>
+        <div class="adress">
+            <ul>
+                <p>
+                    青岛前途软件技术有限公司
+                </p>
+                <p>
+                    售前电话： 17554153785 （尹经理）
+                </p>
+                <p>
+                    售前微信： felixyin
+                </p>
+                <p>
+                    售前QQ号： 1052921694
+                </p>
+                <p>
+                    售后电话： 13792912041 （陈工）
+                </p>
+                <p>
+                    咨询邮箱： 1052921694@qq.com （售前咨询和项目合作）
+                </p>
+                <p>
+                    招聘邮箱： ybkk1027@163.com（长期招聘软件工程师和软件销售人员）
+                </p>
+                <p>
+                    公司地址： <a
+                        href="https://map.baidu.com/dir/%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE/%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85/@13402518.131360544,4304993.2,13.65z?querytype=bt&bttp=0&c=236&sy=0&en=1$$b12b71a50f63a2bf1329350a$$13406377.798,4312449.73819$$%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85$$$$$$&sn=1$$$$13406482,4297514$$%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE$$$$$$&sq=%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85&eq=%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE&exptype=dep&exptime=2019-05-05%2010:50&version=5&da_src=shareurl"
+                        target="_blank">青岛市城阳区招商LAVIE公社62号楼5层</a>
+                </p>
+                <p>
+                    驾车注意：如招商LAVIE公社找不到，请用高德地图或百度地图搜索“城阳恒大御览国际”
+                </p></ul>
+        </div>
+        <div class="tel">
+            <img src="images/dh.png">
+            tel：17554153785
+        </div>
+    </div>
+</div>

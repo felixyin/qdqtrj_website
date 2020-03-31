@@ -1905,11 +1905,12 @@ h1 a {
 
 /*关于我们*/
 
-.single {
+.about_item{
 	background: #fff;
-	margin-top: 50px;
-	padding: 56px 40px;
-	min-height: 514px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	padding: 36px 40px;
+	/*min-height: 514px;*/
 }
 
 .single_top {

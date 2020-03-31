@@ -14,6 +14,11 @@
 """
 from django.contrib.admin import AdminSite
 
+import base
+from about.admin import AboutAdmin
+from about.models import About
+from base.admin import BaseAttachInline, BaseTagAdmin
+from base.models import BaseAttach, BaseTag
 from home.admin import HomeAdmin
 from home.models import Home
 from website.utils import get_current_site
@@ -30,8 +35,8 @@ from owntracks.admin import *
 
 
 class DjangoBlogAdminSite(AdminSite):
-    site_header = 'DjangoBlog administration'
-    site_title = 'DjangoBlog site admin'
+    site_header = '前途软件官网-管理后台'
+    site_title = '前途软件官网-管理后台'
 
     def __init__(self, name='admin'):
         super().__init__(name)
@@ -51,6 +56,13 @@ class DjangoBlogAdminSite(AdminSite):
 
 
 admin_site = DjangoBlogAdminSite(name='admin')
+
+# base
+admin_site.register(BaseTag, BaseTagAdmin)
+# admin_site.register(Attach, AttachInline)
+
+# about
+admin_site.register(About, AboutAdmin)
 
 # home
 admin_site.register(Home, HomeAdmin)
