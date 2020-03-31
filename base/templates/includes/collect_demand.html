@@ -1,0 +1,44 @@
+{% load static %}
+<link href="{% static 'QQ/style3/css/lanrenzhijia.css' %}" rel="stylesheet" type="text/css"/>
+<script src="{% static 'QQ/style3/js/jquery.hhService.js' %}"></script>
+<script>$(function () {
+    $("#hhService").fix({float: 'right', minStatue: false, skin: 'green', durationTime: 1000})
+});</script>
+<div class="scrollsidebar" id="hhService">
+    <div class="side_content">
+        <div class="side_list">
+            <div class="side_title">
+                <a title="隐藏" class="close_btn"><span>关闭</span></a></div>
+            <div class="side_center">
+                <div class="qqserver">
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1052921694&site=qq&menu=yes"><img
+                            border="0" src="http://wpa.qq.com/pa?p=2:1052921694:41" alt="点击这里给我发消息"
+                            title="点击这里给我发消息"></a>&nbsp;
+                </div>
+            </div>
+            <div class="side_bottom">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link href="{% static 'QQ/erweima/css/style.css' %}" rel="stylesheet" type="text/css"/>
+<script src="{% static 'QQ/erweima/js/lrtk.js' %}"></script>
+
+<div id="erweima" style="z-index:999999">
+
+    <p><img src="{% static  'data/watermark/erweima.jpg' %}" width="150px"/></p>
+    <p><a href="javascript:" onclick="erweima.style.display='none';">关闭</a></p>
+
+</div>
+
+<script>
+
+    //初始位置
+    gID("erweima").style.top = 160 + "px";
+    gID("erweima").style.right = document.documentElement.clientWidth - gID("erweima").offsetWidth + "px";
+
+    //开始滚动
+    ScrollDiv('erweima');
+</script>

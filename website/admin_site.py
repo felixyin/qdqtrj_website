@@ -13,6 +13,9 @@
 @time: 2018/1/7 上午2:21
 """
 from django.contrib.admin import AdminSite
+
+from home.admin import HomeAdmin
+from home.models import Home
 from website.utils import get_current_site
 from django.contrib.sites.admin import SiteAdmin
 from django.contrib.admin.models import LogEntry
@@ -49,25 +52,22 @@ class DjangoBlogAdminSite(AdminSite):
 
 admin_site = DjangoBlogAdminSite(name='admin')
 
+# home
+admin_site.register(Home, HomeAdmin)
+
+# blog
 admin_site.register(Article, ArticlelAdmin)
 admin_site.register(Category, CategoryAdmin)
 admin_site.register(Tag, TagAdmin)
 admin_site.register(Links, LinksAdmin)
 admin_site.register(SideBar, SideBarAdmin)
 admin_site.register(BlogSettings, BlogSettingsAdmin)
-
 admin_site.register(commands, CommandsAdmin)
 admin_site.register(EmailSendLog, EmailSendLogAdmin)
-
 admin_site.register(BlogUser, BlogUserAdmin)
-
 admin_site.register(Comment, CommentAdmin)
-
 admin_site.register(OAuthUser, OAuthUserAdmin)
 admin_site.register(OAuthConfig, OAuthConfigAdmin)
-
 admin_site.register(OwnTrackLog, OwnTrackLogsAdmin)
-
 admin_site.register(Site, SiteAdmin)
-
 admin_site.register(LogEntry, LogEntryAdmin)

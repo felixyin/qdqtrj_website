@@ -1,0 +1,61 @@
+{% load static %}
+<!--公司简介-->
+<div class="company clearfix">
+    <div class="container">
+        <div class="aboyt_left fl">
+            <h3>关于我们</h3>
+            <span><img src="{% static  'images/jj_hx.png' %}">about us</span>
+            <div class="kind_fd">
+                <h3 style="text-indent:0em;">
+                    青岛前途软件技术有限公司
+                </h3>
+                <p style="text-indent:2em;">
+                    青岛前途软件技术有限公司，简称前途软件，成立于2018年，是一家专注于软件开发的企业，拥有Java、JavaScript、NodeJs、Python、Dart、GoLang等各类软件开发工程师8名，定位于系统软件和APP定制开发领域，可承接各类软件定制开发业务及政务信息化、企业信息化建设项目、项目外包业务。
+                </p>                    <a href="single.php%3Fcid=1.html">查看详情</a>
+            </div>
+        </div>
+        <div class="about_right fr">
+            <div class="about_kind clearfix">
+                <div class="kind_fenlei fl">
+                    <img src="{% static  'images/fenlei.png' %}">
+                </div>
+                <div class="kind_list fr">
+                    <ul class="clearfix">
+                        <!--普通产品分类-->
+                        <li><a href="gallery.php%3Fcid=34.html">管理系统系列</a></li>
+                        <li><a href="gallery.php%3Fcid=35.html">网站建设系列</a></li>
+                        <li><a href="gallery.php%3Fcid=43.html">APP软件系列</a></li>
+                        <li><a href="gallery.php%3Fcid=44.html">桌面软件系列</a></li>
+                        <li><a href="gallery.php%3Fcid=45.html">物联网系列</a></li>
+                        <!--跳转到case页面的分类 复杂页面-->
+                        <!-- -->
+                    </ul>
+
+                </div>
+            </div>
+            <div class="kind_list_p">
+                <div class="swiper-container kind">
+                    <div class="swiper-wrapper ">
+                        <div class="swiper-slide"><img src="{% static  'images/about.png' %}"></div>
+                        <div class="swiper-slide"><img src="{% static  'images/about1.png' %}"></div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next kind_left"></div>
+                    <div class="swiper-button-prev kind_right"></div>
+                </div>
+
+
+                <!-- Initialize Swiper -->
+                <script>
+                    var swiper = new Swiper('.kind', {
+                        loop: true,
+                        navigation: {
+                            nextEl: '.kind_left',
+                            prevEl: '.kind_right',
+                        },
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

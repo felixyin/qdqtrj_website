@@ -297,7 +297,7 @@ input {
 }
 
 .footer {
-	background: url(../images/di_bg.png)no-repeat top left;
+	background: url(../images/di_bg.png)no-repeat top center;
 	padding-top: 67px;
 	padding-bottom: 62px;
 }
@@ -1246,7 +1246,7 @@ h1 a {
 }
 
 .index_news {
-	background: url(../images/xinwen.png)no-repeat top left;
+	background: url(../images/xinwen.png)no-repeat top center;
 	padding-bottom: 130px;
 }
 

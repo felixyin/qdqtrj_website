@@ -17,6 +17,9 @@ import django.dispatch
 from django.dispatch import receiver
 from django.conf import settings
 from django.contrib.admin.models import LogEntry
+
+from home.models import Home
+from case.models import Case
 from website.utils import get_current_site
 from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
@@ -35,6 +38,35 @@ logger = logging.getLogger(__name__)
 
 oauth_user_login_signal = django.dispatch.Signal(providing_args=['id'])
 send_email_signal = django.dispatch.Signal(providing_args=['emailto', 'title', 'content'])
+save_signal = django.dispatch.Signal(providing_args=['id', 'is_update_views'])
+
+
+@receiver(save_signal)
+def save_callback(sender, **kwargs):
+    id = kwargs['id']
+    is_update_views = kwargs['is_update_views']
+    type = sender.__name__
+    obj = None
+    if type == 'Article':
+        obj = Article.objects.get(id=id)
+    elif type == 'Category':
+        obj = Category.objects.get(id=id)
+    elif type == 'Tag':
+        obj = Tag.objects.get(id=id)
+    elif type == 'Home':
+        obj = Home.objects.get(1)
+    elif type == 'Case':
+        obj = Case.objects.get(id=id)
+    if obj is not None:
+        if not settings.TESTING and not is_update_views:
+            try:
+                notify_url = obj.get_full_url()
+                print('url:------------------------------------------>')
+                print(notify_url)
+                SpiderNotify.baidu_notify([notify_url])
+            except Exception as ex:
+                logger.error("notify sipder", ex)
+                print(ex)
 
 
 @receiver(send_email_signal)

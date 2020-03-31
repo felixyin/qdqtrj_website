@@ -1,0 +1,37 @@
+{% extends 'share_layout/home_layout.html' %}
+{% load static %}
+
+{% block content %}
+
+    {#  滑动图  #}
+    {% include 'includes/banner.html' %}
+
+    {#  案例  #}
+    {% include 'includes/case.html' %}
+
+    <!--广告一-->
+    <div class="advert">
+        <img src="{% static  'images/g1.png' %}">
+    </div>
+
+    {#  产品 #}
+    {% include 'includes/product.html' %}
+
+    <!--广告二-->
+    <div class="advert2">
+        <img src="{% static  'images/g2.png' %}">
+    </div>
+
+    {#  关于和服务 #}
+    {% include 'includes/service.html' %}
+
+    {#  口号 #}
+    {% include 'includes/slogan.html' %}
+
+    {#  动态  #}
+    {% include 'includes/news.html' %}
+
+
+
+
+{% endblock %}

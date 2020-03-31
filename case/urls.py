@@ -21,9 +21,9 @@ from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 from . import views as v
 
-app_name = "project"
+app_name = "case"
 urlpatterns = [
-    path('project/', v.ProjectListView.as_view(), name='project-list'),
-    path('project/<int:pk>', v.ProjectDetailView.as_view(), name='project-detail'),
+    path('case/', v.CaseListView.as_view(), name='case-list'),
+    path('case/<int:pk>', v.CaseDetailView.as_view(), name='case-detail'),
 
 ]

@@ -13,9 +13,9 @@ from service.models import Service
 from website.utils import cache_decorator
 
 
-class Project(BaseModel):
-    # 项目
-    name = m.CharField(max_length=50, verbose_name='项目名称')
+class Case(BaseModel):
+    # 案例
+    name = m.CharField(max_length=50, verbose_name='目名称')
     description = MDTextField(max_length=200, config_name='mini', verbose_name='项目简介')
     thumb = m.ImageField(upload_to="upload/project/thumb/%Y/%m/%d", verbose_name='缩略图')
     content = MDTextField(max_length=10000, verbose_name='项目详情')
@@ -49,16 +49,16 @@ class Project(BaseModel):
     @cached_property
     def next_project(self):
         # 下一篇
-        return Project.objects.filter(sequence__gt=self.sequence, is_enable=True).order_by('sequence').first()
+        return Case.objects.filter(sequence__gt=self.sequence, is_enable=True).order_by('sequence').first()
 
     @cached_property
     def prev_project(self):
         # 前一篇
-        return Project.objects.filter(sequence__lt=self.sequence, is_enable=True).order_by('-sequence').first()
+        return Case.objects.filter(sequence__lt=self.sequence, is_enable=True).order_by('-sequence').first()
 
     @cache_decorator(60 * 60 * 10)
     def get_related_projects(self):
-        return Project.objects.all().filter(related_projects=self)
+        return Case.objects.all().filter(related_projects=self)
 
 
 # 项目-技术标签
@@ -78,7 +78,7 @@ class ProjectTag(BaseModel):
 class ProjectAttach(BaseModel):
     file = m.FileField(upload_to="upload/project/thumb/%Y/%m/%d", null=True, verbose_name='附件')
     name = m.CharField(max_length=50, null=True, verbose_name='附件名称', default=file.name)
-    project = m.ForeignKey(Project, on_delete=m.CASCADE, null=True, verbose_name='项目')
+    project = m.ForeignKey(Case, on_delete=m.CASCADE, null=True, verbose_name='项目')
 
     class Meta:
         verbose_name = '项目附件'

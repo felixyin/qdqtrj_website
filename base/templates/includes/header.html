@@ -1,0 +1,60 @@
+{% load static %}
+<div class="top clearfix">
+    <div class="container">
+        <div class="top_left fl">
+            <img src="{% static  'images/ld.png' %}">
+            <span>欢迎来到青岛前途软件技术有限公司，服务热线：17554153785</span>
+        </div>
+        <div class="top_right fr">
+            <ul class="clearfix">
+                <li>
+                    <a href="{% url 'home:index' %}"><img src="{% static  'images/sc.png' %}">加入收藏</a>
+                </li>
+                <li>
+                    <a href="{% url 'home:index' %}"><img src="{% static  'images/sy.png' %}">设为首页</a>
+                </li>
+                <li>
+                    <a href="{% url 'account:login' %}"><img src="{% static  'images/lx.png' %}">联系我们</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="wrapper">
+    <header class="header">
+        <div class="header-container">
+            <div class="top_logo clearfix header-content">
+                <div class="container">
+                    <div class="logo_left fl">
+                        <img src="{% static  'images/logo.png' %}">
+                    </div>
+                    <div class="logo_right fr">
+                        <img src="{% static  'images/rexian.png' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="nav clearfix">
+                <div class="w1200">
+                    <div class="nav1">
+                        <ul class="menu1">
+                            <li><a href="{% url 'home:index' %}">公司首页</a></li>
+                            <li><a href="single.php%3Fcid=1.html">关于我们</a></li>
+                            <li><a href="show.php%3Fcid=47&amp;id=121.html#anchor">服务项目</a>
+                                <ul class="second-nav" style="display:none;">
+                                    <li><a href="show.php%3Fcid=47&amp;id=121.html#anchor">软件定制开发</a></li>
+                                    <li><a href="show.php%3Fcid=47&amp;id=120.html#anchor">移动应用开发</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="gallery.php%3Fcid=46.html#anchor">公司产品</a></li>
+                            <li><a href="gallery.php%3Fcid=3.html">项目案例</a></li>
+                            <li><a href="list.php%3Fcid=6.html">最新动态</a></li>
+                            <li><a href="message.php%3Fcid=14.html">在线留言</a></li>
+                            <li><a href="contact.php%3Fcid=9.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="clear"></div>

@@ -36,11 +36,15 @@ sitemaps = {
 handler404 = 'blog.views.page_not_found_view'
 handler500 = 'blog.views.server_error_view'
 handle403 = 'blog.views.permission_denied_view'
+
+
+app_name = 'website'
+
 urlpatterns = [
-                  url(r'^admin/', admin_site.urls),
-                  # 网站主模块
+                  # 首页
                   url(r'', include('home.urls', namespace='home')),
-                  url(r'blogs', include('blog.urls', namespace='blog')),
+                  # 博客
+                  url(r'^blogs/', include('blog.urls', namespace='blog')),
                   url(r'mdeditor/', include('mdeditor.urls')),
                   url(r'', include('comments.urls', namespace='comment')),
                   url(r'', include('accounts.urls', namespace='account')),
@@ -51,7 +55,9 @@ urlpatterns = [
                   url(r'^rss/$', DjangoBlogFeed()),
                   url(r'^search', include('haystack.urls'), name='search'),
                   url(r'', include('servermanager.urls', namespace='servermanager')),
-                  url(r'', include('owntracks.urls', namespace='owntracks'))
+                  url(r'', include('owntracks.urls', namespace='owntracks')),
+                  # 管理端
+                  url(r'^admin/', admin_site.urls),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

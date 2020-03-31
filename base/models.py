@@ -18,7 +18,7 @@ class BaseModel(m.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        from website.blog_signals import send_email_signal
+        from website.blog_signals import save_signal
         # if not self.slug or self.slug == 'no-slug' or not self.id:
         #     slug = self.title if 'title' in self.__dict__ else self.name
         #     self.slug = slugify(slug)
@@ -26,7 +26,8 @@ class BaseModel(m.Model):
         # type = self.__class__.__name__
         is_update_views = 'update_fields' in kwargs and len(kwargs['update_fields']) == 1 and kwargs['update_fields'][
             0] == 'views'
-        send_email_signal.send(sender=self.__class__, is_update_views=is_update_views, id=self.id)
+        # FIXME 通知百度重新收录url地址
+        # save_signal.send(sender=self.__class__, is_update_views=is_update_views, id=self.id)
 
     def get_full_url(self):
         site = Site.objects.get_current().domain

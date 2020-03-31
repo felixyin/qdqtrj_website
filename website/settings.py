@@ -28,7 +28,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'n9ceqv38)#&mwuat@(mjb_p%em$e8$qyr#fw9ot!=ba6lijx-6'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env_to_bool('DJANGO_DEBUG', True)
+# DEBUG = env_to_bool('DJANGO_DEBUG', True)
+DEBUG = True
+
 # DEBUG = False
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'mdeditor',
     'haystack',
+    'django_extensions',
     'blog',
     'accounts',
     'comments',
@@ -62,7 +65,7 @@ INSTALLED_APPS = [
     'base',
     'about',
     'service',
-    'project',
+    'case',
     'home'
 ]
 
@@ -167,7 +170,10 @@ AUTHENTICATION_BACKENDS = ['accounts.user_login_backend.EmailOrUsernameModelBack
 STATIC_ROOT = os.path.join(SITE_ROOT, 'collectedstatic')
 
 STATIC_URL = '/static/'
-STATICFILES = os.path.join(BASE_DIR, 'static')
+STATICFILES = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'uploads'),
+]
 
 AUTH_USER_MODEL = 'accounts.BlogUser'
 LOGIN_URL = '/login/'
@@ -280,7 +286,8 @@ STATICFILES_FINDERS = (
     # other
     'compressor.finders.CompressorFinder',
 )
-COMPRESS_ENABLED = True
+# COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 # COMPRESS_OFFLINE = True
 
 

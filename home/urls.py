@@ -14,14 +14,10 @@
 """
 
 from django.urls import path
-from django.views.decorators.cache import cache_page
-from . import views
-from haystack.forms import ModelSearchForm
-from haystack.query import SearchQuerySet
-from haystack.views import SearchView
 from . import views as v
 
 app_name = "home"
 urlpatterns = [
-    path('', v.HomeView.as_view(), {'pk': 1}, name='index'),
+    path('', v.HomeView.as_view(), {'pk': 2}, name='index'),
+    # path('', v.index,  name='index'),
 ]
