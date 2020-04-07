@@ -1,4 +1,4 @@
-{% extends 'share_layout/blog_layout.html' %}
+{% extends 'share_layout/home_layout.html' %}
 {% load blog_tags %}
 {% load cache %}
 {% block header %}
@@ -38,8 +38,5 @@
 {% endblock %}
 
 
-{% block sidebar %}
-    {% load_sidebar user 'i' %}
-{% endblock %}
 
 

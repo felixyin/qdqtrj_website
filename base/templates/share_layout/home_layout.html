@@ -99,7 +99,7 @@
             var links11 = $(".menu1").children("li").children("a");
             links11.each(function (i, n) {
                 if ($(this).attr("href") == lh1) {
-                    $(n).parent("li").css("background", "url(images/nav_bg.png)no-repeat top center")
+                    $(n).parent("li").css("background", "url({% static 'images/nav_bg.png' %})no-repeat top center")
                 }
             });
             var links = $("#accordion").children("li").children("a");

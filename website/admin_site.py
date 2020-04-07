@@ -21,6 +21,8 @@ from base.admin import BaseAttachInline, BaseTagAdmin
 from base.models import BaseAttach, BaseTag
 from home.admin import HomeAdmin
 from home.models import Home
+from service.admin import ServiceAdmin
+from service.models import  Service
 from website.utils import get_current_site
 from django.contrib.sites.admin import SiteAdmin
 from django.contrib.admin.models import LogEntry
@@ -66,6 +68,9 @@ admin_site.register(About, AboutAdmin)
 
 # home
 admin_site.register(Home, HomeAdmin)
+
+# service
+admin_site.register(Service, ServiceAdmin)
 
 # blog
 admin_site.register(Article, ArticlelAdmin)

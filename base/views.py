@@ -1,41 +1,25 @@
 from django.shortcuts import render
+import logging
 
 
-# Create your views here.
+logger = logging.getLogger(__name__)
 
 
-
-def miss_page(request):
-    return render(request, 'home/404.html')
-
-
-def pricing_tables(request):
-    return render(request, 'home/pricing_tables.html')
-
-
-def shortcodes(request):
-    return render(request, 'home/shortcodes.html')
+def page_not_found_view(request, exception, template_name='error_page.html'):
+    if exception:
+        logger.error(exception)
+    url = request.get_full_path()
+    return render(request, template_name,
+                  {'message': '哎呀，您访问的地址 ' + url + ' 是一个未知的地方。请点击首页看看别的？', 'statuscode': '404'}, status=404)
 
 
-def text_columns(request):
-    return render(request, 'home/text_columns.html')
+def server_error_view(request, template_name='error_page.html'):
+    return render(request, template_name,
+                  {'message': '哎呀，出错了，我已经收集到了错误信息，之后会抓紧抢修，请点击首页看看别的？', 'statuscode': '500'}, status=500)
 
 
-def portfolio_2(request):
-    return render(request, 'home/portfolio_2.html')
-
-
-def portfolio_3(request):
-    return render(request, 'home/portfolio_3.html')
-
-
-def single_project(request):
-    return render(request, 'home/project_detail.html')
-
-
-def services(request):
-    return render(request, 'home/services.html')
-
-
-def copy(request):
-    return render(request, 'share_layout/mycopy.html')
+def permission_denied_view(request, exception, template_name='error_page.html'):
+    if exception:
+        logger.error(exception)
+    return render(request, template_name,
+                  {'message': '哎呀，您没有权限访问此页面，请点击首页看看别的？', 'statuscode': '403'}, status=403)

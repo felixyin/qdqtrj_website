@@ -29,9 +29,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'n9ceqv38)#&mwuat@(mjb_p%em$e8$qyr#fw9ot!=ba6lijx-6'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env_to_bool('DJANGO_DEBUG', True)
+# DEBUG = False
 DEBUG = True
 
-# DEBUG = False
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
 # ALLOWED_HOSTS = []
@@ -53,10 +53,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'debug_toolbar',
     'mdeditor',
     'haystack',
     'django_extensions',
+    # 'debug_toolbar',
     'blog',
     'accounts',
     'comments',
@@ -309,7 +309,8 @@ MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # simpleui 自定义菜单
-SIMPLEUI_CONFIG = {
+SIMPLEUI_STATIC_OFFLINE2 = True
+SIMPLEUI_CONFIG2 = {
     'system_keep': True,
     'menu_display': [
         '前途软件官网',
@@ -332,7 +333,7 @@ SIMPLEUI_CONFIG = {
         },
         {
             'name': '权限管理',
-            'icon': 'fa fa-sliders',
+            'icon': 'fa fa-file',
             'models': [
                 {'name': '用户管理', 'icon': 'fa fa-file', 'url': '/admin/oauth/oauthuser/'},
                 {'name': '权限配置', 'icon': 'fa fa-file', 'url': '/admin/oauth/oauthconfig/'},
@@ -341,7 +342,7 @@ SIMPLEUI_CONFIG = {
         },
         {
             'name': '博客管理',
-            'icon': 'fa fa-blog',
+            'icon': 'fa fa-file',
             'models': [
                 {'name': '博客账号', 'icon': 'fa fa-file', 'url': '/admin/accounts/bloguser/'},
                 {'name': '侧边栏', 'icon': 'fa fa-file', 'url': '/admin/blog/sidebar/'},

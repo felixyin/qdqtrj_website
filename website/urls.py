@@ -23,6 +23,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from website.admin_site import admin_site
 from django.urls import include, path
+from base import views as base_views
 
 sitemaps = {
 
@@ -33,9 +34,9 @@ sitemaps = {
     'static': StaticViewSitemap
 }
 
-handler404 = 'blog.views.page_not_found_view'
-handler500 = 'blog.views.server_error_view'
-handle403 = 'blog.views.permission_denied_view'
+handler404 = 'base.views.page_not_found_view'
+handler500 = 'base.views.server_error_view'
+handle403 = 'base.views.permission_denied_view'
 
 app_name = 'website'
 
@@ -43,7 +44,10 @@ urlpatterns = [
                   # 首页
                   url(r'', include('home.urls', namespace='home')),
                   # 关于
-                  url(r'^about', include('about.urls', namespace='about')),
+                  url(r'^about/', include('about.urls', namespace='about')),
+                  # 服务
+                  url(r'^service/', include('service.urls', namespace='service')),
+
                   # 博客
                   url(r'^blog/', include('blog.urls', namespace='blog')),
                   url(r'mdeditor/', include('mdeditor.urls')),

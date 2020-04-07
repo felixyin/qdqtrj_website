@@ -21,12 +21,12 @@ from . import views as v
 app_name = 'base'
 
 urlpatterns = [
-    path('404/', v.miss_page, name='miss-page'),
-    path('portfolio-2/', v.portfolio_2, name='blog-post'),
-    path('portfolio-2/', v.portfolio_2, name='portfolio-2'),
-    path('portfolio-3/', v.portfolio_3, name='portfolio-3'),
-    path('pricing-tables/', v.pricing_tables, name='pricing-tables'),
-    path('shortcodes/', v.shortcodes, name='shortcodes'),
-    path('single-project/', v.single_project, name='single-project'),
-    path('text-columns/', v.text_columns, name='text-columns'),
+    # path('404/', v.miss_page, name='miss-page'),
+    # path('portfolio-2/', v.portfolio_2, name='blog-post'),
+    # path('portfolio-2/', v.portfolio_2, name='portfolio-2'),
+    # path('portfolio-3/', v.portfolio_3, name='portfolio-3'),
+    # path('pricing-tables/', v.pricing_tables, name='pricing-tables'),
+    # path('shortcodes/', v.shortcodes, name='shortcodes'),
+    # path('single-project/', v.single_project, name='single-project'),
+    # path('text-columns/', v.text_columns, name='text-columns'),
 ]
