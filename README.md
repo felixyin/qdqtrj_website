@@ -118,6 +118,12 @@ CREATE DATABASE `djangoblog` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8
 
 有任何问题欢迎提Issue,或者将问题描述发送至我邮箱 `1052921694@qq.com`.我会尽快解答.推荐提交Issue方式.  
 
+### 数据库连接错误：Did you install mysqlclient
+```
+cd /usr/local/Cellar/  # 查看已经安装的openssl版本
+brew switch openssl 1.0.2t  # 切换为1.0.2t版本即可
+```
+
 ---
  ## 致大家🙋‍♀️🙋‍♂️
  本项目基于https://github.com/liangliangyy/DjangoBlog 修改。
