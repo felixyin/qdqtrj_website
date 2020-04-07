@@ -43,6 +43,7 @@ SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '../'))
 
 INSTALLED_APPS = [
+    'simpleui',
     # 'django.contrib.admin',
     'django.contrib.admin.apps.SimpleAdminConfig',
     'django.contrib.auth',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'debug_toolbar',
     'mdeditor',
     'haystack',
     'django_extensions',
@@ -72,6 +74,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -304,3 +307,65 @@ COMPRESS_JS_FILTERS = [
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'uploads')
 MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# simpleui 自定义菜单
+SIMPLEUI_CONFIG = {
+    'system_keep': True,
+    'menu_display': [
+        '前途软件官网',
+        '基本管理',
+        '权限管理',
+        '博客管理',
+        '网站管理',
+    ],  # 开启排序和过滤功能, 不填此字段为默认排序和全部显示, 空列表[] 为全部不显示.
+    'dynamic': False,  # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
+    'menus': [
+        {
+            'name': '基本管理',
+            'icon': 'fas fa-file',
+            'models': [
+                {'name': '站点管理', 'icon': 'fa fa-file', 'url': '/admin/sites/site/'},
+                {'name': '快速执行命令', 'icon': 'fa fa-file', 'url': '/admin/servermanager/commands/'},
+                {'name': '邮件发送日志', 'icon': 'fa fa-file', 'url': '/admin/servermanager/emailsendlog/'},
+                {'name': '后台操作日志', 'icon': 'fa fa-file', 'url': '/admin/admin/logentry/'},
+            ]
+        },
+        {
+            'name': '权限管理',
+            'icon': 'fa fa-sliders',
+            'models': [
+                {'name': '用户管理', 'icon': 'fa fa-file', 'url': '/admin/oauth/oauthuser/'},
+                {'name': '权限配置', 'icon': 'fa fa-file', 'url': '/admin/oauth/oauthconfig/'},
+                {'name': '邮件发送', 'icon': 'fa fa-file', 'url': '/admin/servermanager/emailsendlog/'},
+            ]
+        },
+        {
+            'name': '博客管理',
+            'icon': 'fa fa-blog',
+            'models': [
+                {'name': '博客账号', 'icon': 'fa fa-file', 'url': '/admin/accounts/bloguser/'},
+                {'name': '侧边栏', 'icon': 'fa fa-file', 'url': '/admin/blog/sidebar/'},
+                {'name': '分类', 'icon': 'fa fa-file', 'url': '/admin/blog/category/'},
+                {'name': '友情链接', 'icon': 'fa fa-file', 'url': '/admin/blog/links/'},
+                {'name': '文章', 'icon': 'fa fa-file', 'url': '/admin/blog/article/'},
+                {'name': '标签', 'icon': 'fa fa-file', 'url': '/admin/blog/tag/'},
+                {'name': '博客配置', 'icon': 'fa fa-file', 'url': '/admin/blog/blogsettings/'},
+                {'name': '博客评论', 'icon': 'fa fa-file', 'url': '/admin/comments/comment/'},
+                {'name': '访问位置', 'icon': 'fa fa-file', 'url': '/admin/owntracks/owntracklog/'},
+            ]
+        },
+        {
+            'name': '网站管理',
+            'icon': 'fa fa-file',
+            'models': [
+                {'name': '主页', 'icon': 'fa fa-file', 'url': '/admin/home/home/'},
+                {'name': '关于', 'icon': 'fa fa-file', 'url': '/admin/about/about/'},
+                {'name': '产品', 'icon': 'fa fa-file', 'url': '/admin/blog/sidebar/'},
+                {'name': '服务', 'icon': 'fa fa-file', 'url': '/admin/blog/category/'},
+                {'name': '案例', 'icon': 'fa fa-file', 'url': '/admin/blog/links/'},
+                {'name': '配置', 'icon': 'fa fa-file', 'url': '/admin/blog/blogsettings/'},
+            ]
+        },
+
+    ]
+}
