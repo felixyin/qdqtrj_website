@@ -4,19 +4,12 @@
         <div class="footer_intro clearfix">
             <div class="footer_nav fl">
                 <ul>
-                    <li><a href="index.php.html">公司首页</a></li>
-                    <li><a href="single.php%3Fcid=1.html">关于我们</a></li>
-                    <li><a href="show.php%3Fcid=47&amp;id=121.html#anchor">服务项目</a></li>
-                    <li><a href="gallery.php%3Fcid=46.html#anchor">公司产品</a></li>
-                    <li><a href="gallery.php%3Fcid=3.html">项目案例</a></li>
-                    <li><a href="list.php%3Fcid=6.html">最新动态</a></li>
-                    <li><a href="message.php%3Fcid=14.html">在线留言</a></li>
-                    <li><a href="contact.php%3Fcid=9.html">联系我们</a></li>
+                     {% include 'includes/nav.html' %}
                 </ul>
             </div>
-            <div class="footer_hotline fr">
-                <a><img src="{% static  'images/dianhua.png' %}"></a>
-            </div>
+            {#            <div class="footer_hotline fr">#}
+            {#                <a><img src="{% static  'images/dianhua.png' %}"></a>#}
+            {#            </div>#}
         </div>
         <div class="center1">
             <div class="float_l foot_logo">
@@ -24,9 +17,9 @@
             </div>
             <div class="float_l p">
                 <p><span>青岛前途软件技术有限公司</span>
-                    <span>电话：17554153785</span>
+                    <span>电话：17554153785 - 尹经理</span>
                 </p>
-                <p><span>网址：http://www.qdqtrj.com</span>
+                <p><span>网址：<a href="http://www.qdqtrj.com">http://www.qdqtrj.com</a></span>
                     <span>地址：<a
                             href="https://map.baidu.com/dir/%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE/%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85/@13402518.131360544,4304993.2,13.65z?querytype=bt&bttp=0&c=236&sy=0&en=1$$b12b71a50f63a2bf1329350a$$13406377.798,4312449.73819$$%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85$$$$$$&sn=1$$$$13406482,4297514$$%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE$$$$$$&sq=%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85&eq=%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE&exptype=dep&exptime=2019-05-05%2010:50&version=5&da_src=shareurl"
                             target="_blank">青岛市城阳区招商LAVIE公社62号楼5层</a></span>
@@ -37,7 +30,7 @@
             </div>
             <div class="float_l qr_code">
                 <div class="float_l">
-                    <img src="{% static  'data/watermark/erweima.jpg' %}">
+                    <img src="{% static 'data/watermark/erweima.jpg' %}">
                     <p>微信二维码</p>
                 </div>
                 <div class="clear"></div>
@@ -47,6 +40,6 @@
     </div>
 </div>
 <div class="beian">
-    Copyright 2019 青岛前途软件技术有限公司 未经允许 严禁复制 <a href="ctc_admin.html">后台管理</a><a href="http://www.beian.miit.gov.cn"
-                                                                              target="_blank">鲁ICP备19016982号-1</a>
+    Copyright 2019-2020 青岛前途软件技术有限公司 未经允许 严禁复制
+    <a href="http://www.beian.miit.gov.cn" target="_blank">鲁ICP备19016982号-1</a>
 </div>

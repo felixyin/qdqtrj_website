@@ -417,6 +417,7 @@ input {
 }
 
 .beian a {
+	margin-left: 30px;
 	color: #dddddd;
 	font-size: 16px;
 }
@@ -1324,6 +1325,7 @@ height: 150px;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+    height: 110px;
 }
 
 .list_top_title span {

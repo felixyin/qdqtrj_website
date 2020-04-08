@@ -11,7 +11,7 @@
                     <a href="{% url 'blog:index' %}" target="_blank"><img src="{% static  'images/blog-solid.png' %}" style="width: 19px;">博客</a>
                 </li>
                 <li>
-                    <a href="{% url 'about:index' %}"><img src="{% static  'images/lx.png' %}" >联系我们</a>
+                    <a href="{% url 'about:index' %}"><img src="{% static  'images/lx.png' %}">联系我们</a>
                 </li>
             </ul>
         </div>
@@ -34,12 +34,7 @@
                 <div class="w1200">
                     <div class="nav1">
                         <ul class="menu1">
-                            <li><a href="{% url 'home:index' %}">公司首页</a></li>
-                            <li><a href="{% url 'service:service-detail' pk=1 %}">服务项目</a></li>
-                            <li><a href="{% url 'product:product-detail' pk=1 %}">公司产品</a></li>
-                            <li><a href="{% url 'case:category-detail' category_pk=1 %}">外包案例</a></li>
-                            <li><a href="{% url 'message' %}">在线留言</a></li>
-                            <li><a href="{% url 'about:index' %}">关于我们</a></li>
+                            {% include 'includes/nav.html' %}
                         </ul>
                     </div>
                 </div>
