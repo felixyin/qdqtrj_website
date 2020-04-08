@@ -4,12 +4,19 @@ from django.contrib import admin
 from base.admin import BaseAttachInline
 
 
-class ProjectAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
+    # formfield_overrides = {
+    #     'content': {'widget': MDEditorWidget}
+    # }
+    search_fields = ('name',)
+    list_display = ('name', 'last_mod_time', 'is_enable', 'sequence',)
+    ordering = ('sequence',)
+
+
+class CaseAdmin(admin.ModelAdmin):
     # formfield_overrides = {
     #     'content': {'widget': MDEditorWidget}
     # }
     search_fields = ('name', 'description', 'content')
     list_display = ('name', 'last_mod_time', 'is_enable', 'sequence',)
-    inlines = [BaseAttachInline]
-    filter_horizontal = ('tags',)
     ordering = ('sequence',)

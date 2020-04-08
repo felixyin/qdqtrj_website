@@ -12,7 +12,7 @@
 @file: urls.py
 @time: 2016/11/2 下午7:15
 """
-
+from django.conf.urls import url
 from django.urls import path
 from django.views.decorators.cache import cache_page
 from . import views
@@ -23,7 +23,7 @@ from . import views as v
 
 app_name = "case"
 urlpatterns = [
-    path('case/', v.CaseListView.as_view(), name='case-list'),
-    path('case/<int:pk>', v.CaseDetailView.as_view(), name='case-detail'),
+    url(r'(?P<category_pk>[0-9]+)/(?P<case_pk>[0-9]+)$', v.CaseDetailView.as_view(), name='case-detail'),
+    url(r'(?P<category_pk>[0-9]+)$', v.CategoryDetailView.as_view(), name='category-detail'),
 
 ]

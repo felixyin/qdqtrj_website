@@ -19,6 +19,8 @@ from about.admin import AboutAdmin
 from about.models import About
 from base.admin import BaseAttachInline, BaseTagAdmin
 from base.models import BaseAttach, BaseTag
+from case.admin import CaseAdmin
+from case.models import Case
 from home.admin import HomeAdmin
 from home.models import Home
 from product.admin import ProductAdmin
@@ -36,6 +38,8 @@ from oauth.admin import *
 from servermanager.admin import *
 from comments.admin import *
 from owntracks.admin import *
+from case.admin import CategoryAdmin as CaseCategoryAdmin
+from case.models import Category as CaseCategory
 
 
 class DjangoBlogAdminSite(AdminSite):
@@ -76,6 +80,10 @@ admin_site.register(Service, ServiceAdmin)
 
 # product
 admin_site.register(Product, ProductAdmin)
+
+# case
+admin_site.register(CaseCategory, CaseCategoryAdmin)
+admin_site.register(Case, CaseAdmin)
 
 # blog
 admin_site.register(Article, ArticlelAdmin)
