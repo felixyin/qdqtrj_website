@@ -31,7 +31,10 @@ class BaseModel(m.Model):
 
     def get_full_url(self):
         site = Site.objects.get_current().domain
-        url = "http://{site}{path}".format(site=site, path=self.get_absolute_url())
+        try:
+            url = "http://{site}{path}".format(site=site, path=self.get_absolute_url())
+        except Exception:
+            url = "http://{site}".format(site=site)
         return url
 
 

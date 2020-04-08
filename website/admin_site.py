@@ -15,8 +15,8 @@
 from django.contrib.admin import AdminSite
 
 import base
-from about.admin import AboutAdmin
-from about.models import About
+from about.admin import AboutAdmin, MessageAdmin
+from about.models import About, Message
 from base.admin import BaseAttachInline, BaseTagAdmin
 from base.models import BaseAttach, BaseTag
 from case.admin import CaseAdmin
@@ -71,6 +71,7 @@ admin_site.register(BaseTag, BaseTagAdmin)
 
 # about
 admin_site.register(About, AboutAdmin)
+admin_site.register(Message, MessageAdmin)
 
 # home
 admin_site.register(Home, HomeAdmin)

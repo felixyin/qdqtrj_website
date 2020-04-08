@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
+
+from about.views import collection_message
 from website.sitemap import StaticViewSitemap, ArticleSiteMap, CategorySiteMap, TagSiteMap, UserSiteMap
 from website.feeds import DjangoBlogFeed
 from django.views.decorators.cache import cache_page
@@ -51,6 +53,8 @@ urlpatterns = [
                   url(r'^product/', include('product.urls', namespace='product')),
                   # 案例
                   url(r'^case/', include('case.urls', namespace='case')),
+                  # 留言
+                  url(r'^message/', collection_message, name='message'),
 
                   # 博客
                   url(r'^blog/', include('blog.urls', namespace='blog')),

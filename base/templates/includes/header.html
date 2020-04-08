@@ -8,13 +8,10 @@
         <div class="top_right fr">
             <ul class="clearfix">
                 <li>
-                    <a href="{% url 'home:index' %}"><img src="{% static  'images/sc.png' %}">加入收藏</a>
+                    <a href="{% url 'blog:index' %}"><img src="{% static  'images/blog-solid.png' %}" style="width: 19px;">博客</a>
                 </li>
                 <li>
-                    <a href="{% url 'home:index' %}"><img src="{% static  'images/sy.png' %}">设为首页</a>
-                </li>
-                <li>
-                    <a href="{% url 'account:login' %}"><img src="{% static  'images/lx.png' %}">联系我们</a>
+                    <a href="{% url 'about:index' %}"><img src="{% static  'images/lx.png' %}" >联系我们</a>
                 </li>
             </ul>
         </div>
@@ -40,9 +37,8 @@
                             <li><a href="{% url 'home:index' %}">公司首页</a></li>
                             <li><a href="{% url 'service:service-detail' pk=1 %}">服务项目</a></li>
                             <li><a href="{% url 'product:product-detail' pk=1 %}">公司产品</a></li>
-                            <li><a href="{% url 'case:category-detail' category_pk=1 %}">项目案例</a></li>
-                            <li><a href="list.php%3Fcid=6.html">最新动态</a></li>
-                            <li><a href="message.php%3Fcid=14.html">在线留言</a></li>
+                            <li><a href="{% url 'case:category-detail' category_pk=1 %}">外包案例</a></li>
+                            <li><a href="{% url 'message' %}">在线留言</a></li>
                             <li><a href="{% url 'about:index' %}">关于我们</a></li>
                         </ul>
                     </div>
