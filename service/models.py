@@ -22,4 +22,6 @@ class Service(BaseModel):
         verbose_name = '服务'
         verbose_name_plural = verbose_name
 
+    def get_absolute_url(self):
+        return reverse('service:service-detail', kwargs={'pk': self.id})
 

@@ -25,7 +25,7 @@ class Product(BaseModel):
         verbose_name_plural = verbose_name
 
     def get_absolute_url(self):
-        return reverse('home:product-detail', kwargs={'pk': self.id})
+        return reverse('product:product-detail', kwargs={'pk': self.id})
 
     @cached_property
     def next_project(self):

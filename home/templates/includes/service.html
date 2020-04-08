@@ -3,15 +3,18 @@
 <div class="company clearfix">
     <div class="container">
         <div class="aboyt_left fl">
-            <h3>关于我们</h3>
-            <span><img src="{% static  'images/jj_hx.png' %}">about us</span>
+            <h3>软件即服务</h3>
+            <span><img src="{% static  'images/jj_hx.png' %}">SAAS</span>
             <div class="kind_fd">
                 <h3 style="text-indent:0em;">
-                    青岛前途软件技术有限公司
+                    服务优势
                 </h3>
                 <p style="text-indent:2em;">
-                    青岛前途软件技术有限公司，简称前途软件，成立于2018年，是一家专注于软件开发的企业，拥有Java、JavaScript、NodeJs、Python、Dart、GoLang等各类软件开发工程师8名，定位于系统软件和APP定制开发领域，可承接各类软件定制开发业务及政务信息化、企业信息化建设项目、项目外包业务。
-                </p>                    <a href="single.php%3Fcid=1.html">查看详情</a>
+                    由需求分析师一对一梳理需求，免费设计《解决方案文档》，
+                    并在短时间内提供初步报价、预估工期，
+                    开发中对质量、进度进行严格监控，开发结束提供所有源码、数据库、文档、各种账号等资料，提供最长1年免费维护...
+                </p>
+{#                <a href="single.php%3Fcid=1.html">查看详情</a>#}
             </div>
         </div>
         <div class="about_right fr">
@@ -22,13 +25,9 @@
                 <div class="kind_list fr">
                     <ul class="clearfix">
                         <!--普通产品分类-->
-                        <li><a href="gallery.php%3Fcid=34.html">管理系统系列</a></li>
-                        <li><a href="gallery.php%3Fcid=35.html">网站建设系列</a></li>
-                        <li><a href="gallery.php%3Fcid=43.html">APP软件系列</a></li>
-                        <li><a href="gallery.php%3Fcid=44.html">桌面软件系列</a></li>
-                        <li><a href="gallery.php%3Fcid=45.html">物联网系列</a></li>
-                        <!--跳转到case页面的分类 复杂页面-->
-                        <!-- -->
+                        {% for s in service_list %}
+                            <li><a href="{{ s.get_absolute_url }}">{{ s.name }}服务</a></li>
+                        {% endfor %}
                     </ul>
 
                 </div>

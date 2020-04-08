@@ -4,7 +4,7 @@
     <div class="container">
         <div class="jp_title">
             <h3>公司产品</h3>
-            <span>主营软件开发，设计，系统集成，数据处理</span>
+            <span>主营软件定制开发，软件外包，APP设计和开发、系统集成，数据处理</span>
             <h2></h2>
         </div>
         <div class="jp_scoll">
@@ -14,10 +14,10 @@
                     <div class="swiper-slide">
                         <div class="jp_show clearfix">
                             <div class="jp_bigimg fl">
-                                <a href="show.php%3Fcid=46&amp;id=72.html">
-                                    <img src="uploads/image/20190418/1555575652.jpg">
+                                <a href="{{ first_product.get_absolute_url }}">
+                                    <img src="{{ first_product.thumbs.url }}">
                                     <div class="hx_title_big">
-                                        <h3>司法考试系统</h3>
+                                        <h3>{{ first_product.name }}</h3>
                                         <div class="alhx clearfix">
                                             <div class="hx_left fl">
                                                 <span>所属类别：公司产品</span>
@@ -32,44 +32,27 @@
                             </div>
                             <div class="jp_smallimg fr">
                                 <ul class="clearfix">
-                                    <li>
-                                        <a href="show.php%3Fcid=46&amp;id=71.html">
-                                            <div class="hx_img">
-                                                <img src="uploads/image/20190418/1555581238.jpg">
-                                                <div class="hx_title">
-                                                    <h3>前途外贸开发软件</h3>
-                                                    <div class="alhx clearfix">
-                                                        <div class="hx_left fl">
-                                                            <span>所属类别：公司产品</span>
-                                                            <span></span>
-                                                        </div>
-                                                        <div class="hx_right fr">
-                                                            <span>more+</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="show.php%3Fcid=46&amp;id=70.html">
-                                            <div class="hx_img">
-                                                <img src="uploads/image/20190418/1555577328.jpg">
-                                                <div class="hx_title">
-                                                    <h3>交通巡检平台</h3>
-                                                    <div class="alhx clearfix">
-                                                        <div class="hx_left fl">
-                                                            <span>所属类别：公司产品</span>
-                                                            <span></span>
-                                                        </div>
-                                                        <div class="hx_right fr">
-                                                            <span>more+</span>
+                                    {% for p  in other_products %}
+                                        <li>
+                                            <a href="{{ p.get_absolute_url }}">
+                                                <div class="hx_img">
+                                                    <img src="{{ p.thumbs.url }}">
+                                                    <div class="hx_title">
+                                                        <h3>{{ p.name }}</h3>
+                                                        <div class="alhx clearfix">
+                                                            <div class="hx_left fl">
+                                                                <span>所属类别：公司产品</span>
+                                                                <span></span>
+                                                            </div>
+                                                            <div class="hx_right fr">
+                                                                <span>more+</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>

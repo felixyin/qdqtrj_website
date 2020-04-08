@@ -1,183 +1,88 @@
 {% load static %}
-<!--公共头部结束-->    <!--楼盘展示-->
 <div class="display clearfix">
     <div class="container">
-        <div class="account-l fl">
-            <div class="list-title">
-                <a>项目案例</a>
-                <span>Project case</span>
-            </div>
-            <ul id="accordion" class="accordion">
-                <!--只有一级产品分类-->
-                <!--<li><a href="gallery.php?cid=34"><div class="link">管理系统系列</div></a></li><li><a href="gallery.php?cid=35"><div class="link">网站建设系列</div></a></li><li><a href="gallery.php?cid=43"><div class="link">APP软件系列</div></a></li><li><a href="gallery.php?cid=44"><div class="link">桌面软件系列</div></a></li><li><a href="gallery.php?cid=45"><div class="link">物联网系列</div></a></li>-->
+        <div class="account-l fl fixed_nav" id="nav_menus">
+            <div class="case_left_t">
+                <div class="list-title">
+                    <a>项目案例</a>
+                    <span>Cases</span>
+                </div>
+                <ul id="accordion" class="accordion">
+                    <!--只有一级产品分类-->
+                    <!--<li><a href="gallery.php?cid=34"><div class="link">管理系统系列</div></a></li><li><a href="gallery.php?cid=35"><div class="link">网站建设系列</div></a></li><li><a href="gallery.php?cid=43"><div class="link">APP软件系列</div></a></li><li><a href="gallery.php?cid=44"><div class="link">桌面软件系列</div></a></li><li><a href="gallery.php?cid=45"><div class="link">物联网系列</div></a></li>-->
 
-                <!--点击一级分类出现二级分类-->
-                <li><a href="gallery.php%3Fcid=34.html">
-                    <div class="link">管理系统系列</div>
-                </a></li>
-                <li><a href="gallery.php%3Fcid=35.html">
-                    <div class="link">网站建设系列</div>
-                </a></li>
-                <li><a href="gallery.php%3Fcid=43.html">
-                    <div class="link">APP软件系列</div>
-                </a></li>
-                <li><a href="gallery.php%3Fcid=44.html">
-                    <div class="link">桌面软件系列</div>
-                </a></li>
-                <li><a href="gallery.php%3Fcid=45.html">
-                    <div class="link">物联网系列</div>
-                </a></li>
-                <!--点击一级分类出现产品图片名称-->
-                <!---->
-            </ul>
-            <div class="list-title" style=" margin-top:10px;">
-                <a>联系我们</a>
-                <span>contact us</span>
+                    <!--点击一级分类出现二级分类-->
+                    {% for s in category_list %}
+                        <li><a href="{% url 'case:category-detail' category_pk=s.id %}">
+                            <div class="link">{{ s.name }}</div>
+                        </a></li>
+                    {% endfor %}
+                </ul>
             </div>
-            <div class="list_nr">
-                <ul>
-                    <p>
-                        青岛前途软件技术有限公司
-                    </p>
-                    <p>
-                        电话：17554153785 （尹）
-                    </p>
-                    <p>
-                        微信： felixyin
-                    </p>
-                    <p>
-                        QQ： 1052921694
-                    </p>
-                    <p>
-                        邮箱： <a href="mailto:yinbin@qdqtrj.com">yinbin@qdqtrj.com</a>
-                    </p></ul>
+            <div class="case_left_d">
+                <div class="list-title">
+                    <a>联系我们</a>
+                    <span>contact us</span>
+                </div>
+                <div class="list_nr">
+                    <ul>
+                        <p>
+                            青岛前途软件技术有限公司
+                        </p>
+                        <p>
+                            电话：17554153785 （尹）
+                        </p>
+                        <p>
+                            微信： felixyin
+                        </p>
+                        <p>
+                            QQ： 1052921694
+                        </p>
+                        <p>
+                            邮箱： <a href="mailto:yinbin@qdqtrj.com">yinbin@qdqtrj.com</a>
+                        </p></ul>
+                </div>
+
             </div>
         </div>
+
+
         <div class="display_show fr">
             <div class="common_title clearfix">
                 <div class="loft fl">
-                    <img src="{% static  'images/fz.png' %}"> 项目案例
+                    <img src="{% static 'images/fz.png' %}"> 项目案例
                 </div>
                 <div class="more fr">
-                    <a href="gallery.php%3Fcid=3.html">查看更多>></a>
+                    您当前位置：<a href="index.php.html">网站首页</a> > 项目案例
                 </div>
             </div>
-            <!--普通产品展示的形式-->
-            <div class="list clearfix product_show">
-                <ul>
-                    <li>
-                        <a href="show.php%3Fcid=3&amp;id=113.html">
-                            <div class="p_show_img">
-                                <img src="{% static  'upload/image/20190418/1555577591.jpg' %}">
-                            </div>
-                            <div class="p_show_title clearfix">
-                                <div class="pt_one fl">
-                                    <h3>美德威</h3>
+            <div class="product_show clearfix">
+                <ul class="clearfix">
+
+                    {% for case in case_list %}
+                        <li>
+                            {{ category.id }} - {{ case.id }}
+                            {#                                <a href="{% url 'case:case-detail' category_pk=category.id case_pk=case.id %}">#}
+                            <a href="{{ case.get_absolute_url }}">
+                                <div class="p_show_img">
+                                    <img src="{{ case.thumb.url }}">
                                 </div>
-                                <div class="pt_two fr">
-                                    <img src="{% static  'images/y_hongse.png' %}">
+                                <div class="p_show_title clearfix">
+                                    <div class="pt_one fl">
+                                        <h3>{{ case.name }}</h3>
+                                    </div>
+                                    <div class="pt_two fr">
+                                        <img src="images/y_hongse.png">
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="show.php%3Fcid=3&amp;id=114.html">
-                            <div class="p_show_img">
-                                <img src="uploads/image/20190418/1555575652.jpg">
-                            </div>
-                            <div class="p_show_title clearfix">
-                                <div class="pt_one fl">
-                                    <h3>李沧司法考试系统</h3>
-                                </div>
-                                <div class="pt_two fr">
-                                    <img src="images/y_hongse.png">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="show.php%3Fcid=3&amp;id=115.html">
-                            <div class="p_show_img">
-                                <img src="uploads/image/20190418/1555581290.jpg">
-                            </div>
-                            <div class="p_show_title clearfix">
-                                <div class="pt_one fl">
-                                    <h3>狼人杀游戏上帝端</h3>
-                                </div>
-                                <div class="pt_two fr">
-                                    <img src="images/y_hongse.png">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="show.php%3Fcid=3&amp;id=116.html">
-                            <div class="p_show_img">
-                                <img src="uploads/image/20190418/1555579623.jpg">
-                            </div>
-                            <div class="p_show_title clearfix">
-                                <div class="pt_one fl">
-                                    <h3>科信地震预警系统</h3>
-                                </div>
-                                <div class="pt_two fr">
-                                    <img src="images/y_hongse.png">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="show.php%3Fcid=3&amp;id=117.html">
-                            <div class="p_show_img">
-                                <img src="uploads/image/20190418/1555584060.jpg">
-                            </div>
-                            <div class="p_show_title clearfix">
-                                <div class="pt_one fl">
-                                    <h3>兴瑞生物实验室管理系统</h3>
-                                </div>
-                                <div class="pt_two fr">
-                                    <img src="images/y_hongse.png">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="show.php%3Fcid=3&amp;id=110.html">
-                            <div class="p_show_img">
-                                <img src="uploads/image/20190418/1555579562.jpg">
-                            </div>
-                            <div class="p_show_title clearfix">
-                                <div class="pt_one fl">
-                                    <h3>比奥齐姆小程序官网</h3>
-                                </div>
-                                <div class="pt_two fr">
-                                    <img src="images/y_hongse.png">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="show.php%3Fcid=3&amp;id=100.html">
-                            <div class="p_show_img">
-                                <img src="uploads/image/20190418/1555577328.jpg">
-                            </div>
-                            <div class="p_show_title clearfix">
-                                <div class="pt_one fl">
-                                    <h3>交通巡检平台</h3>
-                                </div>
-                                <div class="pt_two fr">
-                                    <img src="images/y_hongse.png">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
-            <!--房产页面case的页面的样式-->
-            <!--<div class="display_show_list clearfix">
-                <ul>
 
-                </ul>
-            </div>-->
         </div>
     </div>
+
 </div>
+

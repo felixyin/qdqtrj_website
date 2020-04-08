@@ -3,21 +3,19 @@
 <div class="index_news">
     <div class="container">
         <div class="jp_title">
-            <h3> 最新动态</h3>
+            <h3> 关于</h3>
             <span>主营软件开发，设计，系统集成，数据处理</span>
             <h2></h2>
         </div>
         <div class="news_show clearfix">
             <div class="show_left fl">
-                <img src="images/l1.png">
+                <img src="{% static 'images/l1.png'%}">
             </div>
 
             <div class="show_list fr">
                 <div class="list_top clearfix">
-                    <a href="listshow.php%3Fcid=6&amp;id=32.html">
-                        <div class="list_top_img fl">
-                            <img src="index.html">
-                        </div>
+                    <a href="{% url 'about:index' %}">
+
                         <div class="list_top_title fr">
                             <h3>
                                 祝贺青岛前途软件技术有限公司网站成功上线！
@@ -31,12 +29,9 @@
                 <div class="list_down">
                     <ul>
                         <li>
-                            <a href="listshow.php%3Fcid=6&amp;id=31.html">
+                            <a href="{% url 'about:index' %}">
                                 <div class="down_t fl">
                                     <h3> 祝贺青岛前途软件技术有限公司网站成功上线！</h3>
-                                </div>
-                                <div class="down_d fr">
-                                    <span> 2019-04-18</span>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>
@@ -46,9 +41,6 @@
                                 <div class="down_t fl">
                                     <h3> 专一钻研技术</h3>
                                 </div>
-                                <div class="down_d fr">
-                                    <span> 2019-04-18</span>
-                                </div>
                                 <div class="clearfix"></div>
                             </a>
                         </li>
@@ -57,9 +49,6 @@
                                 <div class="down_t fl">
                                     <h3> 能解决问题是关键</h3>
                                 </div>
-                                <div class="down_d fr">
-                                    <span> 2019-04-18</span>
-                                </div>
                                 <div class="clearfix"></div>
                             </a>
                         </li>
@@ -67,9 +56,6 @@
                             <a href="listshow.php%3Fcid=6&amp;id=28.html">
                                 <div class="down_t fl">
                                     <h3> 面向客户</h3>
-                                </div>
-                                <div class="down_d fr">
-                                    <span> 2019-04-18</span>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>
