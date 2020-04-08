@@ -19,3 +19,7 @@ class BaseAttachInline(admin.TabularInline):
 
 class WebSettingsAdmin(admin.ModelAdmin):
     pass
+
+
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'content', 'wechart', 'qq', 'email',)

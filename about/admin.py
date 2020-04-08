@@ -26,7 +26,3 @@ class AboutAdmin(admin.ModelAdmin):
     exclude = ()
     list_display = ('web_home', 'address', 'phone', 'email',)
     inlines = [EvaluationInline, OurClientInline, TeamMemberInline]
-
-
-class MessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'content', 'wechart', 'qq', 'email',)

@@ -365,7 +365,7 @@ SIMPLEUI_CONFIG2 = {
                 {'name': '产品', 'icon': 'fa fa-file', 'url': '/admin/service/product/'},
                 {'name': '案例-分类', 'icon': 'fa fa-file', 'url': '/admin/case/category/'},
                 {'name': '案例', 'icon': 'fa fa-file', 'url': '/admin/case/case/'},
-                {'name': '留言', 'icon': 'fa fa-file', 'url': '/admin/about/message/'},
+                {'name': '留言', 'icon': 'fa fa-file', 'url': '//admin/base/message/'},
                 {'name': '关于', 'icon': 'fa fa-file', 'url': '/admin/about/about/'},
             ]
         },

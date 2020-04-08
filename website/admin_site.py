@@ -14,10 +14,10 @@
 """
 from django.contrib.admin import AdminSite
 
-from about.admin import AboutAdmin, MessageAdmin
-from about.models import About, Message
-from base.admin import BaseTagAdmin, WebSettingsAdmin
-from base.models import BaseTag, WebSettings
+from about.admin import AboutAdmin
+from about.models import About
+from base.admin import BaseTagAdmin, WebSettingsAdmin, MessageAdmin
+from base.models import BaseTag, WebSettings, Message
 from case.admin import CaseAdmin
 from case.models import Case
 from home.admin import HomeAdmin

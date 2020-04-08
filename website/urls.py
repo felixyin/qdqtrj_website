@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 
-from about.views import collection_message
+from base.views import collection_message
 from website.sitemap import StaticViewSitemap, ArticleSiteMap, CategorySiteMap, TagSiteMap, UserSiteMap
 from website.feeds import DjangoBlogFeed
 from django.views.decorators.cache import cache_page
