@@ -47,6 +47,8 @@ urlpatterns = [
                   url(r'^about/', include('about.urls', namespace='about')),
                   # 服务
                   url(r'^service/', include('service.urls', namespace='service')),
+                  # 产品
+                  url(r'^product/', include('product.urls', namespace='product')),
 
                   # 博客
                   url(r'^blog/', include('blog.urls', namespace='blog')),

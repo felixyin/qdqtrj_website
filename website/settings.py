@@ -65,10 +65,11 @@ INSTALLED_APPS = [
     'owntracks',
     'compressor',
     'base',
+    'home',
     'about',
     'service',
+    'product',
     'case',
-    'home'
 ]
 
 MIDDLEWARE = [

@@ -23,7 +23,7 @@ from . import views as v
 
 app_name = "product"
 urlpatterns = [
-    path('case/', v.CaseListView.as_view(), name='case-list'),
-    path('case/<int:pk>', v.CaseDetailView.as_view(), name='case-detail'),
+    # path('case/', v.CaseListView.as_view(), name='case-list'),
+    path('<int:pk>', v.ProductDetailView.as_view(), name='product-detail'),
 
 ]

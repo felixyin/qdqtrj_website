@@ -39,7 +39,7 @@
                         <ul class="menu1">
                             <li><a href="{% url 'home:index' %}">公司首页</a></li>
                             <li><a href="{% url 'service:service-detail' pk=1 %}">服务项目</a></li>
-                            <li><a href="gallery.php%3Fcid=46.html#anchor">公司产品</a></li>
+                            <li><a href="{% url 'product:product-detail' pk=1 %}">公司产品</a></li>
                             <li><a href="gallery.php%3Fcid=3.html">项目案例</a></li>
                             <li><a href="list.php%3Fcid=6.html">最新动态</a></li>
                             <li><a href="message.php%3Fcid=14.html">在线留言</a></li>
