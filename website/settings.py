@@ -361,10 +361,11 @@ SIMPLEUI_CONFIG2 = {
             'icon': 'fa fa-file',
             'models': [
                 {'name': '主页', 'icon': 'fa fa-file', 'url': '/admin/home/home/'},
+                {'name': '服务', 'icon': 'fa fa-file', 'url': '/admin/service/service/'},
+                {'name': '产品', 'icon': 'fa fa-file', 'url': '/admin/service/product/'},
+                {'name': '案例分类', 'icon': 'fa fa-file', 'url': '/admin/case/category/'},
+                {'name': '案例', 'icon': 'fa fa-file', 'url': '/admin/case/case/'},
                 {'name': '关于', 'icon': 'fa fa-file', 'url': '/admin/about/about/'},
-                {'name': '产品', 'icon': 'fa fa-file', 'url': '/admin/blog/sidebar/'},
-                {'name': '服务', 'icon': 'fa fa-file', 'url': '/admin/blog/category/'},
-                {'name': '案例', 'icon': 'fa fa-file', 'url': '/admin/blog/links/'},
                 {'name': '配置', 'icon': 'fa fa-file', 'url': '/admin/blog/blogsettings/'},
             ]
         },

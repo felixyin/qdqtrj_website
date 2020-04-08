@@ -15,3 +15,7 @@ class BaseAttachInline(admin.TabularInline):
     model = BaseAttach
     min_num = 0
     max_num = 20
+
+
+class WebSettingsAdmin(admin.ModelAdmin):
+    pass

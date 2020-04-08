@@ -3,15 +3,15 @@
 {% load cache %}
 {% block header %}
 
-    <title>友情链接 | {{ SITE_DESCRIPTION }}</title>
+    <title>友情链接 | {{ BLOG_DESCRIPTION }}</title>
 
-    <meta name="description" content="{{ SITE_SEO_DESCRIPTION }}"/>
-    <meta name="keywords" content="{{ SITE_KEYWORDS }}"/>
+    <meta name="description" content="{{ BLOG_SEO_DESCRIPTION }}"/>
+    <meta name="keywords" content="{{ BLOG_KEYWORDS }}"/>
     <meta property="og:type" content="blog"/>
-    <meta property="og:title" content="{{ SITE_NAME }}"/>
-    <meta property="og:description" content="{{ SITE_DESCRIPTION }}"/>
-    <meta property="og:url" content="{{ SITE_BASE_URL }}"/>
-    <meta property="og:site_name" content="{{ SITE_NAME }}"/>
+    <meta property="og:title" content="{{ BLOG_NAME }}"/>
+    <meta property="og:description" content="{{ BLOG_DESCRIPTION }}"/>
+    <meta property="og:url" content="{{ BLOG_BASE_URL }}"/>
+    <meta property="og:site_name" content="{{ BLOG_NAME }}"/>
 
 {% endblock %}
 {% block content %}

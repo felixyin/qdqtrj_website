@@ -14,11 +14,10 @@
 """
 from django.contrib.admin import AdminSite
 
-import base
 from about.admin import AboutAdmin, MessageAdmin
 from about.models import About, Message
-from base.admin import BaseAttachInline, BaseTagAdmin
-from base.models import BaseAttach, BaseTag
+from base.admin import BaseTagAdmin, WebSettingsAdmin
+from base.models import BaseTag, WebSettings
 from case.admin import CaseAdmin
 from case.models import Case
 from home.admin import HomeAdmin
@@ -27,7 +26,6 @@ from product.admin import ProductAdmin
 from product.models import Product
 from service.admin import ServiceAdmin
 from service.models import Service
-from website.utils import get_current_site
 from django.contrib.sites.admin import SiteAdmin
 from django.contrib.admin.models import LogEntry
 from django.contrib.sites.models import Site
@@ -92,7 +90,7 @@ admin_site.register(Category, CategoryAdmin)
 admin_site.register(Tag, TagAdmin)
 admin_site.register(Links, LinksAdmin)
 admin_site.register(SideBar, SideBarAdmin)
-admin_site.register(BlogSettings, BlogSettingsAdmin)
+admin_site.register(WebSettings, WebSettingsAdmin)
 admin_site.register(commands, CommandsAdmin)
 admin_site.register(EmailSendLog, EmailSendLogAdmin)
 admin_site.register(BlogUser, BlogUserAdmin)

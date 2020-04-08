@@ -2,7 +2,7 @@
 {% load blog_tags %}
 {% load cache %}
 {% block header %}
-    <title>{{ article.title }} | {{ SITE_DESCRIPTION }}</title>
+    <title>{{ article.title }} | {{ BLOG_DESCRIPTION }}</title>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ article.title }}"/>
 
@@ -17,13 +17,13 @@
     {% for t in article.tags.all %}
         <meta property="article:tag" content="{{ t.name }}"/>
     {% endfor %}
-    <meta property="og:site_name" content="{{ SITE_NAME }}"/>
+    <meta property="og:site_name" content="{{ BLOG_NAME }}"/>
 
     <meta name="description" content="{{ article.body|custom_markdown|striptags|truncatewords:1 }}"/>
     {% if article.tags %}
         <meta name="keywords" content="{{ article.tags.all|join:"," }}"/>
     {% else %}
-        <meta name="keywords" content="{{ SITE_KEYWORDS }}"/>
+        <meta name="keywords" content="{{ BLOG_KEYWORDS }}"/>
     {% endif %}
 
 {% endblock %}
@@ -49,7 +49,7 @@
             {% endif %}
 
         </div><!-- #content -->
-        {% if article.comment_status == "o" and OPEN_SITE_COMMENT %}
+        {% if article.comment_status == "o" and OPEN_BLOG_COMMENT %}
 
 
             {% include 'comments/tags/comment_list.html' %}

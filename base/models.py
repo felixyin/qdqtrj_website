@@ -3,6 +3,8 @@ from django.urls import reverse
 from mdeditor.fields import MDTextField
 from django.db import models as m
 from django.utils.timezone import now
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
@@ -61,3 +63,42 @@ class BaseAttach(BaseModel):
     class Meta:
         verbose_name = '附件'
         verbose_name_plural = verbose_name
+
+
+class WebSettings(m.Model):
+    '''站点设置 '''
+    sitename = m.CharField("网站名称", max_length=200, null=False, blank=False, default='')
+    site_description = m.TextField("网站描述", max_length=1000, null=False, blank=False, default='')
+    site_seo_description = m.TextField("网站SEO描述", max_length=1000, null=False, blank=False, default='')
+    site_keywords = m.TextField("网站关键字", max_length=1000, null=False, blank=False, default='')
+    blogname = m.CharField("博客名称", max_length=200, null=False, blank=False, default='')
+    blog_description = m.TextField("博客描述", max_length=1000, null=False, blank=False, default='')
+    blog_seo_description = m.TextField("博客SEO描述", max_length=1000, null=False, blank=False, default='')
+    blog_keywords = m.TextField("博客关键字", max_length=1000, null=False, blank=False, default='')
+    article_sub_length = m.IntegerField("文章摘要长度", default=300)
+    sidebar_article_count = m.IntegerField("侧边栏文章数目", default=10)
+    sidebar_comment_count = m.IntegerField("侧边栏评论数目", default=5)
+    show_google_adsense = m.BooleanField('是否显示谷歌广告', default=False)
+    google_adsense_codes = m.TextField('广告内容', max_length=2000, null=True, blank=True, default='')
+    open_site_comment = m.BooleanField('是否打开网站评论功能', default=True)
+    beiancode = m.CharField('备案号', max_length=2000, null=True, blank=True, default='')
+    analyticscode = m.TextField("网站统计代码", max_length=1000, null=False, blank=False, default='')
+    show_gongan_code = m.BooleanField('是否显示公安备案号', default=False, null=False)
+    gongan_beiancode = m.TextField('公安备案号', max_length=2000, null=True, blank=True, default='')
+    resource_path = m.CharField("静态文件保存地址", max_length=300, null=False, default='/var/www/resource/')
+
+    class Meta:
+        verbose_name = '网站配置'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.sitename
+
+    def clean(self):
+        if WebSettings.objects.exclude(id=self.id).count():
+            raise ValidationError(_('只能有一个配置'))
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        from website.utils import cache
+        cache.clear()

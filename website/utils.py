@@ -192,13 +192,13 @@ def get_blog_setting():
     if value:
         return value
     else:
-        from blog.models import BlogSettings
-        if not BlogSettings.objects.count():
-            setting = BlogSettings()
-            setting.sitename = 'DjangoBlog'
-            setting.site_description = '基于Django的博客系统'
-            setting.site_seo_description = '基于Django的博客系统'
-            setting.site_keywords = 'Django,Python'
+        from base.models import WebSettings
+        if not WebSettings.objects.count():
+            setting = WebSettings()
+            setting.sitename = '青岛前途软件技术有限公司'
+            setting.site_description = '青岛前途软件技术有限公司'
+            setting.site_seo_description = '青岛前途软件技术有限公司'
+            setting.site_keywords = '青岛前途软件技术有限公司,尹彬博客'
             setting.article_sub_length = 300
             setting.sidebar_article_count = 10
             setting.sidebar_comment_count = 5
@@ -208,7 +208,7 @@ def get_blog_setting():
             setting.beiancode = ''
             setting.show_gongan_code = False
             setting.save()
-        value = BlogSettings.objects.first()
+        value = WebSettings.objects.first()
         logger.info('set cache get_blog_setting')
         cache.set('get_blog_setting', value)
         return value

@@ -28,7 +28,7 @@ from django.contrib.auth.signals import user_logged_in, user_logged_out, user_lo
 from website.utils import cache, send_email, expire_view_cache, delete_sidebar_cache, delete_view_cache
 from website.spider_notify import SpiderNotify
 from oauth.models import OAuthUser
-from blog.models import Article, Category, Tag, Links, SideBar, BlogSettings
+from blog.models import Article, Category, Tag, Links, SideBar
 from comments.models import Comment
 from comments.utils import send_comment_email
 import _thread

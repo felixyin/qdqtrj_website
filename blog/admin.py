@@ -1,6 +1,6 @@
 from django.contrib import admin
 # Register your models here.
-from .models import Article, Category, Tag, Links, SideBar, BlogSettings
+from .models import Article, Category, Tag, Links, SideBar
 from django import forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
@@ -109,6 +109,3 @@ class SideBarAdmin(admin.ModelAdmin):
     list_display = ('name', 'content', 'is_enable', 'sequence')
     exclude = ('last_mod_time', 'created_time')
 
-
-class BlogSettingsAdmin(admin.ModelAdmin):
-    pass
