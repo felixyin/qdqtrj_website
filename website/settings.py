@@ -311,7 +311,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # simpleui 自定义菜单
 SIMPLEUI_STATIC_OFFLINE2 = True
-SIMPLEUI_CONFIG2 = {
+SIMPLEUI_CONFIG = {
     'system_keep': True,
     'menu_display': [
         '前途软件官网',
@@ -351,7 +351,6 @@ SIMPLEUI_CONFIG2 = {
                 {'name': '友情链接', 'icon': 'fa fa-file', 'url': '/admin/blog/links/'},
                 {'name': '文章', 'icon': 'fa fa-file', 'url': '/admin/blog/article/'},
                 {'name': '标签', 'icon': 'fa fa-file', 'url': '/admin/blog/tag/'},
-                {'name': '博客配置', 'icon': 'fa fa-file', 'url': '/admin/blog/blogsettings/'},
                 {'name': '博客评论', 'icon': 'fa fa-file', 'url': '/admin/comments/comment/'},
                 {'name': '访问位置', 'icon': 'fa fa-file', 'url': '/admin/owntracks/owntracklog/'},
             ]
@@ -360,13 +359,13 @@ SIMPLEUI_CONFIG2 = {
             'name': '网站管理',
             'icon': 'fa fa-file',
             'models': [
+                {'name': 'SEO', 'icon': 'fa fa-file', 'url': '/admin/base/websettings/'},
                 {'name': '主页', 'icon': 'fa fa-file', 'url': '/admin/home/home/'},
                 {'name': '服务', 'icon': 'fa fa-file', 'url': '/admin/service/service/'},
                 {'name': '产品', 'icon': 'fa fa-file', 'url': '/admin/service/product/'},
-                {'name': '案例分类', 'icon': 'fa fa-file', 'url': '/admin/case/category/'},
+                {'name': '案例-分类', 'icon': 'fa fa-file', 'url': '/admin/case/category/'},
                 {'name': '案例', 'icon': 'fa fa-file', 'url': '/admin/case/case/'},
                 {'name': '关于', 'icon': 'fa fa-file', 'url': '/admin/about/about/'},
-                {'name': '配置', 'icon': 'fa fa-file', 'url': '/admin/blog/blogsettings/'},
             ]
         },
 
