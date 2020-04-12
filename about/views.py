@@ -8,12 +8,11 @@ from django.shortcuts import render
 # 关于
 from django.views.generic import DetailView
 
-from about.models import About
+from about.models import AboutUs
 
 
-class AboutDetailView(DetailView):
+class AboutUsDetailView(DetailView):
     # template_name = 'home/about.html'
-    model = About
+    model = AboutUs
     # pk_url_kwarg = 'pk'
     context_object_name = "about"
-

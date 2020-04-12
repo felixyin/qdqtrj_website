@@ -1,4 +1,5 @@
 {% load static %}
+{% load blog_tags %}
 <div class="display_show fr"  id="about_com">
     <div class="common_title clearfix">
         <div class="loft fl">
@@ -11,6 +12,7 @@
     <div class="about_item">
         <a href="#about"></a>
         <div class="single_top">
+            {{ about.content|custom_markdown}}
             <h3 style="text-indent:0em;">
                 1.我们是做什么的？
             </h3>

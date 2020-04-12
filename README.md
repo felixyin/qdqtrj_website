@@ -122,6 +122,8 @@ CREATE DATABASE `djangoblog` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8
 ```
 cd /usr/local/Cellar/  # 查看已经安装的openssl版本
 brew switch openssl 1.0.2t  # 切换为1.0.2t版本即可
+env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"  # 指定 openssl目录
+env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip --no-cache install mysqlclient
 ```
 
 ---

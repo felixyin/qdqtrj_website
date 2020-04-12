@@ -123,6 +123,14 @@ DATABASES = {
         'PORT': int(os.environ.get('DJANGO_MYSQL_PORT') or 3306),
         'OPTIONS': {'charset': 'utf8mb4'},
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'qdqtrj_website',
+    #     'USER': 'yinbin',
+    #     'PASSWORD': 'Ybkk1027',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '5432',
+    # }
 }
 
 # Password validation
@@ -154,7 +162,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/zh-hans/3.0/howto/static-files/
@@ -310,7 +318,7 @@ MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # simpleui 自定义菜单
-SIMPLEUI_STATIC_OFFLINE2 = True
+SIMPLEUI_STATIC_OFFLINE = True
 SIMPLEUI_CONFIG2 = {
     'system_keep': True,
     'menu_display': [
