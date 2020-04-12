@@ -119,7 +119,8 @@ DATABASES = {
         'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'qdqtrj_website',
         'USER': os.environ.get('DJANGO_MYSQL_USER') or 'root',
         'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD') or 'Ybkk1027',
-        'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '127.0.0.1',
+        # 'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '127.0.0.1',
+        'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '49.232.53.220',
         'PORT': int(os.environ.get('DJANGO_MYSQL_PORT') or 3306),
         'OPTIONS': {'charset': 'utf8mb4'},
     }
