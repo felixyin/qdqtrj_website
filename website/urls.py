@@ -58,6 +58,9 @@ urlpatterns = [
 
                   # 博客
                   url(r'^blog/', include('blog.urls', namespace='blog')),
+                  # 富文本编辑器
+                  url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+                  # md文档编辑器
                   url(r'mdeditor/', include('mdeditor.urls')),
                   url(r'', include('comments.urls', namespace='comment')),
                   url(r'', include('accounts.urls', namespace='account')),

@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
 from django.db import models as m
 from pysolr import version_info
@@ -8,7 +9,7 @@ from mdeditor.fields import MDTextField
 
 class AboutUs(m.Model):
     # 关于我们
-    content = MDTextField(max_length=2000, config_name='mini', verbose_name='描述', blank=False)
+    content = RichTextUploadingField(max_length=2000, config_name='full', verbose_name='描述', blank=False)
 
     def __str__(self):
         return '关于我们'
@@ -23,7 +24,7 @@ class TeamMember(BaseModel):
     picture = m.ImageField(upload_to='upload/team/%Y/%m/%d', verbose_name='照片')
     name = m.CharField(max_length=20, verbose_name='姓名')
     job = m.CharField(max_length=50, verbose_name='职位')
-    introduce = MDTextField(max_length=500, config_name='mini', verbose_name='介绍')
+    introduce = RichTextUploadingField(max_length=200, config_name='mini', verbose_name='介绍')
 
     class Meta:
         verbose_name = '团队介绍'

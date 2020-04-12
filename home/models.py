@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
 from django.urls import reverse
 from mdeditor.fields import MDTextField
@@ -9,7 +10,7 @@ from base.models import BaseModel
 
 class Home(m.Model):
     # 主页
-    slogan = MDTextField(max_length=100, verbose_name='口号')
+    slogan = RichTextUploadingField(max_length=100, default='mini', verbose_name='口号')
     carousel_delay = m.IntegerField(verbose_name='跑马灯大图切换时间')
     testimonials_delay = m.IntegerField(verbose_name='客户评价切换时间')
 
@@ -32,7 +33,7 @@ class Home(m.Model):
 # 主页-跑马灯大图
 class HomeCarousel(BaseModel):
     title = m.CharField(max_length=50, verbose_name='标题', blank=False)
-    description = MDTextField(max_length=300, config_name='mini', verbose_name='描述', blank=False)
+    description = RichTextUploadingField(max_length=300, config_name='mini', verbose_name='描述', blank=False)
     image = m.ImageField(upload_to='upload/home/carousel/image', verbose_name='图片', blank=False)
     video = m.FileField(upload_to='upload/home/carousel/video', verbose_name='视频', blank=True)
     home = m.ForeignKey(Home, on_delete=m.CASCADE, verbose_name='主页')
@@ -45,7 +46,7 @@ class HomeCarousel(BaseModel):
 # 主页-我们的优势
 class HomeSuperiority(BaseModel):
     title = m.CharField(max_length=50, verbose_name='标题', blank=False)
-    description = MDTextField(max_length=300, blank=False, config_name='mini', verbose_name='描述')
+    description = RichTextUploadingField(max_length=300, blank=False, config_name='mini', verbose_name='描述')
     home = m.ForeignKey(Home, on_delete=m.CASCADE, verbose_name='主页')
 
     class Meta:

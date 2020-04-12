@@ -1,6 +1,6 @@
 ﻿{% extends 'share_layout/home_layout.html' %}
 {% load static %}
-
+{% load blog_tags %}
 {% block content %}
 
     {% comment %}    <style type="text/css">
@@ -91,7 +91,7 @@
                 <div class="detail_top">
                     <h3>详情介绍</h3>
                     <div class="detail">
-                        {{ case.content }}
+                        {{ case.content| custom_markdown }}
                     </div>
                 </div>
             </div>

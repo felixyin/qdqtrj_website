@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
 from django.urls import reverse
 from mdeditor.fields import MDTextField
@@ -43,7 +44,8 @@ class BaseModel(m.Model):
 class BaseTag(BaseModel):
     # 项目-技术标签
     name = m.CharField(max_length=50, verbose_name='标签名称')
-    description = MDTextField(max_length=200, config_name='mini', blank=True, verbose_name='特点简介')
+    # description = MDTextField(max_length=200, blank=True, verbose_name='特点简介')
+    description = RichTextUploadingField(max_length=2000, config_name='mini', verbose_name='特点简介', blank=False)
 
     def __str__(self):
         return self.name

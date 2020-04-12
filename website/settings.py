@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'ckeditor',
+    'ckeditor_uploader',
     'mdeditor',
     'haystack',
     'django_extensions',
@@ -159,9 +161,9 @@ LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
-USE_I18N = True
+USE_I18N = False
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = False
 
@@ -317,6 +319,58 @@ COMPRESS_JS_FILTERS = [
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'uploads')
 MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# ckeditor 编辑器
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_MEDIA_PREFIX = "static/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "ckupload/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 500,
+        'width': 1400,
+    },
+    'full': {
+        'toolbar': 'full',
+        'height': 700,
+        'width': 1400,
+    },
+    'mini': {
+        'toolbar': 'Basic',
+        'height': 200,
+        'width': 600,
+    },
+}
+
+# Markdown 编辑器
+# MDEDITOR_CONFIGS = {
+#     'default': {
+#         'width': '100% ',  # Custom edit box width
+#         'heigth': 500,  # Custom edit box height
+#         'toolbar': ["undo", "redo", "|",
+#                     "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+#                     "h1", "h2", "h3", "h5", "h6", "|",
+#                     "list-ul", "list-ol", "hr", "|",
+#                     "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table",
+#                     "datetime"
+#                     "emoji",
+#                     "html-entities", "pagebreak", "goto-line", "|",
+#                     "help", "info",
+#                     "||", "preview", "watch", "fullscreen"],  # custom edit box toolbar
+#         'upload_image_formats': ["jpg", "jpeg", "gif", "png", "bmp", "webp"],  # image upload format type
+#         'image_floder': 'editor',  # image save the folder name
+#         'theme': 'default',  # edit box theme, dark / default
+#         'preview_theme': 'default',  # Preview area theme, dark / default
+#         'editor_theme': 'default',  # edit area theme, pastel-on-dark / default
+#         'toolbar_autofixed': True,  # Whether the toolbar capitals
+#         'search_replace': True,  # Whether to open the search for replacement
+#         'emoji': True,  # whether to open the expression function
+#         'tex': False,  # whether to open the tex chart function
+#         'flow_chart': True,  # whether to open the flow chart function
+#         'sequence': True,  # Whether to open the sequence diagram function
+#         'mermaid': True,  # mermaid
+#         'vega': True,
+#     }
+# }
 
 # simpleui 自定义菜单
 SIMPLEUI_STATIC_OFFLINE = True

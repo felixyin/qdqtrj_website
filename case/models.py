@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
 from django.urls import reverse
 from django.utils.functional import cached_property
@@ -28,9 +29,8 @@ class Case(BaseModel):
     # 案例
     category = m.ForeignKey(Category, on_delete=m.DO_NOTHING, null=True, blank=True, verbose_name='分类')
     name = m.CharField(max_length=50, verbose_name='项目名称')
-    description = MDTextField(max_length=200, config_name='mini', verbose_name='项目简介')
     thumb = m.ImageField(upload_to="upload/case/thumb/%Y/%m/%d", verbose_name='缩略图')
-    content = MDTextField(max_length=10000, verbose_name='项目详情')
+    content = RichTextUploadingField(max_length=2000, config_name='full', verbose_name='项目详情', blank=False)
     source_url = m.URLField(verbose_name='演示地址', null=True, blank=True)
     service = m.ForeignKey(Service, on_delete=m.DO_NOTHING, null=True, blank=True, verbose_name='服务')
     sequence = m.IntegerField('排列顺序', unique=True, null=False, blank=False)
