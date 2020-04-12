@@ -33,5 +33,4 @@ Whoosh==2.7.4
 python-logstash==0.4.6
 pysolr==3.8.1
 simpleui==3.9
-psycopg2==2.8.5
 mysqlclient==1.4.6
