@@ -365,6 +365,7 @@ input {
 }
 
 .footer_two {
+    margin-top: 30px;
     background: #202020;
     padding-bottom: 40px;
 }
@@ -1246,13 +1247,11 @@ h1 a {
     /*white-space: nowrap;*/
 }
 
-.mokuai ul li:hover {
-    background: url(../images/hongse.png) no-repeat center center;
-}
+
 
 .index_news {
     margin-top: 30px;
-    padding-bottom: 20px;
+
 }
 
 .news_show {
@@ -1264,7 +1263,7 @@ h1 a {
 .show_left {
     width: 534px;
     overflow: hidden;
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .show_left img {
