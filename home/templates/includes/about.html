@@ -1,6 +1,6 @@
 {% load static %}
 <!--新闻-->
-<div class="index_news">
+<div class="index_news" style="background: url('{{ home.about_img_max.url }}')no-repeat top center;">
     <div class="container">
         <div class="jp_title">
             <h3> {{ home.about_title }}</h3>
@@ -9,7 +9,7 @@
         </div>
         <div class="news_show clearfix">
             <div class="show_left fl">
-                <img src="{% static 'images/l1.png' %}">
+                <img src="{{ home.about_img_min.url }}">
             </div>
 
             <div class="show_list fr">

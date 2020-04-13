@@ -4,7 +4,7 @@
         <div class="footer_intro clearfix">
             <div class="footer_nav fl">
                 <ul>
-                     {% include 'includes/nav.html' %}
+                    {% include 'includes/nav.html' %}
                 </ul>
             </div>
             {#            <div class="footer_hotline fr">#}
@@ -13,24 +13,25 @@
         </div>
         <div class="center1">
             <div class="float_l foot_logo">
-                <img src="{% static  'images/foot_logo.png' %}">
+                <img src="{{ LOGO_FOOTER_IMG }}">
             </div>
             <div class="float_l p">
-                <p><span>青岛前途软件技术有限公司</span>
-                    <span>电话：17554153785 - 尹经理</span>
+                <p>
+                    <span>{{ SITE_NAME }}</span>
+                    <span>电话：{{ PHONE }} - {{ PHONE_USER }}</span>
                 </p>
-                <p><span>网址：<a href="http://www.qdqtrj.com">http://www.qdqtrj.com</a></span>
+                <p><span>网址：<a href="{{ SITE_ADDRESS }}">{{ SITE_ADDRESS }}</a></span>
                     <span>地址：<a
                             href="https://map.baidu.com/dir/%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE/%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85/@13402518.131360544,4304993.2,13.65z?querytype=bt&bttp=0&c=236&sy=0&en=1$$b12b71a50f63a2bf1329350a$$13406377.798,4312449.73819$$%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85$$$$$$&sn=1$$$$13406482,4297514$$%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE$$$$$$&sq=%E6%81%92%E5%A4%A7%E5%BE%A1%E6%BE%9C%E5%9B%BD%E9%99%85&eq=%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE&exptype=dep&exptime=2019-05-05%2010:50&version=5&da_src=shareurl"
-                            target="_blank">青岛市城阳区招商LAVIE公社62号楼5层</a></span>
+                            target="_blank">{{ ADDRESS }}</a></span>
                 </p>
                 <p class="link">
                     <span>友情链接 :</span>
-                    <a href="http://www.yinbin.ink" target="_blank">博客</a> | </p>
+                    <a href="{{ SITE_ADDRESS }}/blog" target="_blank">博客</a> | </p>
             </div>
             <div class="float_l qr_code">
                 <div class="float_l">
-                    <img src="{% static 'data/watermark/erweima.jpg' %}">
+                    <img src="{{ WECHART_IMG }}">
                     <p>微信二维码</p>
                 </div>
                 <div class="clear"></div>

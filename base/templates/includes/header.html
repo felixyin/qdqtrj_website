@@ -11,7 +11,7 @@
                     <a href="{% url 'blog:index' %}" target="_blank"><img src="{% static  'images/blog-solid.png' %}" style="width: 19px;">博客</a>
                 </li>
                 <li>
-                    <a href="{% url 'about:item' pk=1 %}"><img src="{% static  'images/lx.png' %}">联系我们</a>
+                    <a href="{% url 'about:item' pk=5 %}"><img src="{% static  'images/lx.png' %}">联系我们</a>
                 </li>
             </ul>
         </div>
@@ -23,7 +23,7 @@
             <div class="top_logo clearfix header-content">
                 <div class="container">
                     <div class="logo_left fl">
-                        <img src="{% static  'images/logo.png' %}">
+                        <img src="{{ LOGO_IMG }}">
                     </div>
                     <div class="logo_right fr">
                         <img src="{% static  'images/rexian.png' %}">

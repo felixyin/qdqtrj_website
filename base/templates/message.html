@@ -15,114 +15,114 @@
     <div class="display clearfix">
         <div class="container">
 
-                <div class="common_title clearfix">
-                    <div class="loft fl">
-                        <img src="{% static 'images/fz.png' %}"> 在线留言
-                    </div>
-                    <div class="more fr">
-                        您当前位置：<a href="index.php.html">网站首页</a> >在线留言
-                    </div>
+            <div class="common_title clearfix">
+                <div class="loft fl">
+                    <img src="{% static 'images/fz.png' %}"> 在线留言
                 </div>
-                <div class="message clearfix" style="width: 80%;">
-                    <div class="message_left fl">
-                        <img src="{% static 'images/message.png' %}">
-                    </div>
-                    <div class="message_right fr">
-                        <form class="layui-form" action="{% url 'message' %}" method="post" id="form" name="form">
-                            {% csrf_token %}
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">姓名:</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="name" id="nickname" style="width: 80%" required=""
-                                           lay-verify="required" autocomplete="on"
-                                           class="layui-input">
-                                </div>
+{#                <div class="more fr">#}
+{#                    您当前位置：<a href="index.php.html">网站首页</a> >在线留言#}
+{#                </div>#}
+            </div>
+            <div class="message clearfix" style="width: 80%;">
+                <div class="message_left fl">
+                    <img src="{% static 'images/message.png' %}">
+                </div>
+                <div class="message_right fr">
+                    <form class="layui-form" action="{% url 'message' %}" method="post" id="form" name="form">
+                        {% csrf_token %}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">姓名:</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="name" id="nickname" style="width: 80%" required=""
+                                       lay-verify="required" autocomplete="on"
+                                       class="layui-input">
                             </div>
+                        </div>
 
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">电话:</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="phone" id="phone" style="width: 80%" required=""
-                                           lay-verify="required" placeholder="必填" autocomplete="on"
-                                           class="layui-input">
-                                </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">电话:</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="phone" id="phone" style="width: 80%" required=""
+                                       lay-verify="required" placeholder="必填" autocomplete="on"
+                                       class="layui-input">
                             </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">微信:</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="wechart" id="wechart" style="width: 80%" required=""
-                                           lay-verify="required" autocomplete="on"
-                                           class="layui-input">
-                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">微信:</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="wechart" id="wechart" style="width: 80%" required=""
+                                       lay-verify="required" autocomplete="on"
+                                       class="layui-input">
                             </div>
-                            {#                            <div class="layui-form-item">#}
-                            {#                                <label class="layui-form-label">QQ:</label>#}
-                            {#                                <div class="layui-input-block">#}
-                            {#                                    <input type="text" name="qq" id="qq" style="width: 80%" required=""#}
-                            {#                                           lay-verify="required" placeholder="QQ" autocomplete="on"#}
-                            {#                                           class="layui-input">#}
-                            {#                                </div>#}
-                            {#                            </div>#}
+                        </div>
+                        {#                            <div class="layui-form-item">#}
+                        {#                                <label class="layui-form-label">QQ:</label>#}
+                        {#                                <div class="layui-input-block">#}
+                        {#                                    <input type="text" name="qq" id="qq" style="width: 80%" required=""#}
+                        {#                                           lay-verify="required" placeholder="QQ" autocomplete="on"#}
+                        {#                                           class="layui-input">#}
+                        {#                                </div>#}
+                        {#                            </div>#}
 
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">邮箱:</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="email" id="email" style="width: 80%" required=""
-                                           lay-verify="required" autocomplete="on"
-                                           class="layui-input">
-                                </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱:</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="email" id="email" style="width: 80%" required=""
+                                       lay-verify="required" autocomplete="on"
+                                       class="layui-input">
                             </div>
+                        </div>
 
-                            <div class="layui-form-item layui-form-text">
-                                <label class="layui-form-label">留言:</label>
-                                <div class="layui-input-block">
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">留言:</label>
+                            <div class="layui-input-block">
                                     <textarea name="content" required style="width: 80%" placeholder="留言信息:"
                                               class="layui-textarea"></textarea>
-                                </div>
                             </div>
+                        </div>
 
-                            <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="token" value="476de02b7d7cab19397c4e7c3bf935bd">
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <button class="layui-btn" lay-submit="" lay-filter="formDemo"
-                                            onclick="cfm_msg();return false;">提交
-                                    </button>
-                                </div>
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="token" value="476de02b7d7cab19397c4e7c3bf935bd">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit="" lay-filter="formDemo"
+                                        onclick="cfm_msg();return false;">提交
+                                </button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <script type="text/javascript">
-                    function cfm_msg() {
-                        if ($("#phone").val() == "") {
-                            alert("请您填写联系电话！方便稍后联系您");
-                            $("#phone").focus();
-                            return false;
-                        }
-                        $("#form").submit();
+            </div>
+            <script type="text/javascript">
+                function cfm_msg() {
+                    if ($("#phone").val() == "") {
+                        alert("请您填写联系电话！方便稍后联系您");
+                        $("#phone").focus();
+                        return false;
                     }
+                    $("#form").submit();
+                }
 
-                    var msg = '{{ msg }}';
-                    if (msg) {
-                        alert(msg)
-                    }
-                </script>
-                <div class="message_down" style="display: none;">
-                    <ul>
-                        <li class="clearfix">
-                            <div class="liuyan_l fl">
-                                <a><span>留言人:</span>游客</a>
-                                <a><span>留言内容:</span>站点很好很漂亮！</a>
-                                <a class="nr"><span>回复内容:</span>感谢您的留言！</a>
-                                <a class="hf_date"><span>回复时间:</span>2019-04-18</a>
-                            </div>
-                            <div class="liuyan_r fr">
-                                <a><span>留言时间:</span>2019-04-18</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                var msg = '{{ msg }}';
+                if (msg) {
+                    alert(msg)
+                }
+            </script>
+            <div class="message_down" style="display: none;">
+                <ul>
+                    <li class="clearfix">
+                        <div class="liuyan_l fl">
+                            <a><span>留言人:</span>游客</a>
+                            <a><span>留言内容:</span>站点很好很漂亮！</a>
+                            <a class="nr"><span>回复内容:</span>感谢您的留言！</a>
+                            <a class="hf_date"><span>回复时间:</span>2019-04-18</a>
+                        </div>
+                        <div class="liuyan_r fr">
+                            <a><span>留言时间:</span>2019-04-18</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </div>

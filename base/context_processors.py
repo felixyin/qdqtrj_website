@@ -31,6 +31,7 @@ def seo_processor(requests):
         setting = get_web_setting()
         contact = get_contact_info()
         value = {
+            'SITE_ADDRESS': setting.site_address,
             'SITE_NAME': setting.sitename,
             'SHOW_GOOGLE_ADSENSE': setting.show_google_adsense,
             'GOOGLE_ADSENSE_CODES': setting.google_adsense_codes,
@@ -52,10 +53,10 @@ def seo_processor(requests):
             "BEIAN_CODE_GONGAN": setting.gongan_beiancode,
             "SHOW_GONGAN_CODE": setting.show_gongan_code,
             "CURRENT_YEAR": datetime.now().year,
-            "LOGO_IMG": setting.logo_img,
-            "LOGO_FOOTER_IMG": setting.logo_footer_img,
-            "PHONE_IMG": setting.phone_img,
-            "WECHART_IMG": setting.wechart_img,
+            "LOGO_IMG": setting.logo_img.url,
+            "LOGO_FOOTER_IMG": setting.logo_footer_img.url,
+            "PHONE_IMG": setting.phone_img.url,
+            "WECHART_IMG": setting.wechart_img.url,
             "COMPANY": contact.company,
             "PHONE": contact.phone,
             "PHONE_USER": contact.phone_user,
