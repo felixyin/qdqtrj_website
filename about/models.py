@@ -1,58 +1,27 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
 from django.db import models as m
+from django.urls import reverse
 from pysolr import version_info
 
 from base.models import BaseModel
 from mdeditor.fields import MDTextField
 
 
-class AboutUs(m.Model):
+class AboutItem(m.Model):
     # 关于我们
+    title = m.CharField(max_length=20, verbose_name='菜单')
     content = RichTextUploadingField(max_length=2000, config_name='full', verbose_name='描述', blank=False)
 
     def __str__(self):
-        return '关于我们'
+        return self.title
 
     class Meta:
-        verbose_name = '关于我们'
+        verbose_name = '关于子项'
         verbose_name_plural = verbose_name
 
-
-class TeamMember(BaseModel):
-    # 团队介绍
-    picture = m.ImageField(upload_to='upload/team/%Y/%m/%d', verbose_name='照片')
-    name = m.CharField(max_length=20, verbose_name='姓名')
-    job = m.CharField(max_length=50, verbose_name='职位')
-    introduce = RichTextUploadingField(max_length=200, config_name='mini', verbose_name='介绍')
-
-    class Meta:
-        verbose_name = '团队介绍'
-        verbose_name_plural = verbose_name
-
-
-class OurClient(BaseModel):
-    # 我们的客户
-    name = m.CharField(max_length=50, verbose_name='公司名称')
-    logo = m.FileField(upload_to="upload/our_clients/", verbose_name='客户LOGO')
-    url = m.URLField(verbose_name='客户官网地址')
-
-    class Meta:
-        verbose_name = '我们的客户'
-        verbose_name_plural = verbose_name
-
-
-class JoinUs(BaseModel):
-    # 精英招聘
-    count = m.SmallIntegerField(verbose_name='招聘人数')
-    address = m.CharField(max_length=20, verbose_name='工作地点')
-    treatment = m.CharField(max_length=10, verbose_name='工资待遇')
-    requirement = m.CharField(max_length=10, verbose_name='岗位要求')
-    skill = m.CharField(max_length=10, verbose_name='技能要求')
-
-    class Meta:
-        verbose_name = '精英招聘'
-        verbose_name_plural = verbose_name
+    def get_absolute_url(self):
+        return reverse('about:item', kwargs={'pk': self.id})
 
 
 # Create your models here.

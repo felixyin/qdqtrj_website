@@ -5,14 +5,14 @@ from django.shortcuts import render
 
 # Create your views here.
 
-# 关于
 from django.views.generic import DetailView
+from about.models import AboutItem
 
-from about.models import AboutUs
 
+class AboutItemDetailView(DetailView):
+    # 关于子菜单
+    model = AboutItem
 
-class AboutUsDetailView(DetailView):
-    # template_name = 'home/about.html'
-    model = AboutUs
-    # pk_url_kwarg = 'pk'
-    context_object_name = "about"
+    def get_context_data(self, **kwargs):
+        kwargs['aboutitem_list'] = AboutItem.objects.all()
+        return super().get_context_data(**kwargs)

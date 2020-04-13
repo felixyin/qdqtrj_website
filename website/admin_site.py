@@ -14,8 +14,7 @@
 """
 from django.contrib.admin import AdminSite, ModelAdmin
 
-from about.admin import AboutAdmin
-from about.models import AboutUs, TeamMember, OurClient, ContactUs
+from about.models import AboutItem, ContactUs
 from base.admin import BaseTagAdmin, WebSettingsAdmin, MessageAdmin
 from base.models import BaseTag, WebSettings, Message
 from case.admin import CaseAdmin
@@ -68,9 +67,7 @@ admin_site.register(BaseTag, BaseTagAdmin)
 # admin_site.register(Attach, AttachInline)
 
 # about
-admin_site.register(AboutUs, ModelAdmin)
-admin_site.register(TeamMember, ModelAdmin)
-admin_site.register(OurClient, ModelAdmin)
+admin_site.register(AboutItem, ModelAdmin)
 admin_site.register(ContactUs, ModelAdmin)
 
 # message

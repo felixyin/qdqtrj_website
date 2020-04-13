@@ -25,21 +25,14 @@
                         <!--<li><a href="gallery.php?cid=34"><div class="link">管理系统系列</div></a></li><li><a href="gallery.php?cid=35"><div class="link">网站建设系列</div></a></li><li><a href="gallery.php?cid=43"><div class="link">APP软件系列</div></a></li><li><a href="gallery.php?cid=44"><div class="link">桌面软件系列</div></a></li><li><a href="gallery.php?cid=45"><div class="link">物联网系列</div></a></li>-->
 
                         <!--点击一级分类出现二级分类-->
-                        <li><a href="{% url 'about:index' %}#about_com">
-                            <div class="link">公司简介</div>
-                        </a></li>
-                        <li><a href="{% url 'about:index' %}#team">
-                            <div class="link">团队介绍</div>
-                        </a></li>
-                        <li><a href="{% url 'about:index' %}#custom">
-                            <div class="link">合作客户</div>
-                        </a></li>
-                        <li><a href="{% url 'about:index' %}#join_us">
-                            <div class="link">精英招聘</div>
-                        </a></li>
-                        <li><a href="{% url 'about:index' %}#contact_us">
-                            <div class="link">联系我们</div>
-                        </a></li>
+
+                        {% for  ai in aboutitem_list %}
+                            <li>
+                                <a href="{{ ai.get_absolute_url }}">
+                                    <div class="link">{{ ai.title }}</div>
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="case_left_d">
@@ -81,7 +74,7 @@
                 <div class="about_item">
                     <a href="#about"></a>
                     <div class="single_top">
-                        {{ about.content|custom_markdown }}
+                        {{ aboutitem.content|safe }}
                     </div>
                 </div>
             </div>

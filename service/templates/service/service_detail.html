@@ -1,6 +1,5 @@
 ﻿{% extends 'share_layout/home_layout.html' %}
 {% load static %}
-{% load blog_tags%}
 {% block content %}
 
     {% comment %}    <style type="text/css">
@@ -75,7 +74,7 @@
                 <div class="about_item">
                     <a href="#about"></a>
                     <div class="single_top">
-                        {{ service.content| custom_markdown }}
+                        {{ service.content| safe }}
                     </div>
                 </div>
             </div>
