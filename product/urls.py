@@ -15,6 +15,8 @@
 
 from django.urls import path
 from django.views.decorators.cache import cache_page
+
+from website.utils import my_cache
 from . import views
 from haystack.forms import ModelSearchForm
 from haystack.query import SearchQuerySet
@@ -24,6 +26,6 @@ from . import views as v
 app_name = "product"
 urlpatterns = [
     # path('case/', v.CaseListView.as_view(), name='case-list'),
-    path('<int:pk>', v.ProductDetailView.as_view(), name='product-detail'),
+    path('<int:pk>', my_cache(v.ProductDetailView.as_view), name='product-detail'),
 
 ]

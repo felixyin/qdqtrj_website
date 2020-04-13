@@ -14,10 +14,12 @@
 """
 
 from django.urls import path
+
+from website.utils import my_cache
 from . import views as v
 
 app_name = "service"
 urlpatterns = [
     # path('', v.service, name='service'),
-    path('<int:pk>', v.ServiceDetailView.as_view(), name='service-detail'),
+    path('<int:pk>', my_cache(v.ServiceDetailView.as_view), name='service-detail'),
 ]

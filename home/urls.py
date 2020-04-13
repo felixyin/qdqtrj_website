@@ -14,10 +14,13 @@
 """
 
 from django.urls import path
+from django.views.decorators.cache import cache_page
+
+from website.utils import my_cache
 from . import views as v
 
 app_name = "home"
 urlpatterns = [
-    path('', v.HomeView.as_view(), {'pk': 1}, name='index'),
+    path('', my_cache(v.HomeView.as_view), {'pk': 1}, name='index'),
     # path('', v.index,  name='index'),
 ]

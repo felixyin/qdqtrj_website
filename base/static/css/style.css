@@ -2496,3 +2496,14 @@ h1 a {
         width: 10% !important;
     }
 }
+
+
+.float_l{
+    float: left;
+}
+.float_r{
+    float: right;
+}
+.clear {
+    clear: both;
+}

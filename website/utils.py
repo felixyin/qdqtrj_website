@@ -16,6 +16,7 @@ from django.core.cache import cache
 from django.contrib.sites.models import Site
 from hashlib import md5
 import mistune
+from django.views.decorators.cache import cache_page
 from mistune import escape, escape_link
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -24,6 +25,8 @@ import logging
 import requests
 import uuid
 import os
+
+from website import settings
 
 logger = logging.getLogger(__name__)
 
@@ -280,3 +283,12 @@ def delete_view_cache(prefix, keys):
     from django.core.cache.utils import make_template_fragment_key
     key = make_template_fragment_key(prefix, keys)
     cache.delete(key)
+
+
+def my_cache(func):
+    if settings.DEBUG:
+        return func()
+    else:
+        # fixme 页面缓存时间设置
+        timeout = 86400 * 30
+        return cache_page(timeout)(func())
