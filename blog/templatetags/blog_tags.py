@@ -73,8 +73,8 @@ def truncatechars_content(content):
     :return:
     """
     from django.template.defaultfilters import truncatechars_html
-    from website.utils import get_blog_setting
-    blogsetting = get_blog_setting()
+    from website.utils import get_web_setting
+    blogsetting = get_web_setting()
     return truncatechars_html(content, blogsetting.article_sub_length)
 
 
@@ -94,8 +94,8 @@ def load_breadcrumb(article):
     :return:
     """
     names = article.get_category_tree()
-    from website.utils import get_blog_setting
-    blogsetting = get_blog_setting()
+    from website.utils import get_web_setting
+    blogsetting = get_web_setting()
     site = get_current_site().domain
     names.append((blogsetting.sitename, '/'))
     names = names[::-1]
@@ -133,8 +133,8 @@ def load_sidebar(user, linktype):
     :return:
     """
     logger.info('load sidebar')
-    from website.utils import get_blog_setting
-    blogsetting = get_blog_setting()
+    from website.utils import get_web_setting
+    blogsetting = get_web_setting()
     recent_articles = Article.objects.filter(status='p')[:blogsetting.sidebar_article_count]
     sidebar_categorys = Category.objects.all()
     extra_sidebars = SideBar.objects.filter(is_enable=True).order_by('sequence')
@@ -248,8 +248,8 @@ def load_article_detail(article, isindex, user):
     :param isindex:是否列表页，若是列表页只显示摘要
     :return:
     """
-    from website.utils import get_blog_setting
-    blogsetting = get_blog_setting()
+    from website.utils import get_web_setting
+    blogsetting = get_web_setting()
 
     return {
         'article': article,

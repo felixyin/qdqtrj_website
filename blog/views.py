@@ -10,7 +10,7 @@ from django import forms
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from website.utils import cache, get_md5, get_blog_setting
+from website.utils import cache, get_md5, get_web_setting
 from django.shortcuts import get_object_or_404
 from blog.models import Article, Category, Tag, Links
 from comments.forms import CommentForm
@@ -272,7 +272,7 @@ def fileupload(request):
             imgextensions = ['jpg', 'png', 'jpeg', 'bmp']
             fname = u''.join(str(filename))
             isimage = len([i for i in imgextensions if fname.find(i) >= 0]) > 0
-            blogsetting = get_blog_setting()
+            blogsetting = get_web_setting()
 
             basepath = r'{basedir}/{type}/{timestr}'.format(basedir=blogsetting.resource_path,
                                                             type='files' if not isimage else 'image', timestr=timestr)

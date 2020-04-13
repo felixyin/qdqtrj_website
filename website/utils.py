@@ -187,8 +187,8 @@ def parse_dict_to_url(dict):
     return url
 
 
-def get_blog_setting():
-    value = cache.get('get_blog_setting')
+def get_web_setting():
+    value = cache.get('get_web_setting')
     if value:
         return value
     else:
@@ -209,8 +209,25 @@ def get_blog_setting():
             setting.show_gongan_code = False
             setting.save()
         value = WebSettings.objects.first()
-        logger.info('set cache get_blog_setting')
-        cache.set('get_blog_setting', value)
+        logger.info('set cache get_web_setting')
+        cache.set('get_web_setting', value)
+        return value
+
+
+def get_contact_info():
+    value = cache.get('get_contact_info')
+    if value:
+        return value
+    else:
+        from base.models import ContactInfo
+        if not ContactInfo.objects.count():
+            contact = ContactInfo()
+            contact.company = "青岛前途软件技术有限公司"
+            contact.address = ""
+            contact.save()
+        value = ContactInfo.objects.first()
+        logger.info('set cache get_contact_info')
+        cache.set('get_contact_info', value)
         return value
 
 
@@ -220,7 +237,7 @@ def save_user_avatar(url):
     :param url:头像url
     :return: 本地路径
     '''
-    setting = get_blog_setting()
+    setting = get_web_setting()
     logger.info(url)
     try:
         imgname = url.split('/')[-1]

@@ -1,7 +1,5 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
-from django.urls import reverse
-from mdeditor.fields import MDTextField
 from django.db import models as m
 from django.utils.timezone import now
 from django.core.exceptions import ValidationError
@@ -69,10 +67,15 @@ class BaseAttach(BaseModel):
 
 class WebSettings(m.Model):
     '''站点设置 '''
+    site_address = m.CharField("网站地址", max_length=30, null=False, blank=False, default='')
     sitename = m.CharField("网站名称", max_length=200, null=False, blank=False, default='')
     site_description = m.TextField("网站描述", max_length=1000, null=False, blank=False, default='')
     site_seo_description = m.TextField("网站SEO描述", max_length=1000, null=False, blank=False, default='')
     site_keywords = m.TextField("网站关键字", max_length=1000, null=False, blank=False, default='')
+    beiancode = m.CharField('备案号', max_length=40, null=True, blank=True, default='')
+    analyticscode = m.TextField("网站统计代码", max_length=1000, null=False, blank=False, default='')
+    show_gongan_code = m.BooleanField('是否显示公安备案号', default=False, null=False)
+    gongan_beiancode = m.TextField('公安备案号', max_length=40, null=True, blank=True, default='')
     blogname = m.CharField("博客名称", max_length=200, null=False, blank=False, default='')
     blog_description = m.TextField("博客描述", max_length=1000, null=False, blank=False, default='')
     blog_seo_description = m.TextField("博客SEO描述", max_length=1000, null=False, blank=False, default='')
@@ -83,11 +86,11 @@ class WebSettings(m.Model):
     show_google_adsense = m.BooleanField('是否显示谷歌广告', default=False)
     google_adsense_codes = m.TextField('广告内容', max_length=2000, null=True, blank=True, default='')
     open_site_comment = m.BooleanField('是否打开网站评论功能', default=True)
-    beiancode = m.CharField('备案号', max_length=2000, null=True, blank=True, default='')
-    analyticscode = m.TextField("网站统计代码", max_length=1000, null=False, blank=False, default='')
-    show_gongan_code = m.BooleanField('是否显示公安备案号', default=False, null=False)
-    gongan_beiancode = m.TextField('公安备案号', max_length=2000, null=True, blank=True, default='')
     resource_path = m.CharField("静态文件保存地址", max_length=300, null=False, default='/var/www/resource/')
+    logo_img = m.ImageField(upload_to='upload/websetting/', verbose_name='网站LOGO', blank=False)
+    logo_footer_img = m.ImageField(upload_to='upload/websetting/', verbose_name='网站页脚LOGO', blank=False)
+    phone_img = m.ImageField(upload_to='upload/websetting/', verbose_name='电话', blank=False)
+    wechart_img = m.ImageField(upload_to='upload/websetting/', verbose_name='微信二维码', blank=False)
 
     class Meta:
         verbose_name = '网站配置'
@@ -106,7 +109,6 @@ class WebSettings(m.Model):
         cache.clear()
 
 
-
 class Message(BaseModel):
     # 留言
     name = m.CharField(max_length=50, null=True, blank=True, verbose_name='姓名')
@@ -118,4 +120,26 @@ class Message(BaseModel):
 
     class Meta:
         verbose_name = '在线留言'
+        verbose_name_plural = verbose_name
+
+
+# Create your models here.
+class ContactInfo(m.Model):
+    # 联系信息
+    company = m.CharField(max_length=20, verbose_name='组织名称')
+    phone = m.CharField(max_length=20, verbose_name='咨询电话')
+    phone_user = m.CharField(max_length=20, verbose_name='咨询电话姓名')
+    wechart = m.CharField(max_length=20, verbose_name='微信号')
+    qq = m.CharField(max_length=20, verbose_name='QQ号')
+    phone_after_sale = m.CharField(max_length=20, verbose_name='售后电话')
+    phone_after_sale_user = m.CharField(max_length=20, verbose_name='售后电话姓名')
+    email = m.EmailField(verbose_name='邮箱')
+    email_hr = m.EmailField(verbose_name='HR邮箱')
+    address = m.CharField(max_length=100, verbose_name='地址')
+
+    def __str__(self):
+        return self.company
+
+    class Meta:
+        verbose_name = '联系信息'
         verbose_name_plural = verbose_name

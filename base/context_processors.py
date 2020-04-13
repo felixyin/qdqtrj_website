@@ -12,8 +12,8 @@
 @file: context_processors.py
 @time: 2016/11/6 下午4:23
 """
-from .models import Category, Article, Tag
-from website.utils import cache, get_blog_setting
+from blog.models import Category, Article
+from website.utils import cache, get_web_setting, get_contact_info
 
 from datetime import datetime
 import logging
@@ -28,7 +28,8 @@ def seo_processor(requests):
         return value
     else:
         logger.info('set processor cache.')
-        setting = get_blog_setting()
+        setting = get_web_setting()
+        contact = get_contact_info()
         value = {
             'SITE_NAME': setting.sitename,
             'SHOW_GOOGLE_ADSENSE': setting.show_google_adsense,
@@ -50,8 +51,21 @@ def seo_processor(requests):
             'ANALYTICS_CODE': setting.analyticscode,
             "BEIAN_CODE_GONGAN": setting.gongan_beiancode,
             "SHOW_GONGAN_CODE": setting.show_gongan_code,
-            "CURRENT_YEAR": datetime.now().year
-
+            "CURRENT_YEAR": datetime.now().year,
+            "LOGO_IMG": setting.logo_img,
+            "LOGO_FOOTER_IMG": setting.logo_footer_img,
+            "PHONE_IMG": setting.phone_img,
+            "WECHART_IMG": setting.wechart_img,
+            "COMPANY": contact.company,
+            "PHONE": contact.phone,
+            "PHONE_USER": contact.phone_user,
+            "WECHART": contact.wechart,
+            "QQ": contact.qq,
+            "PHONE_AFTER_SALE": contact.phone_after_sale,
+            "PHONE_AFTER_SALE_USER": contact.phone_after_sale_user,
+            "EMAIL": contact.email,
+            "EMAIL_HR": contact.email_hr,
+            "ADDRESS": contact.address,
         }
         cache.set(key, value, 60 * 60 * 10)
         return value
