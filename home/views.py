@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 from django.views.generic import DetailView
 
+from about.models import AboutItem
 from blog.models import Article
 from home.models import Home
 from case.models import Case, Category
@@ -27,6 +28,7 @@ class HomeView(DetailView):
         kwargs['first_product'] = product_list[0]
         kwargs['other_products'] = product_list[0:4]
         kwargs['service_list'] = Service.objects.all()
+        kwargs['aboutitem_list'] = AboutItem.objects.all()
         return super().get_context_data(**kwargs)
 
 

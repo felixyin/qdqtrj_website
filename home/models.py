@@ -10,9 +10,19 @@ from base.models import BaseModel
 
 class Home(m.Model):
     # 主页
-    slogan = RichTextUploadingField(max_length=100, default='mini', verbose_name='口号')
     carousel_delay = m.IntegerField(verbose_name='跑马灯大图切换时间')
-    testimonials_delay = m.IntegerField(verbose_name='客户评价切换时间')
+    product_title = m.CharField(max_length=20, verbose_name='产品标题', blank=False)
+    product_slogan = m.CharField(max_length=50, verbose_name='产品口号', blank=False)
+    service_title = m.CharField(max_length=20, verbose_name='服务标题', blank=False)
+    service_slogan = m.CharField(max_length=50, verbose_name='服务口号', blank=False)
+    service_description = m.TextField(max_length=300, verbose_name='服务描述', blank=False)
+    service_img_max = m.ImageField(upload_to='upload/home/service/image', verbose_name='服务小图', blank=True)
+    service_img_min = m.ImageField(upload_to='upload/home/service/image', verbose_name='服务大图', blank=True)
+    about_title = m.CharField(max_length=20, verbose_name='关于标题', blank=False)
+    about_slogan = m.CharField(max_length=50, verbose_name='关于口号', blank=False)
+    about_description = m.TextField(max_length=300, verbose_name='关于描述', blank=False)
+    about_img_max = m.ImageField(upload_to='upload/home/about/image', verbose_name='关于小图', blank=True)
+    about_img_min = m.ImageField(upload_to='upload/home/about/image', verbose_name='关于大图', blank=True)
 
     def __str__(self):
         return '主页'
@@ -31,24 +41,33 @@ class Home(m.Model):
 
 
 # 主页-跑马灯大图
-class HomeCarousel(BaseModel):
+class Carousel(BaseModel):
     title = m.CharField(max_length=50, verbose_name='标题', blank=False)
-    description = RichTextUploadingField(max_length=300, config_name='mini', verbose_name='描述', blank=False)
-    image = m.ImageField(upload_to='upload/home/carousel/image', verbose_name='图片', blank=False)
-    video = m.FileField(upload_to='upload/home/carousel/video', verbose_name='视频', blank=True)
+    image = m.ImageField(upload_to='upload/home/carousel/image', verbose_name='图片', blank=True)
     home = m.ForeignKey(Home, on_delete=m.CASCADE, verbose_name='主页')
 
     class Meta:
-        verbose_name = '主页跑马灯'
+        verbose_name = '图片跑马灯'
         verbose_name_plural = verbose_name
 
 
 # 主页-我们的优势
-class HomeSuperiority(BaseModel):
+class Superiority(BaseModel):
     title = m.CharField(max_length=50, verbose_name='标题', blank=False)
     description = RichTextUploadingField(max_length=300, blank=False, config_name='mini', verbose_name='描述')
+    image = m.ImageField(upload_to='upload/home/service/image', verbose_name='图标', blank=True)
     home = m.ForeignKey(Home, on_delete=m.CASCADE, verbose_name='主页')
 
     class Meta:
-        verbose_name = '主页我们的优势'
+        verbose_name = '我们的优势'
+        verbose_name_plural = verbose_name
+
+
+# 主页-广告图片
+class Adware(BaseModel):
+    image = m.ImageField(upload_to='upload/home/adware/image', verbose_name='广告图片', blank=True)
+    home = m.ForeignKey(Home, on_delete=m.CASCADE, verbose_name='主页')
+
+    class Meta:
+        verbose_name = '广告图片'
         verbose_name_plural = verbose_name

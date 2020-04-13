@@ -3,8 +3,8 @@
 <div class="index_news">
     <div class="container">
         <div class="jp_title">
-            <h3> 关于</h3>
-            <span>主营软件开发，设计，系统集成，数据处理</span>
+            <h3> {{ home.about_title }}</h3>
+            <span>{{ home.about_slogan }}</span>
             <h2></h2>
         </div>
         <div class="news_show clearfix">
@@ -17,49 +17,25 @@
                     <a href="{% url 'about:item' pk=1 %}">
 
                         <div class="list_top_title fr">
-                            <h3>
-                                祝贺青岛前途软件技术有限公司网站成功上线！
-                            </h3>
                             <p>
-                                青岛前途软件技术有限公司位于山东青岛，公司主营软件开发，设计，系统集成，数据处理，是一家专注于app开发和软件开发的现代互联网公司，公司秉承责任，诚信，创新，共赢的...</p>
+                                {{ home.about_description }}
+                            </p>
                             <span>more+</span>
                         </div>
                     </a>
                 </div>
                 <div class="list_down">
                     <ul>
+                        {% for  ai in aboutitem_list %}
                         <li>
-                            <a href="{% url 'about:item' pk=1 %}">
+                            <a href="{{ ai.get_absolute_url }}">
                                 <div class="down_t fl">
-                                    <h3> 合作客户</h3>
+                                    <h3>{{ ai.title }}</h3>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>
                         </li>
-                        <li>
-                            <a href="{% url 'about:item' pk=1 %}">
-                                <div class="down_t fl">
-                                    <h3> 团队介绍</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'about:item' pk=1 %}">
-                                <div class="down_t fl">
-                                    <h3> 加入我们</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'about:item' pk=1 %}">
-                                <div class="down_t fl">
-                                    <h3> 联系我们</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

@@ -3,16 +3,14 @@
 <div class="company clearfix">
     <div class="container">
         <div class="aboyt_left fl">
-            <h3>软件即服务</h3>
+            <h3>{{ home.service_slogan}}</h3>
             <span><img src="{% static  'images/jj_hx.png' %}">SAAS</span>
             <div class="kind_fd">
                 <h3 style="text-indent:0em;">
-                    服务优势
+                   {{ home.service_title }}
                 </h3>
                 <p style="text-indent:2em;">
-                    由需求分析师一对一梳理需求，免费设计《解决方案文档》，
-                    并在短时间内提供初步报价、预估工期，
-                    开发中对质量、进度进行严格监控，开发结束提供所有源码、数据库、文档、各种账号等资料，提供最长1年免费维护...
+                   {{ home.service_description }}
                 </p>
 {#                <a href="single.php%3Fcid=1.html">查看详情</a>#}
             </div>

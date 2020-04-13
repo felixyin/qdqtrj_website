@@ -18,6 +18,6 @@ from . import views as v
 
 app_name = "home"
 urlpatterns = [
-    path('', v.HomeView.as_view(), {'pk': 2}, name='index'),
+    path('', v.HomeView.as_view(), {'pk': 1}, name='index'),
     # path('', v.index,  name='index'),
 ]
