@@ -116,7 +116,7 @@ class Message(BaseModel):
     wechart = m.CharField(max_length=20, null=True, blank=True, verbose_name='微信')
     qq = m.CharField(max_length=20, null=True, blank=True, verbose_name='qq')
     email = m.CharField(max_length=20, null=True, blank=True, verbose_name='邮箱')
-    content = m.CharField(max_length=2000, null=True, blank=True, verbose_name='留言信息')
+    content = m.TextField(max_length=2000, null=True, blank=True, verbose_name='留言信息')
 
     class Meta:
         verbose_name = '在线留言'
