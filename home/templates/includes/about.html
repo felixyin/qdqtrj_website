@@ -1,40 +1,37 @@
 {% load static %}
 <!--新闻-->
-<div class="index_news" style="background: url('{{ home.about_img_max.url }}')no-repeat top center;">
-    <div class="container">
+<div class="index_news">
+    <div class="container" style="background: url('{{ home.about_img_max.url }}')no-repeat top center;">
         <div class="jp_title">
             <h3> {{ home.about_title }}</h3>
-            <span>{{ home.about_slogan }}</span>
+            {#            <span>{{ home.about_slogan }}</span>#}
             <h2></h2>
         </div>
-        <div class="news_show clearfix">
-            <div class="show_left fl">
+        <div class="news_show clearfix" style="width: 700px;margin: 20px auto;">
+            <div class="list_top_title fr" style="margin-bottom: 20px;">
+                <p>
+                    {{ home.about_description }}
+                </p>
+                <a href="{% url 'about:item' pk=1 %}">
+                    <span>more+</span>
+                </a>
+            </div>
+            <div class="show_left fl" style="width: 400px;">
                 <img src="{{ home.about_img_min.url }}">
             </div>
 
-            <div class="show_list fr">
-                <div class="list_top clearfix">
-                    <a href="{% url 'about:item' pk=1 %}">
-
-                        <div class="list_top_title fr">
-                            <p>
-                                {{ home.about_description }}
-                            </p>
-                            <span>more+</span>
-                        </div>
-                    </a>
-                </div>
+            <div class="show_list fr" style="width: 250px;margin-left: 50px;">
                 <div class="list_down">
                     <ul>
                         {% for  ai in aboutitem_list %}
-                        <li>
-                            <a href="{{ ai.get_absolute_url }}">
-                                <div class="down_t fl">
-                                    <h3>{{ ai.title }}</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="{{ ai.get_absolute_url }}">
+                                    <div class="down_t fl">
+                                        <h3>{{ ai.title }}</h3>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>

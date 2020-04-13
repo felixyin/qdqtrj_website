@@ -10,18 +10,18 @@
     {% include 'includes/case.html' %}
 
     <!--广告一-->
-    <div class="advert">
+    <center>
         {{ adware_list.0.url }}
-        <img src="{{ adware_list.0.image.url }}" alt="">
-    </div>
+        <img src="{{ adware_list.0.image.url }}" alt="" style="width: 1200px;">
+    </center>
 
     {#  产品 #}
     {% include 'includes/product.html' %}
 
     <!--广告二-->
-    <div class="advert2">
-        <img src="{{ adware_list.1.image.url }}" alt="">
-    </div>
+    <center>
+        <img src="{{ adware_list.1.image.url }}" alt="" style="width: 1200px;">
+    </center>
 
     {#  关于和服务 #}
     {% include 'includes/service.html' %}
