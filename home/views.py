@@ -22,6 +22,10 @@ class HomeView(DetailView):
         # kwargs['latest_blogs1'] = blogs[0:4]
         # kwargs['latest_blogs2'] = blogs[4:8]
         # kwargs['latest_blogs3'] = blogs[8:12]
+        kwargs['carousel_list'] = self.object.carousel_set.all()
+        kwargs['adware_list'] = self.object.adware_set.all()
+        kwargs['superiority_list'] = self.object.superiority_set.all()
+
         kwargs['category_list'] = Category.objects.all()
         kwargs['case_list'] = Case.objects.all()[:6]
         product_list = Product.objects.all()

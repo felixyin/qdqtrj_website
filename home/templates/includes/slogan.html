@@ -2,50 +2,17 @@
 <div class="mokuai">
     <div class="container">
         <ul class="clearfix">
-            <li>
-                <div class="scoll_four clearfix">
-                    <div class="fout_photo1 fl">
-
+            {% for s in superiority_list %}
+                <li>
+                    <div class="scoll_four clearfix">
+                        <div class="fout_photo1 fl" style="background: url('{{ s.image.url }}')no-repeat;"></div>
+                        <div class="fout_name fr">
+                            <h3>{{ s.title }}</h3>
+                            <span>{{ s.description | safe }}</span>
+                        </div>
                     </div>
-                    <div class="fout_name fr">
-                        <h3>产品保障</h3>
-                        <span>为客户提供全生命周期的产品保障</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="scoll_four clearfix">
-                    <div class="fout_photo2 fl">
-
-                    </div>
-                    <div class="fout_name fr">
-                        <h3>服务保障</h3>
-                        <span>为客户提供全面的服务保障</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="scoll_four clearfix">
-                    <div class="fout_photo3 fl">
-
-                    </div>
-                    <div class="fout_name fr">
-                        <h3>质量保障</h3>
-                        <span>为客户提供满意的服务</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="scoll_four clearfix">
-                    <div class="fout_photo4 fl">
-
-                    </div>
-                    <div class="fout_name fr">
-                        <h3>技术保障</h3>
-                        <span>为客户提供专业的服务</span>
-                    </div>
-                </div>
-            </li>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 </div>

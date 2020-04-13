@@ -11,7 +11,8 @@
 
     <!--广告一-->
     <div class="advert">
-        <img src="{% static  'images/g1.png' %}">
+        {{ adware_list.0.url }}
+        <img src="{{ adware_list.0.image.url }}" alt="">
     </div>
 
     {#  产品 #}
@@ -19,7 +20,7 @@
 
     <!--广告二-->
     <div class="advert2">
-        <img src="{% static  'images/g2.png' %}">
+        <img src="{{ adware_list.1.image.url }}" alt="">
     </div>
 
     {#  关于和服务 #}

@@ -2,7 +2,7 @@
 <!--公司简介-->
 <div class="company clearfix">
     <div class="container">
-        <div class="aboyt_left fl">
+        <div class="aboyt_left fl" style="background: url('{{ home.service_img_min.url }}') no-repeat top left;">
             <h3>{{ home.service_slogan}}</h3>
             <span><img src="{% static  'images/jj_hx.png' %}">SAAS</span>
             <div class="kind_fd">
@@ -33,7 +33,7 @@
             <div class="kind_list_p">
                 <div class="swiper-container kind">
                     <div class="swiper-wrapper ">
-                        <div class="swiper-slide"><img src="{% static  'images/about.png' %}"></div>
+                        <div class="swiper-slide"><img src="{{ home.service_img_max.url }}"></div>
                         <div class="swiper-slide"><img src="{% static  'images/about1.png' %}"></div>
                     </div>
                     <!-- Add Arrows -->

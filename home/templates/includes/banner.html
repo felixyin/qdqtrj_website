@@ -6,14 +6,9 @@
     <!-- Swiper -->
     <div class="swiper-container scoll">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"
-                 style="background: url({% static  'images/banner1.jpg' %})no-repeat center center;"></div>
-            <div class="swiper-slide"
-                 style="background: url({% static  'images/banner2.jpg' %})no-repeat center center;"></div>
-            <div class="swiper-slide"
-                 style="background: url({% static  'images/banner3.jpg' %})no-repeat center center;"></div>
-            <div class="swiper-slide"
-                 style="background: url({% static  'images/banner4.jpg' %})no-repeat center center;"></div>
+            {% for c in carousel_list %}
+                <div class="swiper-slide" style="background: url('{{ c.image.url }}')no-repeat center center;"></div>
+            {% endfor %}
         </div>
         <!-- Add Pagination -->
         <div class=" pation swiper-pagination"></div>
