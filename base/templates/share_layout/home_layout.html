@@ -12,7 +12,8 @@
     {% compress css %}
         {#        <link rel="stylesheet" href="{% static 'css/xiala.css' %}">#}
         <link rel="stylesheet" href="{% static 'css/style1.css' %}">
-        <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+        {#        <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">#}
+        <link rel="stylesheet" href="{% static 'css/miniSlider.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
         {% block compress_css %} {% endblock %}
@@ -34,7 +35,8 @@
     <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
     <!-- Swiper JS -->
     {#    <script src="{% static 'js/swiper.min.js' %}"></script>#}
-    <script src="{% static 'js/swiper-3.4.2.jquery.min.js' %}"></script>
+    {#    <script src="{% static 'js/swiper-3.4.2.jquery.min.js' %}"></script>#}
+    <script src="{% static 'js/miniSlider.js' %}"></script>
     <script src="{% static 'js/website.js' %}"></script>
 
     {% block compress_js %}

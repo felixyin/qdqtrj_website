@@ -72,6 +72,7 @@ function subMenu() {
 $(function () {
     hoverMenu();
     // subMenu();
+    $('#slider').miniSlider();
 });
 
 var swiper = new Swiper('.scoll', {
@@ -79,7 +80,7 @@ var swiper = new Swiper('.scoll', {
     spaceBetween: 30,
     centeredSlides: true,
     autoplay: {
-        delay: 2500,
+        delay: 5500,
         disableOnInteraction: false,
     },
     pagination: {
@@ -96,7 +97,7 @@ var viewSwiper = new Swiper('.view .swiper-container', {
     onSlideChangeStart: function () {
         updateNavPosition()
     }
-})
+});
 
 $('.view .arrow-left,.preview .arrow-left').on('click', function (e) {
     e.preventDefault()
@@ -105,7 +106,8 @@ $('.view .arrow-left,.preview .arrow-left').on('click', function (e) {
         return
     }
     viewSwiper.slidePrev()
-})
+});
+
 $('.view .arrow-right,.preview .arrow-right').on('click', function (e) {
     e.preventDefault()
     if (viewSwiper.activeIndex == viewSwiper.slides.length - 1) {
@@ -113,7 +115,7 @@ $('.view .arrow-right,.preview .arrow-right').on('click', function (e) {
         return
     }
     viewSwiper.slideNext()
-})
+});
 
 var previewSwiper = new Swiper('.preview .swiper-container', {
     //visibilityFullFit: true,
@@ -122,15 +124,14 @@ var previewSwiper = new Swiper('.preview .swiper-container', {
     onTap: function () {
         viewSwiper.slideTo(previewSwiper.clickedIndex)
     }
-})
+});
 
 function updateNavPosition() {
     $('.preview .active-nav').removeClass('active-nav')
-    var activeNav = $('.preview .swiper-slide').eq(viewSwiper.activeIndex).addClass(
-        'active-nav')
+    var activeNav = $('.preview .swiper-slide').eq(viewSwiper.activeIndex).addClass('active-nav');
     if (!activeNav.hasClass('swiper-slide-visible')) {
         if (activeNav.index() > previewSwiper.activeIndex) {
-            var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
+            var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1;
             previewSwiper.slideTo(activeNav.index() - thumbsPerNav)
         } else {
             previewSwiper.slideTo(activeNav.index())

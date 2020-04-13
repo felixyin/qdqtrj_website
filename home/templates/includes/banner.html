@@ -1,22 +1,12 @@
 {% load static %}
 <div class="banner">
-    <div class="banner_dingwei" id="anchor">
-        <!--内页的定位-->
-    </div>
-    <!-- Swiper -->
-    <div class="swiper-container scoll">
-        <div class="swiper-wrapper">
-            {% for c in carousel_list %}
-                <div class="swiper-slide" style="background: url('{{ c.image.url }}')no-repeat center center;"></div>
-            {% endfor %}
+    <div id="main">
+        <div id="main-inner">
+            <div id="slider">
+                {% for c in carousel_list %}
+                    <img src="{{ c.image.url }}"/>
+                {% endfor %}
+            </div>
         </div>
-        <!-- Add Pagination -->
-        <div class=" pation swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next next"></div>
-        <div class="swiper-button-prev prev"></div>
     </div>
-
-
 </div>
-    

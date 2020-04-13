@@ -649,19 +649,14 @@ h1 a {
 
 .list-title a {
 	text-transform: uppercase;
-	font-family: 'ArnoPro-Regular12pt';
 	display: block;
 	font-size: 24px;
 	color: #fff;
 	padding-top: 20px;
 }
-@font-face {
-	font-family: 'ArnoPro-Regular12pt';
-	src: url("../font/ArnoPro-Regular12pt.otf");
-}
+
 .list-title span {
 	text-transform: uppercase;
-	font-family: 'ArnoPro-Regular12pt';
 	display: block;
 	font-size: 16px;
 	color: #fff;
@@ -762,7 +757,6 @@ h1 a {
 
 .hot_more span {
 	color: #ffffff;
-	font-family: 'ArnoPro-Regular12pt';
 	display: block;
 	/*background: #d91525;*/
 	width: 73px;
@@ -882,7 +876,6 @@ h1 a {
 
 .hx_right span {
 	color: #ffffff;
-	font-family: 'ArnoPro-Regular12pt';
 	display: block;
 	background: #d91525;
 	width: 73px;
@@ -1030,7 +1023,6 @@ h1 a {
 	display: block;
 	font-size: 18px;
 	color: #fffefe;
-	font-family: 'ArnoPro-Regular12pt';
 	text-transform: uppercase;
 	padding-left: 40px;
 }
@@ -1330,7 +1322,6 @@ height: 150px;
 
 .list_top_title span {
 	color: #ffffff;
-	font-family: 'ArnoPro-Regular12pt';
 	display: block;
 	background: #d91525;
 	width: 73px;
