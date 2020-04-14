@@ -33,6 +33,10 @@ class HomeView(DetailView):
         kwargs['service_list'] = Service.objects.all()
         kwargs['aboutitem_list'] = AboutItem.objects.all().order_by('sequence')
 
+        # 判断手机，跳转手机模板首页
+        if self.request.is_mobile:
+            self.template_name = 'mobile/index.html'
+
         return super().get_context_data(**kwargs)
 
 
