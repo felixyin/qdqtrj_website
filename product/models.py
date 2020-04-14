@@ -27,6 +27,9 @@ class Product(BaseModel):
     def get_absolute_url(self):
         return reverse('product:product-detail', kwargs={'pk': self.id})
 
+    def get_mobile_url(self):
+        return reverse('mobile:product-detail', kwargs={'pk': self.id})
+
     @cached_property
     def next_project(self):
         # 下一篇

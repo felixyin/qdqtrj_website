@@ -24,3 +24,5 @@ class Service(BaseModel):
     def get_absolute_url(self):
         return reverse('service:service-detail', kwargs={'pk': self.id})
 
+    def get_mobile_url(self):
+        return reverse('mobile:service-detail', kwargs={'pk': self.id})

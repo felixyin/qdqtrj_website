@@ -1,0 +1,22 @@
+{% extends 'share_layout/mobile_layout.html' %}
+
+{% block content %}
+
+    <div class="product">
+        <div class="index_t"><span class="fl">公司产品</span></div>
+        <ul style=" padding-top:8px;">
+            {% for s in product_list %}
+                <li>
+                    <a href="{{ s.get_mobile_url }}">
+                        <div class="picbox">
+                            <img src="{{ s.thumb.url }}" onload="autoimg()" class="imgauto"/>
+                        </div>
+                        <p style="color:#fff;" class="pictitle">{{ s.name }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="clear"></div>
+
+{% endblock %}

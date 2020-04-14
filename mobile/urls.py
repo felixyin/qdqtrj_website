@@ -22,5 +22,11 @@ from . import views as v
 app_name = "mobile"
 urlpatterns = [
     path('', my_cache(v.MobileView.as_view), {'pk': 1}, name='index'),
+    path('service', my_cache(v.ServiceListView.as_view), name='service'),
+    path('service/<int:pk>', my_cache(v.ServiceDetailView.as_view), name='service-detail'),
+    path('product', my_cache(v.ProductListView.as_view), name='product'),
+    path('product/<int:pk>', my_cache(v.ProductDetailView.as_view), name='product-detail'),
+    path('case', my_cache(v.MobileView.as_view), {'pk': 1}, name='case'),
+    path('contact', my_cache(v.MobileView.as_view), {'pk': 1}, name='contact'),
     # path('', v.index,  name='index'),
 ]

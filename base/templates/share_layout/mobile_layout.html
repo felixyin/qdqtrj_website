@@ -29,102 +29,22 @@
     <div class="logo">
         青岛前途软件技术有限公司
     </div>
-    <div class="nav">
-        <ul>
-            <li><a href="index.php.html">网站首页</a></li>
-            <li><a href="single.php%3Fcid=1.html">关于我们</a></li>
-            <li><a href="gallery.php%3Fcid=3.html">服务项目</a></li>
-            <li><a href="gallery.php%3Fcid=46.html">公司产品</a></li>
-            <li><a href="gallery.php%3Fcid=47.html">项目案例</a></li>
-            <li><a href="list.php%3Fcid=6.html">最新动态</a></li>
-            <li><a href="message.php.html">在线留言</a></li>
-            <li><a href="single.php%3Fcid=9.html">联系我们</a></li>
-        </ul>
-    </div>
-    <div class="swipe">
-        <ul id="slider">
-            {% for c in carousel_list %}
-                <li><img src="{{ c.image.url }}"/></li>
-            {% endfor %}
-        </ul>
-        <div id="pagenavi">
+    {#    <div class="nav">#}
+    {#        <ul>#}
+    {#            <li><a href="index.php.html">网站首页</a></li>#}
+    {#            <li><a href="single.php%3Fcid=1.html">关于我们</a></li>#}
+    {#            <li><a href="gallery.php%3Fcid=3.html">服务项目</a></li>#}
+    {#            <li><a href="gallery.php%3Fcid=46.html">公司产品</a></li>#}
+    {#            <li><a href="gallery.php%3Fcid=47.html">项目案例</a></li>#}
+    {#            <li><a href="list.php%3Fcid=6.html">最新动态</a></li>#}
+    {#            <li><a href="message.php.html">在线留言</a></li>#}
+    {#            <li><a href="single.php%3Fcid=9.html">联系我们</a></li>#}
+    {#        </ul>#}
+    {#    </div>#}
 
-            <a href="javascript:void(0);" class="active">1</a><a href="javascript:void(0);">2</a><a href="javascript:void(0);">3</a><a
-                href="javascript:void(0);">4</a>
-        </div>
-        <a href="javascript:t2.prev();">
-            <div id='btn_prev'></div>
-        </a>
-        <a href="javascript:t2.next();">
-            <div id='btn_next'></div>
-        </a>
-    </div>
+    {% block content %}
+    {% endblock %}
 
-
-    <div class="search">
-        <form method="get" name="myform" action="gallery.php.html">
-            <input type="text" class="search_txt text font14" name="keyword" class="text" placeholder="请输入关键词">
-            <input type="submit" name="submit" value="" class="search_but search-btn">
-        </form>
-    </div>
-    <div class="about">
-
-        <div class="index_t"><span class="fl">关于我们</span><a href="single.php%3Fcid=1.html" class="fr nav_pro">更多&gt;&gt;</a></div>
-
-        <ul>
-            <li style=" line-height:30px; padding:10px;">
-
-                <h3 style="text-indent:0em;">
-                    青岛前途软件技术有限公司
-                </h3>
-                <p style="text-indent:2em;">
-                    青岛前途软件技术有限公司，简称前途软件，成立于2018年，是一家专注于软件开发的企业，拥有Java、JavaScript、NodeJs、Python、Dart、GoLang等各类软件开发工程师8名，定位于系统软件和APP定制开发领域，可承接各类软件定制开发业务及政务信息化、企业信息化建设项目、项目外包业务。
-                </p></li>
-        </ul>
-    </div>
-    <div class="clear"></div>
-    <div class="clear"></div>
-    <div class="product">
-        <div class="index_t"><span class="fl">项目案例</span><a href="gallery.php.html" class="fr nav_pro">更多&gt;&gt;</a></div>
-        <ul style=" padding-top:8px;">
-            <li><a class="picbox" href="show.php%3Fcid=43&amp;id=113.html"><img src="../uploads/image/20190418/1555577591.jpg.html"
-                                                                                onload="autoimg()" class="imgauto"/></a> <a
-                    style="color:#fff;" class="pictitle" href="http://www.qdqtrj.com/mobile/&lt;?php&#32;echo&#32;$gourl;?&gt;">美德威</a></li>
-            <li><a class="picbox" href="show.php%3Fcid=34&amp;id=114.html"><img src="../uploads/image/20190418/1555575652.jpg.html"
-                                                                                onload="autoimg()" class="imgauto"/></a> <a
-                    style="color:#fff;" class="pictitle" href="http://www.qdqtrj.com/mobile/&lt;?php&#32;echo&#32;$gourl;?&gt;">李沧司法考试系统</a>
-            </li>
-            <li><a class="picbox" href="show.php%3Fcid=44&amp;id=115.html"><img src="../uploads/image/20190418/1555581290.jpg.html"
-                                                                                onload="autoimg()" class="imgauto"/></a> <a
-                    style="color:#fff;" class="pictitle" href="http://www.qdqtrj.com/mobile/&lt;?php&#32;echo&#32;$gourl;?&gt;">狼人杀游戏上帝端</a>
-            </li>
-            <li><a class="picbox" href="show.php%3Fcid=45&amp;id=116.html"><img src="../uploads/image/20190418/1555579623.jpg.html"
-                                                                                onload="autoimg()" class="imgauto"/></a> <a
-                    style="color:#fff;" class="pictitle" href="http://www.qdqtrj.com/mobile/&lt;?php&#32;echo&#32;$gourl;?&gt;">科信地震预警系统</a>
-            </li>
-            <li><a class="picbox" href="show.php%3Fcid=34&amp;id=117.html"><img src="../uploads/image/20190418/1555584060.jpg.html"
-                                                                                onload="autoimg()" class="imgauto"/></a> <a
-                    style="color:#fff;" class="pictitle"
-                    href="http://www.qdqtrj.com/mobile/&lt;?php&#32;echo&#32;$gourl;?&gt;">兴瑞生物实验室管理系统</a></li>
-            <li><a class="picbox" href="show.php%3Fcid=35&amp;id=110.html"><img src="../uploads/image/20190418/1555579562.jpg.html"
-                                                                                onload="autoimg()" class="imgauto"/></a> <a
-                    style="color:#fff;" class="pictitle"
-                    href="http://www.qdqtrj.com/mobile/&lt;?php&#32;echo&#32;$gourl;?&gt;">比奥齐姆小程序官网</a></li>
-        </ul>
-    </div>
-    <div class="clear"></div>
-    <div>
-        <div class="index_t"><span class="fl">最新动态</span><a href="list.php%3Fcid=6.html" class="fr nav_pro">更多&gt;&gt;</a></div>
-        <ul class="newsmain">
-            <li><a href="listshow.php%3Fcid=6&amp;id=32.html">祝贺青岛前途软件技术有限公司网站...</a></li>
-            <li><a href="listshow.php%3Fcid=6&amp;id=31.html">祝贺青岛前途软件技术有限公司网站...</a></li>
-            <li><a href="listshow.php%3Fcid=6&amp;id=30.html">专一钻研技术</a></li>
-            <li><a href="listshow.php%3Fcid=6&amp;id=29.html">能解决问题是关键</a></li>
-            <li><a href="listshow.php%3Fcid=6&amp;id=28.html">面向客户</a></li>
-        </ul>
-    </div>
-    <div class="clear"></div>
-    <div class="more"><a href="list.php%3Fcid=6.html"><span class="gochannel">查看更多新闻</span></a></div>
     <div class="clear"></div>
     <div class="line"></div>
     <div class="foot">
@@ -133,7 +53,7 @@
     <div id="bottom">
         <ul>
             <li>
-                <a href="index.php.html">
+                <a href="{% url 'mobile:index' %}">
                     <dl>
                         <dt><img src="{% static 'mobile/img/icon_1.png' %}" width="25" height="25"/></dt>
                         <dd>网站主页</dd>
@@ -142,67 +62,99 @@
             </li>
 
             <li>
-                <a href="message.php.html">
+                <a href="{% url 'mobile:service' %}">
                     <dl>
                         <dt><img src="{% static 'mobile/img/icon_2.png' %}" width="25" height="25"/></dt>
-                        <dd>在线留言</dd>
+                        <dd>软件服务</dd>
                     </dl>
                 </a>
             </li>
 
             <li>
-                <a href="map.php.html">
+                <a href="{% url 'mobile:product' %}">
                     <dl>
                         <dt><img src="{% static 'mobile/img/icon_3.png' %}" width="25" height="25"/></dt>
-                        <dd>一键地图</dd>
+                        <dd>公司产品</dd>
                     </dl>
                 </a>
             </li>
 
             <li>
-                <a href="tel:17554153785">
+                {#                <a href="tel:17554153785">#}
+                <a href="{% url 'mobile:case' %}">
                     <dl>
                         <dt><img src="{% static 'mobile/img/icon_4.png' %}" width="25" height="25"/></dt>
-                        <dd>热线电话</dd>
+                        <dd>项目案例</dd>
                     </dl>
                 </a>
             </li>
 
             <li>
-                <a href="sms:17554153785">
+                {#                <a href="sms:17554153785">#}
+                <a href="{% url 'mobile:contact' %}">
                     <dl>
                         <dt><img src="{% static 'mobile/img/icon_5.png' %}" width="25" height="25"/></dt>
-                        <dd>发送短信</dd>
+                        <dd>联系我们</dd>
                     </dl>
                 </a>
             </li>
         </ul>
     </div>
-{#    <script type="text/javascript" src="{% static 'mobile/js/touchScroll.js' %}"></script>#}
-    <script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
-    <script type="text/javascript">
-        var active = 0,
-            as = document.getElementById('pagenavi').getElementsByTagName('a');
+</div>
 
-        for (var i = 0; i < as.length; i++) {
-            (function () {
-                var j = i;
-                as[i].onclick = function () {
-                    t2.slide(j);
-                    return false;
-                }
-            })();
+{#    <script type="text/javascript" src="{% static 'mobile/js/touchScroll.js' %}"></script>#}
+<script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
+<script type="text/javascript">
+    var active = 0,
+        as = document.getElementById('pagenavi').getElementsByTagName('a');
+
+    for (var i = 0; i < as.length; i++) {
+        (function () {
+            var j = i;
+            as[i].onclick = function () {
+                t2.slide(j);
+                return false;
+            }
+        })();
+    }
+
+    var t2 = new TouchSlider({
+        id: 'slider', speed: 600, timeout: 6000, before: function (index) {
+            as[active].className = '';
+            active = index;
+            as[active].className = 'active';
+        }
+    });
+
+
+    $('.show_zihao span').click(function () {
+
+        $(this).nextAll().show();
+
+
+    })
+
+    $('.show_zihao ul li').click(function () {
+        console.log(1);
+        var index = $(this).index();
+        if (index == 0) {
+            $('.content').css('font-size', '0.9em');
+            $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
+        }
+        if (index == 1) {
+            $('.content').css('font-size', '1em');
+            $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
+        }
+        if (index == 2) {
+            $('.content').css('font-size', '1.1em');
+            $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
         }
 
-        var t2 = new TouchSlider({
-            id: 'slider', speed: 600, timeout: 6000, before: function (index) {
-                as[active].className = '';
-                active = index;
-                as[active].className = 'active';
-            }
-        });
-    </script>
+        $('.show_zihao span').nextAll().hide();
 
-</div>
+    }), $('.show_zihao ul li').eq(1).click()
+
+
+</script>
 </body>
 </html>
