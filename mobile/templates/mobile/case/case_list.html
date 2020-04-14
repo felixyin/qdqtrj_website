@@ -1,18 +1,17 @@
 {% extends 'share_layout/mobile_layout.html' %}
 
 {% block content %}
-
+    <div class="nav">
+        <ul>
+            <li><a href="{% url 'mobile:case' %}">全部</a></li>
+            {% for c in category_list %}
+                <li><a href="{{ c.get_mobile_url }}">{{ c.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
     <div class="product">
         <div class="index_t">
             <span class="fl">项目案例</span>
-            <div class="subtitle" style="float: right;">
-                <span class="classbtn">服务项目</span>
-                <ul class="class" style="display: none;">
-                    {% for c in category_list%}
-                        <li><a href="{{ c.get_mobile_url }}">{{ c.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
         </div>
         <ul style=" padding-top:8px;">
             {% for s in case_list %}
