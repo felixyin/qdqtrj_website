@@ -301,8 +301,8 @@ STATICFILES_FINDERS = (
     # other
     'compressor.finders.CompressorFinder',
 )
-# COMPRESS_ENABLED = True
-COMPRESS_ENABLED = False
+COMPRESS_ENABLED = True
+# COMPRESS_ENABLED = False
 # COMPRESS_OFFLINE = True
 
 

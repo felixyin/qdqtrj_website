@@ -1011,7 +1011,7 @@ h1 a {
 /*公司简介*/
 
 .company {
-    background: #fcfcfc;
+    /*background: #fcfcfc;*/
     padding-top: 30px;
     padding-bottom: 30px;
 }

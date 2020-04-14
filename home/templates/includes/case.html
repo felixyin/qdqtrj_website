@@ -26,7 +26,7 @@
         <div class="display_show fr">
             <div class="common_title clearfix">
                 <div class="loft fl">
-                    <img src="{% static 'images/fz.png' %}"> 外包案例
+                    {# <img src="{% static 'images/fz.png' %}"> #} 外包案例
                 </div>
 {#                <div class="more fr">#}
 {#                    您当前位置：<a href="index.php.html">网站首页</a> > 外包案例#}
@@ -37,7 +37,6 @@
 
                     {% for case in case_list %}
                         <li>
-                            {{ category.id }} - {{ case.id }}
                             {#                                <a href="{% url 'case:case-detail' category_pk=category.id case_pk=case.id %}">#}
                             <a href="{{ case.get_absolute_url }}">
                                 <div class="p_show_img">
@@ -48,7 +47,7 @@
                                         <h3>{{ case.name }}</h3>
                                     </div>
                                     <div class="pt_two fr">
-                                        <img src="images/y_hongse.png">
+                                        <img src="{% static 'images/y_hongse.png' %}">
                                     </div>
                                 </div>
                             </a>
