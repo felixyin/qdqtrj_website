@@ -1,7 +1,10 @@
+import json
 import re
 
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 import logging
+
+from django.urls import reverse
 
 from base.models import Message
 
@@ -74,4 +77,7 @@ def collection_message(request):
             # except BaseException:
             #     pass
 
-    return render(request, 'message.html', msg)
+    if request.is_mobile:
+        return HttpResponse(json.dumps(msg))
+    else:
+        return render(request, 'message.html', msg)

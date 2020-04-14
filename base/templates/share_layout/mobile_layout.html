@@ -45,6 +45,62 @@
     {% block content %}
     {% endblock %}
 
+    <div class="product">
+        <div class="index_t"><span class="fl">免费报价</span></div>
+        <div style=" padding:10px;">
+            <form name="form" id="form" method="post" action="">
+                {% csrf_token %}
+                <table width="98%" align="center" border="0" cellpadding="0" cellspacing="5">
+                    <tr>
+                        <td class="msgtitle">姓名：</td>
+                        <td><input name="name" type="text" id="nickname" class="msg_input"/></td>
+                    </tr>
+                    <tr>
+                        <td class="msgtitle">电话：</td>
+                        <td><input name="phone" type="text" id="phone" class="msg_input" placeholder="必填项"/></td>
+                    </tr>
+                    <tr>
+                        <td class="msgtitle">需求：</td>
+                        <td><textarea name="content" class="msg_input" style="width:94%;height:100px;overflow:auto;"
+                                      id="content" placeholder="请描述一下您的需求"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="msg_btn_area"><a href="javascript:cfm_msg();">提　交</a></div>
+                            <input type="hidden" name="action" id="action" value="add"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        document.getElementById('nickname').focus();
+
+        function cfm_msg() {
+            if ($("#phone").val() == "") {
+                alert("请您填写联系电话！方便稍后联系您");
+                $("#phone").focus();
+                return ;
+            }
+            $.post('{% url "message" %}', {
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+                phone: $('#phone').val(),
+                content: $('#content').val(),
+                name: $('#nickname').val(),
+            }, function (res) {
+                var j = JSON.parse(res);
+                alert(j.msg);
+                $('#phone').val('');
+            });
+        }
+
+        var msg = '{{ msg }}';
+        if (msg) {
+            alert(msg)
+        }
+    </script>
     <div class="clear"></div>
     <div class="line"></div>
     <div class="foot">
