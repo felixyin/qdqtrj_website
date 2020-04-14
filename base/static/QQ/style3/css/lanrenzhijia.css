@@ -3,7 +3,7 @@
 
 /*客服部分*/
 .qqserver p img{display:inline;margin:-5px 5px 0 0;vertical-align:middle;}
-.scrollsidebar{position:absolute;z-index:999;top:160px;}
+.scrollsidebar{position:absolute;z-index:999;top:260px;}
 .side_content{width:167px;height:auto;overflow:hidden;float:left;}
 .side_content .side_list{width:167px;overflow:hidden;}
 .show_btn{width:0;height:144px;overflow:hidden;margin-top:50px;float:left;cursor:pointer;}

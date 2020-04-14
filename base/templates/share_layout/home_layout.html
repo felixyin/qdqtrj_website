@@ -7,12 +7,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ SITE_NAME }}</title>
+    <title>{{ SITE_NAME }} | {{ SITE_DESCRIPTION }}</title>
+    <meta name="description" content="{{ SITE_SEO_DESCRIPTION }}"/>
+    <meta name="keywords" content="{{ SITE_KEYWORDS }}"/>
+    <meta property="og:type" content="blog"/>
+    <meta property="og:title" content="{{ SITE_NAME }}"/>
+    <meta property="og:description" content="{{ SITE_DESCRIPTION }}"/>
+    <meta property="og:url" content="{{ SITE_BASE_URL }}"/>
+    <meta property="og:site_name" content="{{ SITE_NAME }}"/>
     {% block header %} {% endblock %}
     {% compress css %}
-        <link rel="stylesheet" href="{% static 'css/miniSlider.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+        <link rel="stylesheet" type="text/css" href="{% static 'css/miniSlider.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'QQ/style3/css/lanrenzhijia.css' %}"/>
         {% block compress_css %} {% endblock %}
     {% endcompress %}
 </head>
@@ -27,33 +34,17 @@
 {#  页脚   #}
 {% include 'includes/footer.html' %}
 
-{% compress js %}
-    <!-- Initialize Swiper -->
-    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-    <!-- Swiper JS -->
-    {#    <script src="{% static 'js/swiper.min.js' %}"></script>#}
-    {#    <script src="{% static 'js/swiper-3.4.2.jquery.min.js' %}"></script>#}
-    <script src="{% static 'js/miniSlider.js' %}"></script>
-    <script src="{% static 'js/website.js' %}"></script>
+{# 收集用户需求: 微信，QQ#}
+{% include 'includes/collect_demand.html' %}
 
+{% compress js %}
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'js/miniSlider.js' %}"></script>
+    <script src="{% static 'QQ/style3/js/jquery.hhService.js' %}"></script>
+    <script src="{% static 'js/website.js' %}"></script>
     {% block compress_js %}
     {% endblock %}
 {% endcompress %}
-
-{# 收集用户需求: 微信，QQ#}
-{#{% include 'includes/collect_demand.html' %}#}
-
-{# 商桥代码 #}
-{% comment %}<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?cee5b76d43eeef2af550a6fc79e77ce7";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>{% endcomment %}
-
 
 </body>
 

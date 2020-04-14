@@ -38,6 +38,7 @@ def seo_processor(requests):
             'SITE_SEO_DESCRIPTION': setting.site_seo_description,
             'SITE_DESCRIPTION': setting.site_description,
             'SITE_KEYWORDS': setting.site_keywords,
+            'COPYRIGHT': setting.copyright,
             'BLOG_NAME': setting.blogname,
             'BLOG_SEO_DESCRIPTION': setting.blog_seo_description,
             'BLOG_DESCRIPTION': setting.blog_description,
