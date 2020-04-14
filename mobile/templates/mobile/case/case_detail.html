@@ -1,0 +1,46 @@
+{% extends 'share_layout/mobile_layout.html' %}
+
+{% block content %}
+
+    <div class="about">
+        <div class="flc">
+            <span style="float:left; width:80%;">
+                <a href="{% url  'mobile:case' %}">项目案例&nbsp;>&nbsp;</a>
+                {{ case.name }}
+            </span>
+            <div class="show_zihao"><span>字号+</span>
+                <div class="show_zihao_sanjiao"></div>
+                <ul>
+                    <li>小号</li>
+                    <li>标准</li>
+                    <li>大号</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <h2>{{ case.name }}</h2>
+            <div class="img" style="margin:15px 0;">
+                <img style="border:2px solid #2574b8; width:300px; box-shadow:10px 10px 0 #dddddd;" src="{{ case.thumb.url }}"
+                     width="300"/>
+            </div>
+            <div class="tel_message">
+                <ul>
+                    <li><a href="tel:17554153785">电话咨询</a></li>
+                    <li><a href="message.php.html">在线咨询</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+
+            <div class="index_t" style="color:#fff;">详情</div>
+
+            {{ case.content|safe }}
+
+            {% include 'mobile/includes/share.html' %}
+
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="btn-b btn-back"><a href="javascript:history.back();">返回</a></div>
+    <div class="clear"></div>
+
+{% endblock %}

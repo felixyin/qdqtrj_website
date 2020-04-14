@@ -11,26 +11,6 @@ from product.models import Product
 from service.models import Service
 
 
-class MobileView(DetailView):
-    # 首页
-    template_name = 'mobile/index.html'
-    model = Home
-
-    def get_context_data(self, **kwargs):
-        kwargs['carousel_list'] = self.object.carousel_set.all().order_by('sequence')
-        kwargs['adware_list'] = self.object.adware_set.all().order_by('sequence')
-        kwargs['superiority_list'] = self.object.superiority_set.all().order_by('sequence')
-        kwargs['category_list'] = Category.objects.all().order_by('sequence')
-        kwargs['case_list'] = Case.objects.all()[:6]
-        product_list = Product.objects.all()
-        kwargs['first_product'] = product_list[0]
-        kwargs['other_products'] = product_list[0:4]
-        kwargs['service_list'] = Service.objects.all()
-        kwargs['aboutitem_list'] = AboutItem.objects.all().order_by('sequence')
-
-        return super().get_context_data(**kwargs)
-
-
 class ServiceListView(ListView):
     template_name = 'mobile/service/service_list.html'
     model = Service
@@ -52,11 +32,9 @@ class ProductDetailView(DetailView):
 
 
 class CategoryDetailView(DetailView):
-    # 分类
     model = Category
     pk_url_kwarg = 'category_pk'
 
-    # 分类 和 案例列表
     def get_context_data(self, **kwargs):
         kwargs['category_list'] = Category.objects.all()
         category_pk = int(self.kwargs['category_pk'])
@@ -64,14 +42,21 @@ class CategoryDetailView(DetailView):
         return super().get_context_data(**kwargs)
 
 
-class CaseDetailView(DetailView):
-    # 案例详情
+class CaseListView(ListView):
+    template_name = 'mobile/case/case_list.html'
     model = Case
-    pk_url_kwarg = 'case_pk'
+
+    def get_context_data(self, **kwargs):
+        # kwargs['category_list'] = Category.objects.all()
+        return super().get_context_data(**kwargs)
+
+
+class CaseDetailView(DetailView):
+    template_name = 'mobile/case/case_detail.html'
+    model = Case
 
     def get_context_data(self, **kwargs):
         # pk = int(self.kwargs[self.pk_url_kwarg])
-        kwargs['category_list'] = Category.objects.all()
         kwargs['next_case'] = self.object.next_case
         kwargs['prev_case'] = self.object.prev_case
         kwargs['related_cases'] = self.object.get_related_cases
