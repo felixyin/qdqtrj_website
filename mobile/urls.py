@@ -28,5 +28,6 @@ urlpatterns = [
     path('category/<int:category_pk>', my_cache(v.CategoryDetailView.as_view), name='category'),
     path('case', my_cache(v.CaseListView.as_view), name='case'),
     path('case/<int:pk>', my_cache(v.CaseDetailView.as_view), name='case-detail'),
+    path('about/<int:pk>', my_cache(v.AboutDetailView.as_view), name='about'),
     # path('', v.index,  name='index'),
 ]

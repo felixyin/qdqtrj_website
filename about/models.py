@@ -19,3 +19,6 @@ class AboutItem(BaseModel):
 
     def get_absolute_url(self):
         return reverse('about:item', kwargs={'pk': self.id})
+
+    def get_mobile_url(self):
+        return reverse('mobile:about', kwargs={'pk': self.id})

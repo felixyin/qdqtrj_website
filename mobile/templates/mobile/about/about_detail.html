@@ -1,0 +1,38 @@
+{% extends 'share_layout/mobile_layout.html' %}
+
+{% block content %}
+  <div class="nav">
+        <ul>
+            {% for c in about_list %}
+                <li><a href="{{ c.get_mobile_url }}">{{ c.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="about">
+        <div class="flc">
+            <span style="float:left; width:80%;">
+                <a href="{% url  'mobile:about' pk='1' %}">项目案例&nbsp;>&nbsp;</a>
+                {{ aboutitem.title}}
+            </span>
+            <div class="show_zihao"><span>字号+</span>
+                <div class="show_zihao_sanjiao"></div>
+                <ul>
+                    <li>小号</li>
+                    <li>标准</li>
+                    <li>大号</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <h2>{{ aboutitem.title }}</h2>
+
+
+            {{ aboutitem.content|safe }}
+
+            {% include 'mobile/includes/share.html' %}
+
+        </div>
+    </div>
+    <div class="clear"></div>
+
+{% endblock %}
