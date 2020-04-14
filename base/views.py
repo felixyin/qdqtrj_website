@@ -55,7 +55,7 @@ def collection_message(request):
         #     print(msg)
 
         p = request.POST
-        msg = {'msg': '留言成功！'}
+        msg = {'msg': '提交成功，稍后我们会联系您。'}
         m = Message(name=p.get('name'), phone=p.get('phone'), wechart=p.get('wechart'), qq=p.get('qq'),
                     content=p.get('content'))
         ret = re.match(r"^1[35678]\d{9}$", m.phone)
