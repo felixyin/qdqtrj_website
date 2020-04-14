@@ -55,7 +55,8 @@ urlpatterns = [
                   url(r'^case/', include('case.urls', namespace='case')),
                   # 留言
                   url(r'^message/', collection_message, name='message'),
-
+                  # 移动端
+                  url(r'^mobile/', include('mobile.urls', namespace='mobile')),
                   # 博客
                   url(r'^blog/', include('blog.urls', namespace='blog')),
                   # 富文本编辑器
