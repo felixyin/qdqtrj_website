@@ -24,6 +24,9 @@ class Category(BaseModel):
     def get_absolute_url(self):
         return reverse('case:category-detail', kwargs={'category_pk': self.id})
 
+    def get_mobile_url(self):
+        return reverse('mobile:category', kwargs={'category_pk': self.id})
+
 
 class Case(BaseModel):
     # 案例

@@ -32,6 +32,7 @@ class ProductDetailView(DetailView):
 
 
 class CategoryDetailView(DetailView):
+    template_name = 'mobile/case/case_list.html'
     model = Category
     pk_url_kwarg = 'category_pk'
 
@@ -47,7 +48,7 @@ class CaseListView(ListView):
     model = Case
 
     def get_context_data(self, **kwargs):
-        # kwargs['category_list'] = Category.objects.all()
+        kwargs['category_list'] = Category.objects.all()
         return super().get_context_data(**kwargs)
 
 

@@ -90,8 +90,8 @@
             </li>
 
             <li>
-                                <a href="sms:17554153785">
-{#                <a href="{% url 'mobile:contact' %}">#}
+                <a href="sms:17554153785">
+                    {#                <a href="{% url 'mobile:contact' %}">#}
                     <dl>
                         <dt><img src="{% static 'mobile/img/icon_5.png' %}" width="25" height="25"/></dt>
                         <dd>联系我们</dd>
@@ -102,59 +102,65 @@
     </div>
 </div>
 
-{#    <script type="text/javascript" src="{% static 'mobile/js/touchScroll.js' %}"></script>#}
-<script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
-<script type="text/javascript">
-    var active = 0,
-        as = document.getElementById('pagenavi').getElementsByTagName('a');
 
-    for (var i = 0; i < as.length; i++) {
-        (function () {
-            var j = i;
-            as[i].onclick = function () {
-                t2.slide(j);
-                return false;
+
+{% compress js %}
+    {#    <script type="text/javascript" src="{% static 'mobile/js/touchScroll.js' %}"></script>#}
+    <script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
+    <script type="text/javascript">
+        var active = 0,
+            as = document.getElementById('pagenavi').getElementsByTagName('a');
+
+        for (var i = 0; i < as.length; i++) {
+            (function () {
+                var j = i;
+                as[i].onclick = function () {
+                    t2.slide(j);
+                    return false;
+                }
+            })();
+        }
+
+        var t2 = new TouchSlider({
+            id: 'slider', speed: 600, timeout: 6000, before: function (index) {
+                as[active].className = '';
+                active = index;
+                as[active].className = 'active';
             }
-        })();
-    }
-
-    var t2 = new TouchSlider({
-        id: 'slider', speed: 600, timeout: 6000, before: function (index) {
-            as[active].className = '';
-            active = index;
-            as[active].className = 'active';
-        }
-    });
+        });
 
 
-    $('.show_zihao span').click(function () {
+        $('.show_zihao span').click(function () {
 
-        $(this).nextAll().show();
-
-
-    })
-
-    $('.show_zihao ul li').click(function () {
-        console.log(1);
-        var index = $(this).index();
-        if (index == 0) {
-            $('.content').css('font-size', '0.9em');
-            $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
-        }
-        if (index == 1) {
-            $('.content').css('font-size', '1em');
-            $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
-        }
-        if (index == 2) {
-            $('.content').css('font-size', '1.1em');
-            $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
-        }
-
-        $('.show_zihao span').nextAll().hide();
-
-    }), $('.show_zihao ul li').eq(1).click()
+            $(this).nextAll().show();
 
 
-</script>
+        })
+
+        $('.show_zihao ul li').click(function () {
+            console.log(1);
+            var index = $(this).index();
+            if (index == 0) {
+                $('.content').css('font-size', '0.9em');
+                $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
+            }
+            if (index == 1) {
+                $('.content').css('font-size', '1em');
+                $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
+            }
+            if (index == 2) {
+                $('.content').css('font-size', '1.1em');
+                $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
+            }
+
+            $('.show_zihao span').nextAll().hide();
+
+        }), $('.show_zihao ul li').eq(1).click()
+
+
+    </script>
+    {% block compress_js %}
+    {% endblock %}
+{% endcompress %}
 </body>
 </html>

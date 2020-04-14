@@ -25,6 +25,7 @@ urlpatterns = [
     path('service/<int:pk>', my_cache(v.ServiceDetailView.as_view), name='service-detail'),
     path('product', my_cache(v.ProductListView.as_view), name='product'),
     path('product/<int:pk>', my_cache(v.ProductDetailView.as_view), name='product-detail'),
+    path('category/<int:category_pk>', my_cache(v.CategoryDetailView.as_view), name='category'),
     path('case', my_cache(v.CaseListView.as_view), name='case'),
     path('case/<int:pk>', my_cache(v.CaseDetailView.as_view), name='case-detail'),
     # path('', v.index,  name='index'),
