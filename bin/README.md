@@ -42,7 +42,7 @@
    加入以下内容：
    ```
    [program:qdqtrj_website]
-   command = /root/qdqtrj_website/run/gunicorn_start.sh
+   command = /root/qdqtrj_website/bin/gunicorn_start.sh
    user = root
    autostart=true
    autorestart=true
@@ -53,7 +53,7 @@
    ```
 8. 配置nginx：
     ```
-    cp test.conf /etc/nginx/conf.d/ # 复制后，按照实际情况进行修改
+    cp bin/www.qdqtrj.com.conf /etc/nginx/conf.d/ # 复制后，按照实际情况进行修改
     nginx -s reload
     ```
    
@@ -81,3 +81,12 @@
 
 1. 数据库导出到sql
 2. git提交
+
+
+## 5. 文件说明  
+    
+- gunicorn_start.sh
+- prun.sh
+- README.md
+- start_all_in_one.sh
+- www.qdqtrj.com.conf
