@@ -26,5 +26,6 @@ exec /root/qdqtrj_website/venv/bin/gunicorn  ${DJANGO_WSGI_MODULE}:application \
 --name $NAME \
 --workers $NUM_WORKERS \
 --user=$USER --group=$GROUP \
+--bind 0.0.0.0:8888 \
 --log-level=debug \
 --log-file=-
