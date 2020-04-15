@@ -73,9 +73,10 @@
    ```
 3. 运行python：
    ```
-   nohup ./gunicorn_start.sh >/dev/null 2>&1 &
+   # 此行是手动运行测试： nohup ./gunicorn_start.sh >/dev/null 2>&1 &
    supervisorctl restart qdqtrj_website
-   sudo /etc/init.d/memcached restart && sudo /etc/init.d/nginx restart
+   sudo /etc/init.d/memcached restart 
+   sudo /etc/init.d/nginx restart
    ``` 
 4. 打开浏览器，访问测试
 
