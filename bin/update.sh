@@ -2,9 +2,11 @@
 
 cd /root/qdqtrj_website
 
-# 更新代码
+# fixme 警告，警告！！！ 不要强制更新，下面两行不要打开，否则可能会丢失备份数据，以及用户上传的图片文件
 #git fetch --all
 #git reset --hard origin/master
+
+# 更新代码
 git pull
 
 # 赋予执行权限
