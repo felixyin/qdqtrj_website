@@ -105,7 +105,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',
+                # 'django.template.context_processors.i18n',
                 'base.context_processors.seo_processor',
             ],
         },
@@ -426,11 +426,11 @@ SIMPLEUI_CONFIG = {
                 {'name': '联系信息', 'icon': 'fa fa-file', 'url': '/admin/base/contactinfo/'},
                 {'name': '公司首页', 'icon': 'fa fa-file', 'url': '/admin/home/home/'},
                 {'name': '解决方案', 'icon': 'fa fa-file', 'url': '/admin/service/service/'},
-                {'name': '公司产品', 'icon': 'fa fa-file', 'url': '/admin/service/product/'},
+                {'name': '公司产品', 'icon': 'fa fa-file', 'url': '/admin/product/product/'},
                 {'name': '案例-分类', 'icon': 'fa fa-file', 'url': '/admin/case/category/'},
                 {'name': '外包案例', 'icon': 'fa fa-file', 'url': '/admin/case/case/'},
                 {'name': '关于我们', 'icon': 'fa fa-file', 'url': '/admin/about/aboutitem/'},
-                {'name': '免费报价', 'icon': 'fa fa-file', 'url': '//admin/base/message/'},
+                {'name': '免费报价', 'icon': 'fa fa-file', 'url': '/admin/base/message/'},
             ]
         },
 
