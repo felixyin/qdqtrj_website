@@ -2065,7 +2065,7 @@ h1 a {
     font-size: 14px;
 }
 
-/*在线留言*/
+/*免费报价*/
 
 .layui-form-item {
     margin-bottom: 15px;
@@ -2104,7 +2104,7 @@ h1 a {
 }
 
 .layui-textarea {
-    height: 134px;
+    height: 148px;
     line-height: 1.3;
     line-height: 38px \9;
     border-width: 1px;
@@ -2113,7 +2113,7 @@ h1 a {
     border-radius: 2px;
     border: 1px solid #cdcdcd;
     outline: none;
-    resize: none;
+    /*resize: none;*/
     padding-top: 10px;
 }
 

@@ -424,14 +424,15 @@ SIMPLEUI_CONFIG2 = {
             'name': '网站管理',
             'icon': 'fa fa-file',
             'models': [
-                {'name': 'SEO', 'icon': 'fa fa-file', 'url': '/admin/base/websettings/'},
-                {'name': '主页', 'icon': 'fa fa-file', 'url': '/admin/home/home/'},
-                {'name': '服务', 'icon': 'fa fa-file', 'url': '/admin/service/service/'},
-                {'name': '产品', 'icon': 'fa fa-file', 'url': '/admin/service/product/'},
+                {'name': '网站配置', 'icon': 'fa fa-file', 'url': '/admin/base/websettings/'},
+                {'name': '联系信息', 'icon': 'fa fa-file', 'url': '/admin/base/contactinfo/'},
+                {'name': '公司首页', 'icon': 'fa fa-file', 'url': '/admin/home/home/'},
+                {'name': '解决方案', 'icon': 'fa fa-file', 'url': '/admin/service/service/'},
+                {'name': '公司产品', 'icon': 'fa fa-file', 'url': '/admin/service/product/'},
                 {'name': '案例-分类', 'icon': 'fa fa-file', 'url': '/admin/case/category/'},
-                {'name': '案例', 'icon': 'fa fa-file', 'url': '/admin/case/case/'},
-                {'name': '留言', 'icon': 'fa fa-file', 'url': '//admin/base/message/'},
-                {'name': '关于', 'icon': 'fa fa-file', 'url': '/admin/about/about/'},
+                {'name': '外包案例', 'icon': 'fa fa-file', 'url': '/admin/case/case/'},
+                {'name': '关于我们', 'icon': 'fa fa-file', 'url': '/admin/about/aboutitem/'},
+                {'name': '免费报价', 'icon': 'fa fa-file', 'url': '//admin/base/message/'},
             ]
         },
 

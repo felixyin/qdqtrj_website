@@ -120,7 +120,7 @@ class Message(BaseModel):
     content = m.TextField(max_length=2000, null=True, blank=True, verbose_name='留言信息')
 
     class Meta:
-        verbose_name = '在线留言'
+        verbose_name = '免费报价'
         verbose_name_plural = verbose_name
 
 
