@@ -31,14 +31,37 @@
     ```
     ./prun.sh
     ```
-   
-## 3. 运行
+6. 安装memcached、supervisor
+   ```
+    sudo apt install supervisor memcached -y
+   ```
+7. 配置supervisor
+   ```
+   sudo vim /etc/supervisor/conf.d/qdqtrj_website.conf
+   ```
+   加入以下内容：
+   ```
+   [program:qdqtrj_website]
+   command = /root/qdqtrj_website/run/gunicorn_start.sh
+   user = root
+   autostart=true
+   autorestart=true
 
-1. 配置nginx：
+   redirect_stderr = true
+   stdout_logfile = /var/log/qdqtrj_website.log
+   stderr_logfile=/var/log/qdqtrj_website.err
+   ```
+8. 配置nginx：
     ```
-    cp test.conf /etc/nginx/conf.d/ # 按照实际修改
+    cp test.conf /etc/nginx/conf.d/ # 复制后，按照实际情况进行修改
     nginx -s reload
     ```
+   
+## 3. 运行
+1. 配置django setting.py：
+    - 数据库连接信息
+    - debug
+    - 缓存等
 2. 收集静态文件：
    ```
    python3.8 ./manage.py collectedstatic
@@ -46,6 +69,9 @@
 3. 运行python：
    ```
    nohup ./gunicorn_start.sh >/dev/null 2>&1 &
+   sudo supervisorctl update
+   sudo supervisorctl reload
+   sudo /etc/init.d/memcached restart && sudo /etc/init.d/nginx restart
    ``` 
 4. 打开浏览器，访问测试
 
