@@ -22,4 +22,4 @@ class WebSettingsAdmin(admin.ModelAdmin):
 
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'content', 'wechart', 'qq', 'email',)
+    list_display = ('created_time', 'is_read', 'name', 'phone', 'content', 'wechart', 'qq', 'email',)

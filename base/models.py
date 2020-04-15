@@ -119,6 +119,12 @@ class Message(BaseModel):
     email = m.CharField(max_length=20, null=True, blank=True, verbose_name='邮箱')
     content = m.TextField(max_length=2000, null=True, blank=True, verbose_name='留言信息')
 
+    class EnumIsRead(m.TextChoices):
+        YIDU = 'Y', _('已读')
+        WEIDU = 'N', _('未读')
+
+    is_read = m.CharField(max_length=1, choices=EnumIsRead.choices, default=EnumIsRead.WEIDU, verbose_name='已读否？')
+
     class Meta:
         verbose_name = '免费报价'
         verbose_name_plural = verbose_name
