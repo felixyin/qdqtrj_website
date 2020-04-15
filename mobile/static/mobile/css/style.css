@@ -254,6 +254,20 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
     padding: 0 3%;
 }
 
+
+.index_t_sub {
+    color: #0c4089;
+    font-size: 1.1em;
+    height: 30px;
+    line-height: 27px;
+    width: 94%;
+    clear: both;
+    display: inline-block;
+    background: url('../img/title.jpg') no-repeat;
+    background-size: 100% 100%;
+    padding: 0 3%;
+}
+
 .index_t .fl {
     background: #012c5a;
     color: #fff;
@@ -461,8 +475,8 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 
 .tel_message li:nth-child(1) {
     width: 45%;
-    height: 35px;
-    line-height: 35px;
+    height: 32px;
+    line-height: 32px;
     background: url(../img/tel_zixun.jpg) no-repeat;
     background-size: 100% 100%;
     border-radius: 5px;
@@ -474,8 +488,8 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 
 .tel_message li:nth-child(2) {
     width: 45%;
-    height: 35px;
-    line-height: 35px;
+    height: 32px;
+    line-height: 32px;
     background: url(../img/line_zixun.jpg) no-repeat;
     background-size: 100% 100%;
     border-radius: 5px;
@@ -724,7 +738,7 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 .foot {
     background: #f6f5f5;
     margin-top: 10px;
-    height: 100px;
+    height: 85px;
     line-height: 30px;
     text-align: center
 }
@@ -923,7 +937,7 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
     padding-bottom: 5px;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 15px
+    margin-top: 5px!important;
 }
 
 .message_block {
@@ -935,7 +949,8 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 }
 
 .msg_input {
-    width: 90%;
+    width: 85%;
+    height: 10px;
     border: 1px solid #e0e0e0;
     padding: 8px 9px;
     background: #fff;
@@ -994,7 +1009,7 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 
 .msg_btn_area a {
     display: inline-block;
-    padding: 5px 15px;
+    padding: 4px 20px!important;
     background: #09F;
     color: #fff;
     text-align: center;

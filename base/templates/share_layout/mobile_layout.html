@@ -14,14 +14,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
     <meta content="telephone=no" name="format-detection"/>
     <link href="{% static 'mobile/css/style.css' %}" rel="stylesheet" type="text/css"/>
-    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-    <script>
-        function autoimg() {
-            imgwidth = $('.imgauto').width() * 3 / 4;
-            $('.imgauto').attr("height", imgwidth);
 
-        }
-    </script>
 </head>
 
 <body>
@@ -82,7 +75,7 @@
             if ($("#phone").val() == "") {
                 alert("请您填写联系电话！方便稍后联系您");
                 $("#phone").focus();
-                return ;
+                return;
             }
             $.post('{% url "message" %}', {
                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
@@ -161,6 +154,15 @@
 
 
 {% compress js %}
+    {#    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>#}
+    <script src="{% static 'mobile/js/zepto.min.js' %}"></script>
+    <script>
+        function autoimg() {
+            imgwidth = $('.imgauto').width() * 3 / 4;
+            $('.imgauto').attr("height", imgwidth);
+
+        }
+    </script>
     {#    <script type="text/javascript" src="{% static 'mobile/js/touchScroll.js' %}"></script>#}
     <script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
     <script type="text/javascript">

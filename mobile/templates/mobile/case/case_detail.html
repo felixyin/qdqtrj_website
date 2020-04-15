@@ -3,19 +3,10 @@
 {% block content %}
 
     <div class="about">
-        <div class="flc">
-            <span style="float:left; width:80%;">
-                <a href="{% url  'mobile:case' %}">外包案例&nbsp;>&nbsp;</a>
+        <div class="index_t">
+            <span class="fl">
                 {{ case.name }}
             </span>
-            <div class="show_zihao"><span>字号+</span>
-                <div class="show_zihao_sanjiao"></div>
-                <ul>
-                    <li>小号</li>
-                    <li>标准</li>
-                    <li>大号</li>
-                </ul>
-            </div>
         </div>
         <div class="content">
             <h2>{{ case.name }}</h2>
@@ -31,7 +22,7 @@
             </div>
             <div class="clear"></div>
 
-            <div class="index_t" style="color:#fff;">详情</div>
+            <div class="index_t_sub" style="color:#fff;">详情</div>
 
             {{ case.content|safe }}
 
@@ -39,8 +30,8 @@
 
         </div>
     </div>
-    <div class="clear"></div>
-    <div class="btn-b btn-back"><a href="javascript:history.back();">返回</a></div>
+{#    <div class="clear"></div>#}
+{#    <div class="btn-b btn-back"><a href="javascript:history.back();">返回</a></div>#}
     <div class="clear"></div>
 
 {% endblock %}
