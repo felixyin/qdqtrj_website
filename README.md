@@ -1,12 +1,10 @@
 # 青岛前途软件公司网站
 
-🌍
-*[English](/docs/README-en.md) ∙ [简体中文](README.md)*
+🌍 [简体中文](README.md)*
 
 
 qdqtrj_website
 
-[![Build Status](https://travis-ci.org/felixyin/qdqtrj_website.svg?branch=master)](https://travis-ci.org/liangliangyy/DjangoBlog) [![codecov](https://codecov.io/gh/felixyin/qdqtrj_website/branch/master/graph/badge.svg)](https://codecov.io/gh/felixyin/qdqtrj_website) [![Requirements Status](https://requires.io/github/felixyin/qdqtrj_website/requirements.svg?branch=master)](https://requires.io/github/felixyin/qdqtrj_website/requirements/?branch=master)  [![license](https://img.shields.io/github/license/felixyin/qdqtrj_website.svg)]()  
 
 ## 主要功能：
 - 文章，页面，分类目录，标签的添加，删除，编辑等。文章及页面支持`Markdown`，支持代码高亮。
@@ -47,7 +45,8 @@ mysql客户端从`pymysql`修改成了`mysqlclient`，具体请参考 [pypi](htt
 
 `bin`目录是在`linux`环境中使用`Nginx`+`Gunicorn`+`virtualenv`+`supervisor`来部署的脚本和`Nginx`配置文件.可以参考我的文章:
 
->[DjangoBlog部署教程](https://www.lylinux.net/article/2019/8/5/58.html)
+>[自动部署和备份教程1](https://github.com/felixyin/qdqtrj_website/tree/master/bin)
+>[手动部署教程2](https://www.lylinux.net/article/2019/8/5/58.html)
 
 有详细的部署介绍.
 
@@ -128,8 +127,5 @@ env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip 
 
 ---
  ## 致大家🙋‍♀️🙋‍♂️
- 本项目基于https://github.com/liangliangyy/DjangoBlog 修改。
- 如果本项目帮助到了你，请在[这里](https://github.com/liangliangyy/DjangoBlog/issues/214)留下你的网址，让更多的人看到。
-您的回复将会是我继续更新维护下去的动力。 
 
 🙏🙏🙏
