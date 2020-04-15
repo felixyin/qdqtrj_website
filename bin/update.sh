@@ -3,8 +3,8 @@
 cd /root/qdqtrj_website
 
 # 更新代码
-git fetch --all
-git reset --hard origin/master
+#git fetch --all
+#git reset --hard origin/master
 git pull
 
 # 赋予执行权限
