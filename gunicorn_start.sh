@@ -22,10 +22,10 @@ export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
-nohup exec /root/qdqtrj_website/venv/bin/gunicorn  ${DJANGO_WSGI_MODULE}:application \
+exec /root/qdqtrj_website/venv/bin/gunicorn  ${DJANGO_WSGI_MODULE}:application \
 --name $NAME \
 --workers $NUM_WORKERS \
 --user=$USER --group=$GROUP \
 --bind 0.0.0.0:8888 \
 --log-level=error \
---log-file=error.log >/dev/null 2>&1 &
+--log-file=error.log
