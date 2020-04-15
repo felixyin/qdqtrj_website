@@ -83,8 +83,20 @@
 
 > 采用git备份：用户上传的图片等文件和数据库导出脚本
 
-1. 数据库导出到sql
-2. git提交
+1. 手动备份：`./bin/backup.sh`
+    - 数据库导出到sql文件
+    - git提交到github项目的backup目录
+2. 自动备份和每天更新配置：
+    ```
+    crontab -e
+    ```
+   添加如下：
+    ```
+   # 每月1日凌晨2点执行备份
+    0 0 2 1 * bash /root/qdqtrj_website/bin/backup.sh
+   # 每天凌晨3点执行更新
+    0 0 3 * * bash /root/qdqtrj_website/bin/update.sh
+    ```
 
 
 ## 5. 文件说明  
