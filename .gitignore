@@ -78,3 +78,6 @@ werobot_session
 django.jpg
 settings_production.py
 werobot_session.db
+
+# 排出执行文件目录
+bin/
