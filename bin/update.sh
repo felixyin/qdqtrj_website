@@ -10,4 +10,6 @@ git pull
 # 赋予执行权限
 sudo chmod 777 -R bin/
 # 重启网站
+sudo supervisorctl update
+sudo supervisorctl reload
 supervisorctl restart qdqtrj_website

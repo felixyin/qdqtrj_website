@@ -51,6 +51,11 @@
    stdout_logfile = /var/log/qdqtrj_website.log
    stderr_logfile=/var/log/qdqtrj_website.err
    ```
+   载入配置：
+   ```
+   sudo supervisorctl update
+   sudo supervisorctl reload
+   ```
 8. 配置nginx：
     ```
     cp bin/www.qdqtrj.com.conf /etc/nginx/conf.d/ # 复制后，按照实际情况进行修改
@@ -69,8 +74,7 @@
 3. 运行python：
    ```
    nohup ./gunicorn_start.sh >/dev/null 2>&1 &
-   sudo supervisorctl update
-   sudo supervisorctl reload
+   supervisorctl restart qdqtrj_website
    sudo /etc/init.d/memcached restart && sudo /etc/init.d/nginx restart
    ``` 
 4. 打开浏览器，访问测试
@@ -89,4 +93,5 @@
 - prun.sh
 - README.md
 - start_all_in_one.sh
+- update.sh
 - www.qdqtrj.com.conf
