@@ -3,7 +3,7 @@
 NAME="QdqtrjWebsite"
 DJANGODIR=/root/qdqtrj_website #Django project directory
 USER=root # the user to run as
-GROUP=root# the group to run as
+GROUP=root # the group to run as
 NUM_WORKERS=2 # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=website.settings # which settings file should Django use
 DJANGO_WSGI_MODULE=website.wsgi # WSGI module name
