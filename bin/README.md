@@ -89,6 +89,7 @@
 2. 自动备份和每天更新配置：
     ```
     crontab -e
+    sudo service cron restart
     ```
    添加如下：
     ```
@@ -97,7 +98,6 @@
    # 每天凌晨3点执行更新
     0 0 3 * * bash /root/qdqtrj_website/bin/update.sh
     ```
-
 
 ## 5. 文件说明  
     
