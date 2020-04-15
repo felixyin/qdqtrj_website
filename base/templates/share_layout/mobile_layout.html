@@ -64,7 +64,7 @@
     <div class="clear"></div>
     <div class="line"></div>
     <div class="foot">
-          {{ COPYRIGHT }}
+        {{ COPYRIGHT }}
     </div>
     <div id="bottom">
         <ul>
@@ -123,15 +123,14 @@
 {% compress js %}
     {#    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>#}
     <script src="{% static 'mobile/js/zepto.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
     <script>
         function autoimg() {
             imgwidth = $('.imgauto').width() * 3 / 5;
             $('.imgauto').attr("height", imgwidth);
 
         }
-    </script>
-    <script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
-    <script type="text/javascript">
+
         document.getElementById('nickname').focus();
 
         function cfm_msg() {
@@ -152,12 +151,7 @@
             });
         }
 
-        var msg = '{{ msg }}';
-        if (msg) {
-            alert(msg)
-        }
-    </script>
-    <script type="text/javascript">
+
         var active = 0,
             as = document.getElementById('pagenavi').getElementsByTagName('a');
 
@@ -178,35 +172,6 @@
                 as[active].className = 'active';
             }
         });
-
-
-        $('.show_zihao span').click(function () {
-
-            $(this).nextAll().show();
-
-
-        })
-
-        $('.show_zihao ul li').click(function () {
-            console.log(1);
-            var index = $(this).index();
-            if (index == 0) {
-                $('.content').css('font-size', '0.9em');
-                $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
-            }
-            if (index == 1) {
-                $('.content').css('font-size', '1em');
-                $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
-            }
-            if (index == 2) {
-                $('.content').css('font-size', '1.1em');
-                $(this).addClass('show_zihao_on').siblings().removeClass('show_zihao_on');
-            }
-
-            $('.show_zihao span').nextAll().hide();
-
-        }), $('.show_zihao ul li').eq(1).click()
-
 
     </script>
     {% block compress_js %}
