@@ -28,4 +28,4 @@ exec /root/qdqtrj_website/venv/bin/gunicorn  ${DJANGO_WSGI_MODULE}:application \
 --user=$USER --group=$GROUP \
 --bind 0.0.0.0:8888 \
 --log-level=error \
---log-file=error.log
+--log-file=-
