@@ -89,7 +89,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'blog.middleware.OnlineMiddleware',
-    'mobile.middleware.MobileDetectionMiddleware'
+    'mobile.middleware.MobileDetectionMiddleware',
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -105,7 +105,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'base.context_processors.seo_processor'
+                'django.template.context_processors.i18n',
+                'base.context_processors.seo_processor',
             ],
         },
     },
@@ -158,21 +159,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/zh-hans/3.0/topics/i18n/
-
-LANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'zh-Hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
-USE_I18N = False
+USE_I18N = True
 
-USE_L10N = False
+USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/zh-hans/3.0/howto/static-files/
-
-
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'website.whoosh_cn_backend.WhooshEngine',
