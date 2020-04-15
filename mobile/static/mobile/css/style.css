@@ -811,14 +811,15 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 
 #bottom ul li dt {
     width: auto;
-    height: 25px;
+    height: 23px;
     overflow: hidden;
+    padding-top: 3px;
 }
 
 #bottom ul li dd {
     width: auto;
     height: 20px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: #fff;
     line-height: 20px;
 }
