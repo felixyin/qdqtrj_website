@@ -89,9 +89,9 @@
 
 ## 5. 文件说明  
     
-- gunicorn_start.sh
-- prun.sh
-- README.md
-- start_all_in_one.sh
-- update.sh
-- www.qdqtrj.com.conf
+- backup.sh ：备份数据库为单sql，并提交github仓库
+- gunicorn_start.sh ：supervisor运行此文件
+- prun.sh ：初始化venv，以及安装类库
+- start_all_in_one.sh ： 第一次部署时执行，一次自动配置好全部环境，并运行
+- update.sh ：从github仓库更新代码，并重新启动
+- www.qdqtrj.com.conf ： nginx配置
