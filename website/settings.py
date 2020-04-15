@@ -376,7 +376,7 @@ CKEDITOR_CONFIGS = {
 
 # simpleui 自定义菜单
 SIMPLEUI_STATIC_OFFLINE = True
-SIMPLEUI_CONFIG2 = {
+SIMPLEUI_CONFIG = {
     'system_keep': True,
     'menu_display': [
         '前途软件官网',
