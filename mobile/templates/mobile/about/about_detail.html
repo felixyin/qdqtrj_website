@@ -1,7 +1,7 @@
 {% extends 'share_layout/mobile_layout.html' %}
 
 {% block content %}
-    <div class="nav">
+    <div class="my-nav">
         <ul>
             {% for c in about_list %}
                 <li><a href="{{ c.get_mobile_url }}">{{ c.title }}</a></li>

@@ -40,7 +40,7 @@
     </div>
     <div class="clear"></div>
     <div class="">
-        <div class="index_t"><span class="fl">公司产品</span></div>
+        <div class="index_t"><span class="fl">公司产品</span><a href="{% url 'mobile:product' %}" class="fr nav_pro">更多&gt;&gt;</a></div>
         <ul style=" padding-top:8px;">
             {% for s in product_list %}
                 <li>
@@ -55,8 +55,9 @@
         </ul>
     </div>
     <div class="clear"></div>
-    <div class="">
-        <div class="index_t"><span class="fl">解决方案</span></div>
+   {% comment %} <div class="">
+        <div class="index_t"><span class="fl">解决方案</span><a href="{% url 'mobile:service' %}" class="fr nav_pro">更多&gt;&gt;</a></div>
+
         <ul style=" padding-top:8px;">
             {% for s in service_list %}
                 <li>
@@ -66,6 +67,17 @@
                         </div>
                         <p style="color:#fff;" class="pictitle">{{ s.name }}</p>
                     </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="clear"></div>{% endcomment %}
+    <div class="">
+        <div class="index_t"><span class="fl">解决方案</span><a href="{% url 'mobile:service' %}" class="fr nav_pro">更多&gt;&gt;</a></div>
+        <ul class="newsmain">
+            {% for s in service_list %}
+                <li>
+                    <a href="{{ s.get_mobile_url }}">{{ s.name }}</a>
                 </li>
             {% endfor %}
         </ul>

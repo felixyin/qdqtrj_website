@@ -1,39 +1,31 @@
 {% load static %}
 {% load cache %}
 {% load compress %}
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>青岛前途软件技术有限公司</title>
-    <meta name="Keywords" content="管理系统,网站建设,APP软件,桌面软件,物联网">
-    <meta name="Description" content="青岛前途软件技术有限公司位于山东青岛，公司主营软件开发，设计，系统集成，数据处理，是一家专注于app开发和软件开发的现代互联网公司，公司秉承责任，诚信，创新，共赢的合作理念，致力于为更多企业提供信息化建设，帮助更多企业走向成功。服务电话:17554153785
-">
-    <meta name="Author" content="">
+    <title>{{ SITE_NAME }} | {{ SITE_DESCRIPTION }}</title>
+    <meta name="description" content="{{ SITE_SEO_DESCRIPTION }}"/>
+    <meta name="keywords" content="{{ SITE_KEYWORDS }}"/>
+    <meta property="og:type" content="blog"/>
+    <meta property="og:title" content="{{ SITE_NAME }}"/>
+    <meta property="og:description" content="{{ SITE_DESCRIPTION }}"/>
+    <meta property="og:url" content="{{ SITE_BASE_URL }}"/>
+    <meta property="og:site_name" content="{{ SITE_NAME }}"/>
+    {% block header %} {% endblock %}
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
-    <meta content="telephone=no" name="format-detection"/>
-    <link href="{% static 'mobile/css/style.css' %}" rel="stylesheet" type="text/css"/>
-
+    {% compress css %}
+        <link href="{% static 'mobile/css/style.css' %}" rel="stylesheet" type="text/css"/>
+        {% block compress_css %} {% endblock %}
+    {% endcompress %}
 </head>
 
 <body>
 <div class="main">
     <div class="logo">
-        青岛前途软件技术有限公司
+        {{ SITE_NAME }}
     </div>
-    {#    <div class="nav">#}
-    {#        <ul>#}
-    {#            <li><a href="index.php.html">网站首页</a></li>#}
-    {#            <li><a href="single.php%3Fcid=1.html">关于我们</a></li>#}
-    {#            <li><a href="gallery.php%3Fcid=3.html">解决方案</a></li>#}
-    {#            <li><a href="gallery.php%3Fcid=46.html">公司产品</a></li>#}
-    {#            <li><a href="gallery.php%3Fcid=47.html">外包案例</a></li>#}
-    {#            <li><a href="list.php%3Fcid=6.html">最新动态</a></li>#}
-    {#            <li><a href="message.php.html">在线留言</a></li>#}
-    {#            <li><a href="single.php%3Fcid=9.html">联系我们</a></li>#}
-    {#        </ul>#}
-    {#    </div>#}
 
     {% block content %}
     {% endblock %}
@@ -68,36 +60,11 @@
         </div>
 
     </div>
-    <script type="text/javascript">
-        document.getElementById('nickname').focus();
 
-        function cfm_msg() {
-            if ($("#phone").val() == "") {
-                alert("请您填写联系电话！方便稍后联系您");
-                $("#phone").focus();
-                return;
-            }
-            $.post('{% url "message" %}', {
-                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
-                phone: $('#phone').val(),
-                content: $('#content').val(),
-                name: $('#nickname').val(),
-            }, function (res) {
-                var j = JSON.parse(res);
-                alert(j.msg);
-                $('#phone').val('');
-            });
-        }
-
-        var msg = '{{ msg }}';
-        if (msg) {
-            alert(msg)
-        }
-    </script>
     <div class="clear"></div>
     <div class="line"></div>
     <div class="foot">
-        版权所有 青岛前途软件技术有限公司
+          {{ COPYRIGHT }}
     </div>
     <div id="bottom">
         <ul>
@@ -158,13 +125,38 @@
     <script src="{% static 'mobile/js/zepto.min.js' %}"></script>
     <script>
         function autoimg() {
-            imgwidth = $('.imgauto').width() * 3 / 4;
+            imgwidth = $('.imgauto').width() * 3 / 5;
             $('.imgauto').attr("height", imgwidth);
 
         }
     </script>
-    {#    <script type="text/javascript" src="{% static 'mobile/js/touchScroll.js' %}"></script>#}
     <script type="text/javascript" src="{% static 'mobile/js/touchslider.dev.js' %}"></script>
+    <script type="text/javascript">
+        document.getElementById('nickname').focus();
+
+        function cfm_msg() {
+            if ($("#phone").val() == "") {
+                alert("请您填写联系电话！方便稍后联系您");
+                $("#phone").focus();
+                return;
+            }
+            $.post('{% url "message" %}', {
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+                phone: $('#phone').val(),
+                content: $('#content').val(),
+                name: $('#nickname').val(),
+            }, function (res) {
+                var j = JSON.parse(res);
+                alert(j.msg);
+                $('#phone').val('');
+            });
+        }
+
+        var msg = '{{ msg }}';
+        if (msg) {
+            alert(msg)
+        }
+    </script>
     <script type="text/javascript">
         var active = 0,
             as = document.getElementById('pagenavi').getElementsByTagName('a');

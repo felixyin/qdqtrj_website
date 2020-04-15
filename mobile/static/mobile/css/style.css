@@ -48,8 +48,8 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 
 .logo {
     width: 100%;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     color: #fff;
     background: -webkit-gradient(linear, 0 0, 0 100%, from(#2574B8), to(#014C8D));
     font-size: 1.3em;
@@ -90,6 +90,41 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 }
 
 .nav li a:hover {
+    background: #2574b8
+}
+
+.my-nav {
+    width: 100%;
+    background: #014c8d;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.my-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.my-nav ul li {
+    width: 33%;
+    line-height: 32px;
+    text-align: center;
+    margin-bottom: 1px;
+    border-right: 1px solid #013e7e;
+    box-shadow: 1px 1px 0 #025fc0;
+    border-bottom: 1px solid #013e7e;
+}
+
+.my-nav li a {
+    display: block;
+    color: #fff;
+    border-right: 1px solid #013e7e;
+    box-shadow: 1px 0px 0 #1674c7;
+    border-bottom: 1px solid #013e7e;
+    background: #015BAA;
+}
+
+.my-nav li a:hover {
     background: #2574b8
 }
 
@@ -937,7 +972,7 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
     padding-bottom: 5px;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 5px!important;
+    margin-top: 5px !important;
 }
 
 .message_block {
@@ -1009,7 +1044,7 @@ DIV, ul, li, h1, h2, p, dl, dt, dd {
 
 .msg_btn_area a {
     display: inline-block;
-    padding: 4px 20px!important;
+    padding: 4px 20px !important;
     background: #09F;
     color: #fff;
     text-align: center;
