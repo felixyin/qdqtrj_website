@@ -82,6 +82,8 @@ class ArticleListView(ListView):
 
     def get_context_data(self, **kwargs):
         kwargs['linktype'] = self.link_type
+        host = self.request.META['HTTP_HOST']
+        kwargs['is_show_case'] = True if host == 'www.yinbin.ink' else False
         return super(ArticleListView, self).get_context_data(**kwargs)
 
 
