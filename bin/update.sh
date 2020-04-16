@@ -12,11 +12,14 @@ git pull
 # 赋予执行权限
 sudo chmod 777 -R bin/
 
-# 重启网站
-sudo supervisorctl update
-sudo supervisorctl reload
-supervisorctl restart qdqtrj_website
-
 # 清除缓存
 source venv/bin/activate
+sudo -rf collectedstatic
+python3.8 ./manage.py collectstatic
 python3.8 ./manage.py clear_cache
+
+# 重启网站
+sudo supervisorctl update
+#sudo supervisorctl reload
+supervisorctl restart qdqtrj_website
+
