@@ -208,13 +208,12 @@ BOOTSTRAP_COLOR_TYPES = [
 PAGINATE_BY = 10
 # http cache timeout
 CACHE_CONTROL_MAX_AGE = 2592000
-# cache setting
+
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': os.environ.get('DJANGO_MEMCACHED_LOCATION') or 'localhost:11211',
-        'KEY_PREFIX': 'django_test' if TESTING else 'djangoblog',
-        'TIMEOUT': 60 * 60 * 24 * 10
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'TIMEOUT': 10800,
+        'LOCATION': 'unique-snowflake',
     }
 }
 
@@ -449,9 +448,10 @@ if operator.contains(p.lower(), 'macOS'.lower()):
     # cache setting
     CACHES = {
         'default': {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-            'TIMEOUT': 10800,
-            'LOCATION': 'unique-snowflake',
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': os.environ.get('DJANGO_MEMCACHED_LOCATION') or 'localhost:11211',
+            'KEY_PREFIX': 'django_test' if TESTING else 'djangoblog',
+            'TIMEOUT': 60 * 60 * 24 * 10
         }
     }
 
