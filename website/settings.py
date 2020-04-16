@@ -214,11 +214,7 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': os.environ.get('DJANGO_MEMCACHED_LOCATION') or '127.0.0.1:11211',
         'KEY_PREFIX': 'django_test' if TESTING else 'djangoblog',
-        'TIMEOUT': 60 * 60 * 10
-    } if env_to_bool('DJANGO_MEMCACHED_ENABLE', True) else {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'TIMEOUT': 10800,
-        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 60 * 60 * 24 * 10
     }
 }
 
@@ -450,6 +446,15 @@ if operator.contains(p.lower(), 'macOS'.lower()):
     COMPRESS_ENABLED = False
     COMPRESS_OFFLINE = False
 
+    # cache setting
+    CACHES = {
+        'default':  {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'TIMEOUT': 10800,
+            'LOCATION': 'unique-snowflake',
+        }
+    }
+
     # Database
     # https://docs.djangoproject.com/zh-hans/3.0/ref/settings/#databases
 
@@ -463,12 +468,4 @@ if operator.contains(p.lower(), 'macOS'.lower()):
             'PORT': int(os.environ.get('DJANGO_MYSQL_PORT') or 3306),
             'OPTIONS': {'charset': 'utf8mb4'},
         }
-        # 'default': {
-        #     'ENGINE': 'django.db.backends.postgresql',
-        #     'NAME': 'qdqtrj_website',
-        #     'USER': 'yinbin',
-        #     'PASSWORD': 'Ybkk1027',
-        #     'HOST': '127.0.0.1',
-        #     'PORT': '5432',
-        # }
     }
