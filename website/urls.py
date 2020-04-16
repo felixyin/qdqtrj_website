@@ -43,6 +43,7 @@ handle403 = 'base.views.permission_denied_view'
 app_name = 'website'
 
 urlpatterns = [
+
                   # 首页
                   url(r'', include('home.urls', namespace='home')),
                   # 关于
@@ -59,10 +60,7 @@ urlpatterns = [
                   url(r'^mobile/', include('mobile.urls', namespace='mobile')),
                   # 博客
                   url(r'^blog/', include('blog.urls', namespace='blog')),
-                  # 富文本编辑器
-                  url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-                  # md文档编辑器
-                  url(r'mdeditor/', include('mdeditor.urls')),
+
                   url(r'', include('comments.urls', namespace='comment')),
                   url(r'', include('accounts.urls', namespace='account')),
                   url(r'', include('oauth.urls', namespace='oauth')),
@@ -73,6 +71,10 @@ urlpatterns = [
                   url(r'^search', include('haystack.urls'), name='search'),
                   url(r'', include('servermanager.urls', namespace='servermanager')),
                   url(r'', include('owntracks.urls', namespace='owntracks')),
+                  # 富文本编辑器
+                  url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+                  # md文档编辑器
+                  url(r'^mdeditor/', include('mdeditor.urls')),
                   # 管理端
                   url(r'^admin/', admin_site.urls),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

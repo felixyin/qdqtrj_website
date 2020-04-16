@@ -48,7 +48,7 @@ def seo_processor(requests):
             'ARTICLE_SUB_LENGTH': setting.article_sub_length,
             'nav_category_list': Category.objects.all(),
             'nav_pages': Article.objects.filter(type='p', status='p'),
-            'OPEN_SITE_COMMENT': setting.open_site_comment,
+            'OPEN_BLOG_COMMENT': setting.open_blog_comment,
             'BEIAN_CODE': setting.beiancode,
             'ANALYTICS_CODE': setting.analyticscode,
             "BEIAN_CODE_GONGAN": setting.gongan_beiancode,

@@ -95,9 +95,9 @@ def load_breadcrumb(article):
     """
     names = article.get_category_tree()
     from website.utils import get_web_setting
-    blogsetting = get_web_setting()
-    site = get_current_site().domain
-    names.append((blogsetting.sitename, '/'))
+    # blogsetting = get_web_setting()
+    # site = get_current_site().domain
+    # names.append((blogsetting.blogname, '/blog/'))
     names = names[::-1]
 
     return {
@@ -165,7 +165,7 @@ def load_sidebar(user, linktype):
         'sidabar_links': links,
         'show_google_adsense': blogsetting.show_google_adsense,
         'google_adsense_codes': blogsetting.google_adsense_codes,
-        'open_site_comment': blogsetting.open_site_comment,
+        'OPEN_BLOG_COMMENT': blogsetting.open_blog_comment,
         'show_gongan_code': blogsetting.show_gongan_code,
         'sidebar_tags': sidebar_tags,
         'extra_sidebars': extra_sidebars
@@ -255,7 +255,7 @@ def load_article_detail(article, isindex, user):
         'article': article,
         'isindex': isindex,
         'user': user,
-        'open_site_comment': blogsetting.open_site_comment,
+        'OPEN_BLOG_COMMENT': blogsetting.open_blog_comment,
     }
 
 

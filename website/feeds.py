@@ -26,7 +26,7 @@ class DjangoBlogFeed(Feed):
     feed_type = Rss201rev2Feed
 
     description = '大巧无工,重剑无锋.'
-    title = "且听风吟 大巧无工,重剑无锋. "
+    title = "尹彬的博客 大巧无工,重剑无锋. "
     link = "/feed/"
 
     def author_name(self):
@@ -46,7 +46,7 @@ class DjangoBlogFeed(Feed):
 
     def feed_copyright(self):
         now = datetime.now()
-        return "Copyright© {year} 且听风吟".format(year=now.year)
+        return "Copyright© {year} 尹彬的博客".format(year=now.year)
 
     def item_link(self, item):
         return item.get_absolute_url()

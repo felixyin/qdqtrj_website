@@ -86,7 +86,7 @@ class WebSettings(m.Model):
     sidebar_comment_count = m.IntegerField("侧边栏评论数目", default=5)
     show_google_adsense = m.BooleanField('是否显示谷歌广告', default=False)
     google_adsense_codes = m.TextField('广告内容', max_length=500, null=True, blank=True, default='')
-    open_site_comment = m.BooleanField('是否打开网站评论功能', default=True)
+    open_blog_comment = m.BooleanField('是否打开网站评论功能', default=True)
     resource_path = m.CharField("静态文件保存地址", max_length=30, null=False, default='/var/www/resource/')
     logo_img = m.ImageField(upload_to='upload/websetting/', verbose_name='网站LOGO', blank=False)
     logo_footer_img = m.ImageField(upload_to='upload/websetting/', verbose_name='网站页脚LOGO', blank=False)
