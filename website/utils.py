@@ -12,11 +12,13 @@
 @file: utils.py
 @time: 2017/1/19 上午2:30
 """
+from django.conf import Settings
 from django.core.cache import cache
 from django.contrib.sites.models import Site
 from hashlib import md5
 import mistune
 from django.views.decorators.cache import cache_page
+from django.views.decorators.gzip import gzip_page
 from mistune import escape, escape_link
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -291,4 +293,5 @@ def my_cache(func):
     else:
         # fixme 页面缓存时间设置
         timeout = 86400 * 30
+        # return cache_page(timeout)(gzip_page(func())) # nginx中已配置，无需django中配置
         return cache_page(timeout)(func())
