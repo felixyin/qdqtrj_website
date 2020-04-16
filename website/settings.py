@@ -9,6 +9,8 @@ https://docs.djangoproject.com/zh-hans/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/zh-hans/3.0/ref/settings/
 """
+import operator
+import platform
 import sys
 import os
 
@@ -29,8 +31,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'n9ceqv38)#&mwuat@(mjb_p%em$e8$qyr#fw9ot!=ba6lijx-6'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env_to_bool('DJANGO_DEBUG', True)
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
@@ -79,7 +81,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.gzip.GZipMiddleware',
+    # 'django.middleware.gzip.GZipMiddleware', # nginx 中已配置
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.cache.FetchFromCacheMiddleware',
@@ -124,7 +126,7 @@ DATABASES = {
         'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'qdqtrj_website',
         'USER': os.environ.get('DJANGO_MYSQL_USER') or 'root',
         'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD') or 'Ybkk1027',
-        # 'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '127.0.0.1', # 本机
+        # 'HOST': os.environ.get('DJANGO_MYSQL_HOST') or 'localhost', # 本机
         # 'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '49.232.53.220', # 佰安客服务器
         'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '34.92.172.139',  # google免费服务器
         'PORT': int(os.environ.get('DJANGO_MYSQL_PORT') or 3306),
@@ -302,10 +304,9 @@ STATICFILES_FINDERS = (
     # other
     'compressor.finders.CompressorFinder',
 )
-# COMPRESS_ENABLED = True
-COMPRESS_ENABLED = False
-# COMPRESS_OFFLINE = True
-
+COMPRESS_ENABLED = True
+# COMPRESS_ENABLED = False
+COMPRESS_OFFLINE = True
 
 COMPRESS_CSS_FILTERS = [
     # creates absolute urls from relative ones
@@ -437,3 +438,35 @@ SIMPLEUI_CONFIG = {
 
     ]
 }
+
+# ======================================================= 当我开发时的配置  ======================================================= 
+p = platform.platform()
+print('您的运行平台是：%s' % p)
+if operator.contains(p.lower(), 'macOS'.lower()):
+    DEBUG = True
+    SIMPLEUI_CONFIG = None
+    COMPRESS_ENABLED = False
+    COMPRESS_OFFLINE = False
+
+    # Database
+    # https://docs.djangoproject.com/zh-hans/3.0/ref/settings/#databases
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'qdqtrj_website',
+            'USER': os.environ.get('DJANGO_MYSQL_USER') or 'root',
+            'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD') or 'Ybkk1027',
+            'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '34.92.172.139',  # google免费服务器
+            'PORT': int(os.environ.get('DJANGO_MYSQL_PORT') or 3306),
+            'OPTIONS': {'charset': 'utf8mb4'},
+        }
+        # 'default': {
+        #     'ENGINE': 'django.db.backends.postgresql',
+        #     'NAME': 'qdqtrj_website',
+        #     'USER': 'yinbin',
+        #     'PASSWORD': 'Ybkk1027',
+        #     'HOST': '127.0.0.1',
+        #     'PORT': '5432',
+        # }
+    }
