@@ -447,25 +447,18 @@ if operator.contains(p.lower(), 'macOS'.lower()):
     COMPRESS_OFFLINE = False
 
     # cache setting
-    # CACHES = {
-    #     'default':  {
-    #         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    #         'TIMEOUT': 10800,
-    #         'LOCATION': 'unique-snowflake',
-    #     }
-    # }
     CACHES = {
         'default': {
-            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-            'LOCATION': os.environ.get('DJANGO_MEMCACHED_LOCATION') or '127.0.0.1:11211',
-            'KEY_PREFIX': 'django_test' if TESTING else 'djangoblog',
-            'TIMEOUT': 60 * 60 * 24 * 10
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'TIMEOUT': 10800,
+            'LOCATION': 'unique-snowflake',
         }
     }
 
+    CACHE_CONTROL_MAX_AGE = 0
+
     # Database
     # https://docs.djangoproject.com/zh-hans/3.0/ref/settings/#databases
-
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
