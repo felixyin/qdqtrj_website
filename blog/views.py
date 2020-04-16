@@ -10,6 +10,8 @@ from django import forms
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+
+from case.models import Case
 from website.utils import cache, get_md5, get_web_setting
 from django.shortcuts import get_object_or_404
 from blog.models import Article, Category, Tag, Links
@@ -137,6 +139,27 @@ class ArticleDetailView(DetailView):
         kwargs['prev_article'] = self.object.prev_article
 
         return super(ArticleDetailView, self).get_context_data(**kwargs)
+
+
+class CaseListView(ListView):
+    template_name = 'blog/case_list.html'
+    model = Case
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
+
+
+class CaseDetailView(DetailView):
+    template_name = 'blog/case_detail.html'
+    model = Case
+
+    def get_context_data(self, **kwargs):
+        # pk = int(self.kwargs[self.pk_url_kwarg])
+        kwargs['next_case'] = self.object.next_case
+        kwargs['prev_case'] = self.object.prev_case
+        kwargs['related_cases'] = self.object.get_related_cases
+        return super().get_context_data(**kwargs)
+
 
 
 class CategoryDetailView(ArticleListView):

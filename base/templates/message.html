@@ -19,9 +19,9 @@
                 <div class="loft fl">
                     {# <img src="{% static 'images/fz.png' %}"> #} 在线留言
                 </div>
-{#                <div class="more fr">#}
-{#                    您当前位置：<a href="index.php.html">网站首页</a> >在线留言#}
-{#                </div>#}
+                {#                <div class="more fr">#}
+                {#                    您当前位置：<a href="index.php.html">网站首页</a> >在线留言#}
+                {#                </div>#}
             </div>
             <div class="message clearfix" style="width: 80%;">
                 <div class="message_left fl">
@@ -95,6 +95,7 @@
             </div>
             <script type="text/javascript">
                 document.getElementById('nickname').focus();
+
                 function cfm_msg() {
                     if ($("#phone").val() == "") {
                         alert("请您填写联系电话！方便稍后联系您");
@@ -104,10 +105,31 @@
                     $("#form").submit();
                 }
 
-                var msg = '{{ msg }}';
-                if (msg) {
-                    alert(msg)
+                function cfm_msg() {
+                    if ($("#phone").val() == "") {
+                        alert("请您填写联系电话！方便稍后联系您");
+                        $("#phone").focus();
+                        return;
+                    }
+                    $.post('{% url "message" %}', {
+                        csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+                        phone: $('#phone').val(),
+                        content: $('#content').val(),
+                        wechart: $('#wechart').val(),
+                        email: $('#email').val(),
+                        name: $('#nickname').val(),
+                    }, function (res) {
+                        var j = JSON.parse(res);
+                        alert(j.msg);
+                        $('#phone').val('');
+                    });
                 }
+
+
+                {#var msg = '{{ msg }}';#}
+                {#if (msg) {#}
+                {#    alert(msg)#}
+                {#}#}
             </script>
             <div class="message_down" style="display: none;">
                 <ul>

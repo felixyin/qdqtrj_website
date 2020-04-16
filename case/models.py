@@ -57,6 +57,9 @@ class Case(BaseModel):
     def get_mobile_url(self):
         return reverse('mobile:case-detail', kwargs={'pk': self.id})
 
+    def get_blog_url(self):
+        return reverse('blog:case-detail', kwargs={'pk': self.id})
+
     @cached_property
     def next_case(self):
         # 下一篇

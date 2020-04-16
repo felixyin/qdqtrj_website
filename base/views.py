@@ -77,7 +77,7 @@ def collection_message(request):
             # except BaseException:
             #     pass
 
-    if request.is_mobile:
-        return HttpResponse(json.dumps(msg))
-    else:
-        return render(request, 'message.html', msg)
+    # if request.is_mobile:
+    return HttpResponse(json.dumps(msg))
+    # else:
+    #     return render(request, 'message.html', msg)

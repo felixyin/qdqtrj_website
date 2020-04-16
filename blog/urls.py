@@ -16,9 +16,6 @@
 from django.urls import path
 from django.views.decorators.cache import cache_page
 from . import views
-from haystack.forms import ModelSearchForm
-from haystack.query import SearchQuerySet
-from haystack.views import SearchView
 
 app_name = "blog"
 urlpatterns = [
@@ -28,6 +25,9 @@ urlpatterns = [
     path(r'article/<int:year>/<int:month>/<int:day>/<int:article_id>.html',
          views.ArticleDetailView.as_view(),
          name='detailbyid'),
+
+    path('case', views.CaseListView.as_view(), name='case'),
+    path('case/<int:pk>', views.CaseDetailView.as_view(), name='case-detail'),
 
     path(r'category/<slug:category_name>.html', views.CategoryDetailView.as_view(), name='category_detail'),
     path(r'category/<slug:category_name>/<int:page>.html', views.CategoryDetailView.as_view(),
