@@ -328,7 +328,7 @@ def refresh_memcache(request):
             from website.utils import cache
             if cache and cache is not None:
                 cache.clear()
-            return HttpResponse("ok")
+            return HttpResponse("<center style='color:red;'>缓存已刷新<center><script>parent.window.location.reload(true);</script>")
         else:
             return HttpResponseForbidden()
     except Exception as e:
