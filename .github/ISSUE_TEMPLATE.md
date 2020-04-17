@@ -1,4 +1,4 @@
-<!--
+request.META['HTTP_HOST']<!--
 如果你不认真勾选下面的内容，我可能会直接关闭你的 Issue。
 提问之前，建议先阅读 https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way
 -->

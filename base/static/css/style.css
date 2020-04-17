@@ -93,6 +93,10 @@ input {
 }
 
 .top {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    width: 100%;
     background: #1c1c1c;
 }
 
@@ -588,8 +592,9 @@ h1 a {
 .accordion li {
     cursor: pointer;
 }
-.accordion .link:hover{
-    background-color:rgb(207,56,54);
+
+.accordion .link:hover {
+    background-color: rgb(207, 56, 54);
 }
 
 .accordion li i {
@@ -1249,7 +1254,6 @@ h1 a {
     overflow: hidden;
     /*white-space: nowrap;*/
 }
-
 
 
 .index_news {
@@ -2501,12 +2505,26 @@ h1 a {
 }
 
 
-.float_l{
+.float_l {
     float: left;
 }
-.float_r{
+
+.float_r {
     float: right;
 }
+
 .clear {
     clear: both;
+}
+
+.header {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.header-menu-active {
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+    top: 50px;
 }
