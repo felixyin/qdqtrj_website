@@ -10,8 +10,8 @@ window.addEventListener('scroll', function () {
     var t = $('body, html').scrollTop();   // 目前监听的是整个body的滚动条距离
     var nav = $('.nav');
     var bh = $('body').height();
-    if (bh < 1300) return; // fixme 临界点，会闪屏
     if (t > 130) {
+        if (bh < 1300) return; // fixme 临界点，会闪屏
         if (!nav.hasClass('header-menu-active')) nav.hide().addClass('header-menu-active').fadeIn(300);
     } else {
         if (nav.hasClass('header-menu-active')) nav.removeClass('header-menu-active');
