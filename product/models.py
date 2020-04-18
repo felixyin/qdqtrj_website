@@ -1,9 +1,9 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
+from django.db import models as m
 from django.urls import reverse
 from django.utils.functional import cached_property
-from mdeditor.fields import MDTextField
-from django.db import models as m
+
 from base.models import BaseModel, BaseTag, BaseAttach
 from service.models import Service
 
@@ -12,7 +12,7 @@ class Product(BaseModel):
     # 产品
     name = m.CharField(max_length=50, verbose_name='产品名称')
     thumb = m.ImageField(upload_to="upload/project/thumb/%Y/%m/%d", verbose_name='缩略图')
-    content = RichTextUploadingField(max_length=2000, config_name='full', verbose_name='产品详情', blank=False)
+    content = RichTextUploadingField(max_length=10000, config_name='full', verbose_name='产品详情', blank=False)
     source_url = m.URLField(verbose_name='演示地址', null=True, blank=True)
     service = m.ForeignKey(Service, on_delete=m.DO_NOTHING, null=True, blank=True, verbose_name='服务')
     tags = m.ManyToManyField(BaseTag, verbose_name='技术标签')

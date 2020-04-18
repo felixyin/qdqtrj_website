@@ -1,8 +1,8 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.models import Site
+from django.core.exceptions import ValidationError
 from django.db import models as m
 from django.utils.timezone import now
-from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
@@ -19,7 +19,6 @@ class BaseModel(m.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        from website.blog_signals import save_signal
         # if not self.slug or self.slug == 'no-slug' or not self.id:
         #     slug = self.title if 'title' in self.__dict__ else self.name
         #     self.slug = slugify(slug)
@@ -117,7 +116,7 @@ class Message(BaseModel):
     wechart = m.CharField(max_length=20, null=True, blank=True, verbose_name='微信')
     qq = m.CharField(max_length=20, null=True, blank=True, verbose_name='qq')
     email = m.CharField(max_length=20, null=True, blank=True, verbose_name='邮箱')
-    content = m.TextField(max_length=2000, null=True, blank=True, verbose_name='留言信息')
+    content = m.TextField(max_length=10000, null=True, blank=True, verbose_name='留言信息')
 
     class EnumIsRead(m.TextChoices):
         YIDU = 'Y', _('已读')
