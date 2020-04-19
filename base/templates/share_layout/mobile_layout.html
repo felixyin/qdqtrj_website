@@ -17,6 +17,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
     {% compress css %}
         <link href="{% static 'mobile/css/style.css' %}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom_ckeditor5.css' %}"/>
         {% block compress_css %} {% endblock %}
     {% endcompress %}
 </head>
@@ -81,7 +82,7 @@
                 <a href="{% url 'mobile:service' %}">
                     <dl>
                         <dt><img src="{% static 'mobile/img/service.png' %}" width="23" height="23"/></dt>
-                        <dd>解决方案</dd>
+                        <dd>服务项目</dd>
                     </dl>
                 </a>
             </li>

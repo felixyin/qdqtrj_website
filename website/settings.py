@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/zh-hans/3.0/ref/settings/
 """
 import operator
+import os
 import platform
 import sys
-import os
 
 
 def env_to_bool(env, default):
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'ckeditor',
     'ckeditor_uploader',
+    # 'django_ckeditor_5',
     'mdeditor',
     'haystack',
     'django_extensions',
@@ -337,6 +338,51 @@ CKEDITOR_CONFIGS = {
         'width': 600,
     },
 }
+CKEDITOR_5_CUSTOM_CSS = 'css/custom_ckeditor5.css'  # optional
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link',
+                    'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
+
+    },
+    'extends': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|',
+            'bulletedList', 'numberedList',
+            '|',
+            'blockQuote', 'imageUpload'
+        ],
+        'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
+                    'code', 'subscript', 'superscript', 'highlight', '|',
+                    'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 'imageUpload', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
+                    'insertTable', ],
+        'image': {
+            'toolbar': ['imageTextAlternative', 'imageTitle', '|', 'imageStyle:alignLeft', 'imageStyle:full',
+                        'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side', '|'],
+            'styles': [
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter',
+            ]
+
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells']
+        },
+        'heading': {
+            'options': [
+                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
+            ]
+        }
+    }
+}
 
 # Markdown 编辑器
 # MDEDITOR_CONFIGS = {
@@ -422,7 +468,7 @@ SIMPLEUI_CONFIG = {
                 {'name': '网站配置', 'icon': 'fa fa-file', 'url': '/admin/base/websettings/'},
                 {'name': '联系信息', 'icon': 'fa fa-file', 'url': '/admin/base/contactinfo/'},
                 {'name': '公司首页', 'icon': 'fa fa-file', 'url': '/admin/home/home/'},
-                {'name': '解决方案', 'icon': 'fa fa-file', 'url': '/admin/service/service/'},
+                {'name': '服务项目', 'icon': 'fa fa-file', 'url': '/admin/service/service/'},
                 {'name': '公司产品', 'icon': 'fa fa-file', 'url': '/admin/product/product/'},
                 {'name': '案例-分类', 'icon': 'fa fa-file', 'url': '/admin/case/category/'},
                 {'name': '外包案例', 'icon': 'fa fa-file', 'url': '/admin/case/case/'},

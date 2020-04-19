@@ -56,7 +56,7 @@
     </div>
     <div class="clear"></div>
    {% comment %} <div class="">
-        <div class="index_t"><span class="fl">解决方案</span><a href="{% url 'mobile:service' %}" class="fr nav_pro">更多&gt;&gt;</a></div>
+        <div class="index_t"><span class="fl">服务项目</span><a href="{% url 'mobile:service' %}" class="fr nav_pro">更多&gt;&gt;</a></div>
 
         <ul style=" padding-top:8px;">
             {% for s in service_list %}
@@ -73,7 +73,8 @@
     </div>
     <div class="clear"></div>{% endcomment %}
     <div class="">
-        <div class="index_t"><span class="fl">解决方案</span><a href="{% url 'mobile:service' %}" class="fr nav_pro">更多&gt;&gt;</a></div>
+        <div class="index_t"><span class="fl">服务项目</span><a href="{% url 'mobile:service' %}" class="fr nav_pro">更多&gt;&gt;</a>
+        </div>
         <ul class="newsmain">
             {% for s in service_list %}
                 <li>

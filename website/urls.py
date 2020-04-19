@@ -13,19 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
+from django.conf import settings
+from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path
 
 from base.views import collection_message
-from website.sitemap import StaticViewSitemap, ArticleSiteMap, CategorySiteMap, TagSiteMap, UserSiteMap
-from website.feeds import DjangoBlogFeed
-from django.views.decorators.cache import cache_page
-from django.conf import settings
-from django.conf.urls.static import static
 from website.admin_site import admin_site
-from django.urls import include, path
-from base import views as base_views
+from website.feeds import DjangoBlogFeed
+from website.sitemap import StaticViewSitemap, ArticleSiteMap, CategorySiteMap, TagSiteMap, UserSiteMap
 
 sitemaps = {
 
@@ -73,6 +70,7 @@ urlpatterns = [
                   url(r'', include('owntracks.urls', namespace='owntracks')),
                   # 富文本编辑器
                   url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+                  url(r'^ckeditor5/', include('django_ckeditor_5.urls')),
                   # md文档编辑器
                   url(r'^mdeditor/', include('mdeditor.urls')),
                   # 管理端
