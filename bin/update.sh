@@ -14,8 +14,8 @@ sudo chmod 777 -R bin/
 
 # 清除缓存
 source venv/bin/activate
-python3.8 ./manage.py collectstatic
-python3.8 ./manage.py compress
+python3.8 ./manage.py collectstatic --noinput
+python3.8 ./manage.py compress --force
 python3.8 ./manage.py clear_cache
 
 # 重启网站
