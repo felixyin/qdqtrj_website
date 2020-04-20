@@ -70,7 +70,7 @@ urlpatterns = [
                   url(r'', include('owntracks.urls', namespace='owntracks')),
                   # 富文本编辑器
                   url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-                  url(r'^ckeditor5/', include('django_ckeditor_5.urls')),
+                  # url(r'^ckeditor5/', include('django_ckeditor_5.urls')),
                   # md文档编辑器
                   url(r'^mdeditor/', include('mdeditor.urls')),
                   # 管理端
