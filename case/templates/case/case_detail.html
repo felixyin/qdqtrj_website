@@ -48,11 +48,13 @@
                     <h3>{{ case.name }}</h3>
                     <div class="gangwan_top clearfix">
                         <div class="gangwan_top_l fl">
-                            <a href="javascript:void(0);"><img src="{% static 'images/show_l.png' %}"></a>
+                            <a href="{{ case.prev_case.get_absolute_url }}">
+                                <img src="{% static 'images/show_l.png' %}">
+                            </a>
                         </div>
                         <div class="gangwan_top_m fl">
-                            <a href="{{ case.prev_case.get_absolute_url }}">
-                                <img src="{% static 'uploads/image/20190418/1555577611.jpg' %}" width="464px"
+                            <a href="javascript:void(0);">
+                                <img src="{{ case.thumb.url }}" width="464px"
                                      height="348">
                             </a>
                         </div>

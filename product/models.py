@@ -23,6 +23,7 @@ class Product(BaseModel):
     class Meta:
         verbose_name = '产品'
         verbose_name_plural = verbose_name
+        ordering = ('sequence',)
 
     def get_absolute_url(self):
         return reverse('product:product-detail', kwargs={'pk': self.id})

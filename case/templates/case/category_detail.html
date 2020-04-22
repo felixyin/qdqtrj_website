@@ -50,7 +50,6 @@
 
                         {% for case in case_list %}
                             <li>
-                                {{ category.id }} - {{ case.id }}
                                 {#                                <a href="{% url 'case:case-detail' category_pk=category.id case_pk=case.id %}">#}
                                 <a href="{{ case.get_absolute_url }}">
                                     <div class="p_show_img">

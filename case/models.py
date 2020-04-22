@@ -49,6 +49,7 @@ class Case(BaseModel):
     class Meta:
         verbose_name = '案例'
         verbose_name_plural = verbose_name
+        ordering = ('sequence',)
 
     def get_absolute_url(self):
         return reverse('case:case-detail', kwargs={'category_pk': self.category.id, 'case_pk': self.id})
@@ -62,12 +63,12 @@ class Case(BaseModel):
     @cached_property
     def next_case(self):
         # 下一篇
-        return Case.objects.filter(sequence__gt=self.sequence, is_enable=True).order_by('sequence').first()
+        return Case.objects.filter(category=self.category, sequence__gt=self.sequence, is_enable=True).order_by('sequence').first()
 
     @cached_property
     def prev_case(self):
         # 前一篇
-        return Case.objects.filter(sequence__lt=self.sequence, is_enable=True).order_by('-sequence').first()
+        return Case.objects.filter(category=self.category, sequence__lt=self.sequence, is_enable=True).order_by('-sequence').first()
 
     @cache_decorator(60 * 60 * 10)
     def get_related_cases(self):

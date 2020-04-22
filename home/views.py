@@ -43,7 +43,7 @@ class HomeView(DetailView):
             kwargs['case_list'] = Case.objects.all()[:6]
             product_list = Product.objects.all()
             kwargs['first_product'] = product_list[0]
-            kwargs['other_products'] = product_list[0:4]
+            kwargs['other_products'] = product_list[1:5]
             kwargs['service_list'] = Service.objects.all()
             kwargs['aboutitem_list'] = AboutItem.objects.all().order_by('sequence')
         return super().get_context_data(**kwargs)

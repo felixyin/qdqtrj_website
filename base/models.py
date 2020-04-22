@@ -17,6 +17,7 @@ class BaseModel(m.Model):
 
     class Meta:
         abstract = True
+        ordering = ('sequence',)
 
     def save(self, *args, **kwargs):
         # if not self.slug or self.slug == 'no-slug' or not self.id:
