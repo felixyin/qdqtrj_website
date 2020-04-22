@@ -17,6 +17,7 @@ class AboutItem(BaseModel):
     class Meta:
         verbose_name = '关于子项'
         verbose_name_plural = verbose_name
+        ordering = ('sequence',)
 
     def get_absolute_url(self):
         return reverse('about:item', kwargs={'pk': self.id})
