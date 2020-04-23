@@ -82,6 +82,31 @@
 {% endblock %}
 {% block compress_css %}
     <link rel="stylesheet" href="{% static "mdeditor/css/editormd.min.css" %}"/>
+    <style>
+        .markdown-body h1 {
+            font-size: 1.5em;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.4em;
+        }
+
+        .markdown-body h3 {
+            font-size: 1.3em;
+        }
+
+        .markdown-body h4 {
+            font-size: 1.2em;
+        }
+
+        .markdown-body h5 {
+            font-size: 1.1em;
+        }
+
+        .markdown-body h6 {
+            font-size: 1em;
+        }
+    </style>
 {% endblock %}
 {% block compress_js %}
     <script src="{% static 'mdeditor/js/lib/marked.min.js' %}"></script>
