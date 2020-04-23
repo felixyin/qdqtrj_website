@@ -1,6 +1,7 @@
 ﻿{% extends 'share_layout/blog_layout.html' %}
 {% load blog_tags %}
 {% load cache %}
+{% load static %}
 {% block header %}
 
     <title> 项目案例| {{ BLOG_DESCRIPTION }}</title>
@@ -14,12 +15,13 @@
     <meta property="og:site_name" content="{{ BLOG_NAME }}"/>
 
 {% endblock %}
+
 {% block content %}
     <div id="primary" class="site-content">
         <div id="content" role="main">
 
             <header class="archive-header">
-                <a href="{% url 'blog:case' %}">项目案例</a> &nbsp;&rsaquo;  <span class="archive-title">{{ case.name }}</span>
+                <a href="{% url 'blog:case' %}">项目案例</a> &nbsp;&rsaquo; <span class="archive-title">{{ case.name }}</span>
             </header><!-- .archive-header -->
 
             <div class="entry-content">

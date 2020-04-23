@@ -51,7 +51,12 @@
             <p class='read-more'><a
                     href=' {{ article.get_absolute_url }}'>Read more</a></p>
         {% else %}
-            {{ article.body|custom_markdown }}
+{#            {{ article.body|custom_markdown }}#}
+            <!-- 用于显示md编辑器的md格式 -->
+            <div id="doc-content">
+                <textarea style="display: none;">{{article.body}}</textarea>
+            </div>
+
         {% endif %}
 
     </div><!-- .entry-content -->

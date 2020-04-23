@@ -1,6 +1,7 @@
 {% extends 'share_layout/blog_layout.html' %}
 {% load blog_tags %}
 {% load cache %}
+{% load static %}
 {% block header %}
     <title>{{ article.title }} | {{ BLOG_DESCRIPTION }}</title>
     <meta property="og:type" content="article"/>
@@ -27,6 +28,7 @@
     {% endif %}
 
 {% endblock %}
+
 {% block content %}
     <div id="primary" class="site-content">
         <div id="content" role="main">
@@ -77,4 +79,30 @@
             {% load_sidebar user 'p' %}
         {% endcache %}
     {% endwith %}
+{% endblock %}
+{% block compress_css %}
+    <link rel="stylesheet" href="{% static "mdeditor/css/editormd.min.css" %}"/>
+{% endblock %}
+{% block compress_js %}
+    <script src="{% static 'mdeditor/js/lib/marked.min.js' %}"></script>
+    <script src="{% static 'mdeditor/js/lib/prettify.min.js' %}"></script>
+    <script src="{% static 'mdeditor/js/lib/raphael.min.js' %}"></script>
+    <script src="{% static 'mdeditor/js/lib/underscore.min.js' %}"></script>
+    <script src="{% static 'mdeditor/js/lib/sequence-diagram.min.js' %}"></script>
+    <script src="{% static 'mdeditor/js/lib/flowchart.min.js' %}"></script>
+    <script src="{% static 'mdeditor/js/editormd.min.js' %}"></script>
+    <script type="text/javascript">
+        var testEditor;
+        $(function () {
+            testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true, // 默认不解析
+                flowChart: true, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                codeFold: true
+            });
+        });
+    </script>
 {% endblock %}
