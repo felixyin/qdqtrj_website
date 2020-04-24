@@ -13,6 +13,9 @@
 @time: 2018/1/7 上午2:21
 """
 from django.contrib.admin import AdminSite, ModelAdmin
+from djcelery.admin import PeriodicTaskAdmin, TaskMonitor, WorkerMonitor
+from dynamic_scraper.models import *
+from djcelery.models import *
 
 from about.models import AboutItem
 from base.admin import BaseTagAdmin, WebSettingsAdmin, MessageAdmin
@@ -35,7 +38,6 @@ from oauth.admin import *
 from servermanager.admin import *
 from comments.admin import *
 from owntracks.admin import *
-from case.admin import CategoryAdmin as CaseCategoryAdmin
 from case.models import Category as CaseCategory
 
 
@@ -83,7 +85,9 @@ admin_site.register(Service, ServiceAdmin)
 admin_site.register(Product, ProductAdmin)
 
 # case
-admin_site.register(CaseCategory, CaseCategoryAdmin)
+import case.admin as ca
+
+admin_site.register(CaseCategory, ca.CategoryAdmin)
 admin_site.register(Case, CaseAdmin)
 
 # blog
@@ -102,3 +106,21 @@ admin_site.register(OAuthConfig, OAuthConfigAdmin)
 admin_site.register(OwnTrackLog, OwnTrackLogsAdmin)
 admin_site.register(Site, SiteAdmin)
 admin_site.register(LogEntry, LogEntryAdmin)
+
+# ddscrapy
+import ddscrapy.admin as dda
+
+admin_site.register(dda.NewsWebsite, dda.NewsWebsiteAdmin)
+admin_site.register(dda.Article, dda.ArticleAdmin)
+from dynamic_scraper.admin import *
+admin_site.register(ScrapedObjClass, ScrapedObjClassAdmin)
+admin_site.register(Scraper, ScraperAdmin)
+admin_site.register(SchedulerRuntime, SchedulerRuntimeAdmin)
+admin_site.register(LogMarker, LogMarkerAdmin)
+admin_site.register(Log, LogAdmin)
+
+admin_site.register(TaskState, TaskMonitor)
+admin_site.register(WorkerState, WorkerMonitor)
+admin_site.register(IntervalSchedule)
+admin_site.register(CrontabSchedule)
+admin_site.register(PeriodicTask, PeriodicTaskAdmin)
