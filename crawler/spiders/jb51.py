@@ -25,12 +25,9 @@ class Jb51Spider(scrapy.Spider):
 
     def parse_menu(self, response):
         menu_list = response.xpath('//div[@class="panel-body leftmenu"]/a/@href').extract()
-        category_list2 = response.xpath('//div[@class="panel-body leftmenu"]/a/text()').extract()
         for index in range(len(menu_list)):
             # print(menu_href)
-            item = response.meta['item']
-            item['category2'] = category_list2[index]
-            yield scrapy.Request(response.urljoin(menu_list[index]), self.parse_list, meta={'item': item})
+            yield scrapy.Request(response.urljoin(menu_list[index]), self.parse_list, meta={'item': response.meta['item']})
 
     def parse_list(self, response):
         list = response.xpath('//div[@class="col-sm-7"]/div[@class="panel panel-default"]/ul/li[@class="list-group-item"]/a/@href').extract()
@@ -57,9 +54,11 @@ class Jb51Spider(scrapy.Spider):
         jq.find('p:last').remove()
         jq.find('h2:last').remove()
         pub_time = response.xpath('//div[@class="time text-center"]/text()').extract_first()
+        category2 = response.xpath('//div[@class="col-sm-7"]/ul[@class="breadcrumb"]/li[2]/a/text()').extract_first()
 
         item = response.meta['item']
         item['title'] = title
+        item['category2'] = category2
         item['body'] = jq.html()
         item['pub_time'] = pub_time.replace(' 发布网站：脚本之家', '').replace('发布时间：', '')
 
