@@ -65,11 +65,6 @@ INSTALLED_APPS = [
     'haystack',
     'django_extensions',
     # 'debug_toolbar',
-    'kombu.transport.django',
-    'djcelery',
-    'scrapyd',
-    'dynamic_scraper',
-    'ddscrapy',
     'blog',
     'accounts',
     'comments',
@@ -448,29 +443,6 @@ SIMPLEUI_CONFIG = {
     ]
 }
 
-# 爬取博客文章
-BOT_NAME = 'ddscrapy'
-
-SPIDER_MODULES = ['dynamic_scraper.spiders', 'ddscrapy.scraper', ]
-USER_AGENT = '%s/%s' % (BOT_NAME, '1.0')
-
-# Scrapy 0.20+
-ITEM_PIPELINES = {
-    'dynamic_scraper.pipelines.ValidationPipeline': 400,
-    'ddscrapy.scraper.pipelines.DjangoWriterPipeline': 800,
-}
-# django-celery settings
-import djcelery
-
-djcelery.setup_loader()
-
-BROKER_HOST = "localhost"
-BROKER_PORT = 5672
-BROKER_BACKEND = "django"
-BROKER_USER = "guest"
-BROKER_PASSWORD = "guest"
-BROKER_VHOST = "/"
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 
 # =============================================================================================================================== 
