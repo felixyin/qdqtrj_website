@@ -30,7 +30,7 @@ class Jb51Spider(scrapy.Spider):
             # print(menu_href)
             item = response.meta['item']
             item['category2'] = category_list2[index]
-            yield scrapy.Request(response.urljoin(menu_list[index]), self.parse_list, meta={'item': response.meta['item']})
+            yield scrapy.Request(response.urljoin(menu_list[index]), self.parse_list, meta={'item': item})
 
     def parse_list(self, response):
         list = response.xpath('//div[@class="col-sm-7"]/div[@class="panel panel-default"]/ul/li[@class="list-group-item"]/a/@href').extract()
