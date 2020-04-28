@@ -36,7 +36,7 @@ class Jb51Spider(scrapy.Spider):
         list = response.xpath('//div[@class="col-sm-7"]/div[@class="panel panel-default"]/ul/li[@class="list-group-item"]/a/@href').extract()
         # print(list)
         for doc_href in list:
-            print(doc_href)
+            # print(doc_href)
             yield scrapy.Request(response.urljoin(doc_href), self.parse_doc, meta={'item': response.meta['item']})
 
         # 分页处理
