@@ -46,20 +46,26 @@ class Jb51Spider(scrapy.Spider):
         '''
         结息文章内容
         '''
+        item = response.meta['item']
+
         title = response.xpath('//div[@class="panel-heading font-weight-bold text-center"]/h3/text()').extract_first()
+        item['title'] = title
+
+        category2 = response.xpath('//div[@class="col-sm-7"]/ul[@class="breadcrumb"]/li[2]/a/text()').extract_first()
+        item['category2'] = category2
+
         body = response.xpath('//div[@class="jb51box"]').extract_first()
         doc = pd(body)
         jq = doc('*')
-        jq.find('blockquote').remove()
+        jq.find('blockquote:first').remove()
+        jq.find('blockquote:last').remove()
         jq.find('p:last').remove()
         jq.find('h2:last').remove()
-        pub_time = response.xpath('//div[@class="time text-center"]/text()').extract_first()
-        category2 = response.xpath('//div[@class="col-sm-7"]/ul[@class="breadcrumb"]/li[2]/a/text()').extract_first()
+        body_str = jq.html()
+        print(body_str)
+        item['body'] = body_str
 
-        item = response.meta['item']
-        item['title'] = title
-        item['category2'] = category2
-        item['body'] = jq.html()
+        pub_time = response.xpath('//div[@class="time text-center"]/text()').extract_first()
         item['pub_time'] = pub_time.replace(' 发布网站：脚本之家', '').replace('发布时间：', '')
 
         yield item

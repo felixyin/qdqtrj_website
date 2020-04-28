@@ -22,7 +22,7 @@ class Jb51Pipeline:
 
         body = html2text.html2text(item['body'])
         # print(body)
-        if len(body) < 100:
+        if len(body) < 250:
             return item
 
         article.body = body
