@@ -35,3 +35,7 @@ python-logstash==0.4.6
 pysolr==3.9.0
 simpleui==3.9
 mysqlclient==1.4.6
+scrapy==2.1.0
+PyQuery==1.4.1
+html2text==2020.1.16
+
