@@ -58,6 +58,7 @@ class Jb51Pipeline:
                 c2 = Category(name=subc)
                 c2.parent_category = category_list[0]
                 c2.save()
+                return c2
             else:
                 c1 = Category(name=parentc)
                 c1.save()
