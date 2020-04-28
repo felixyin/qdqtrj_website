@@ -62,7 +62,9 @@ class Jb51Spider(scrapy.Spider):
         jq.find('p:last').remove()
         jq.find('h2:last').remove()
         body_str = jq.html()
+        print('\n\n\n\n\n\n\n\n_________________________________________________________________________________________________')
         print(body_str)
+        print('_________________________________________________________________________________________________\n\n\n\n\n\n\n\n')
         item['body'] = body_str
 
         pub_time = response.xpath('//div[@class="time text-center"]/text()').extract_first()

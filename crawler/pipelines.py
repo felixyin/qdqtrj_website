@@ -20,7 +20,11 @@ class Jb51Pipeline:
 
         article.title = title
 
-        body = html2text.html2text(item['body'])
+        body_ = item['body']
+        if "https://www.jb51.cc/" in body_:
+            return item
+
+        body = html2text.html2text(body_)
         # print(body)
         if len(body) < 250:
             return item
