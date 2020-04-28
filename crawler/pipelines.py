@@ -53,10 +53,10 @@ class Jb51Pipeline:
         if len(category_list) == 1:
             return category_list[0]
         else:
-            category_list = Category.objects.filter(name=parentc)
-            if len(category_list) == 1:
+            category_list1 = Category.objects.filter(name=parentc)
+            if len(category_list1) == 1:
                 c2 = Category(name=subc)
-                c2.parent_category = category_list[0]
+                c2.parent_category = category_list1[0]
                 c2.save()
                 return c2
             else:
