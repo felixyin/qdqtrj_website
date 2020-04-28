@@ -11,9 +11,14 @@ class Jb51Spider(scrapy.Spider):
     start_urls = ['http://www.jb51.cc/']
 
     def parse(self, response):
-        category_list = response.xpath('//ul[@class="nav navbar-nav"]/li/a/@href').extract()
+        # category_list = response.xpath('//ul[@class="nav navbar-nav"]/li/a/@href').extract()
+        # category_list = category_list[1:len(category_list) - 2]
+        # category_list1 = response.xpath('//ul[@class="nav navbar-nav"]/li/a/text()').extract()
+        # category_list1 = category_list1[1:len(category_list1) - 2]
+        x = response.xpath('//ul[@class="nav navbar-nav"]/li/a')
+        category_list = x.xpath('./@href').extract()
         category_list = category_list[1:len(category_list) - 2]
-        category_list1 = response.xpath('//ul[@class="nav navbar-nav"]/li/a/text()').extract()
+        category_list1 = x.xpath('./text()').extract()
         category_list1 = category_list1[1:len(category_list1) - 2]
 
         for index in range(len(category_list)):
@@ -21,6 +26,7 @@ class Jb51Spider(scrapy.Spider):
             # print(category_href)
             item = Jb51Item()
             item['category1'] = category_list1[index]
+            # print(category_list[index], category_list1[index])
             yield scrapy.Request(response.urljoin(category_list[index]), self.parse_menu, meta={'item': item})
 
     def parse_menu(self, response):
@@ -62,9 +68,9 @@ class Jb51Spider(scrapy.Spider):
         jq.find('p:last').remove()
         jq.find('h2:last').remove()
         body_str = jq.html()
-        print('\n\n\n\n\n\n\n\n_________________________________________________________________________________________________')
-        print(body_str)
-        print('_________________________________________________________________________________________________\n\n\n\n\n\n\n\n')
+        # print('\n\n\n\n\n\n\n\n_________________________________________________________________________________________________')
+        # print(body_str)
+        # print('_________________________________________________________________________________________________\n\n\n\n\n\n\n\n')
         item['body'] = body_str
 
         pub_time = response.xpath('//div[@class="time text-center"]/text()').extract_first()

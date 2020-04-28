@@ -28,7 +28,9 @@ class Jb51Pipeline:
         # print(body)
         if len(body) < 250:
             return item
-
+        # print('\n\n\n\n\n\n\n\nstart _________________________________________________________________________________________________')
+        # print(body)
+        # print('end _________________________________________________________________________________________________\n\n\n\n\n\n\n\n')
         article.body = body
         article.pub_time = item['pub_time']
         article.author = BlogUser.objects.get(id=2)
@@ -48,6 +50,7 @@ class Jb51Pipeline:
             article.tags.add(t)
 
         article.save()
+        print('%s\t-\t%s' % (title, article.category.name))
 
         # print(article.id)
         return item
