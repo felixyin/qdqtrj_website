@@ -22,14 +22,17 @@ class Jb51Pipeline:
 
         body_ = item['body']
         if "https://www.jb51.cc/" in body_:
-            self.delete_article(article)
-            return item
+            article.status = 'd'
+            # self.delete_article(article)
+            # return item
 
         body = html2text.html2text(body_)
         # print(body)
         if len(body) < 400:
-            self.delete_article(article)
-            return item
+            article.status = 'd'
+            # self.delete_article(article)
+            # return item
+
         # print('\n\n\n\n\n\n\n\nstart _________________________________________________________________________________________________')
         # print(body)
         # print('end _________________________________________________________________________________________________\n\n\n\n\n\n\n\n')

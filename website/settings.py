@@ -245,7 +245,7 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'root': {
-        'level': 'INFO',
+        'level': 'ERROR',
         'handlers': ['console', 'log_file'],
     },
     'formatters': {
@@ -263,14 +263,14 @@ LOGGING = {
     },
     'handlers': {
         'log_file': {
-            'level': 'INFO',
+            'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': 'website.log',
             'maxBytes': 16777216,  # 16 MB
             'formatter': 'verbose'
         },
         'console': {
-            'level': 'DEBUG',
+            'level': 'ERROR',
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
@@ -449,8 +449,8 @@ SIMPLEUI_CONFIG = {
 p = platform.platform()
 print('您的运行平台是：%s' % p)
 if operator.contains(p.lower(), 'macOS'.lower()):
-    # DEBUG = True
-    DEBUG = False
+    DEBUG = True
+    # DEBUG = False
     SIMPLEUI_CONFIG = None
     COMPRESS_ENABLED = False
     COMPRESS_OFFLINE = False
