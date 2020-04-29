@@ -28,7 +28,7 @@ class Jb51Pipeline:
 
         body = html2text.html2text(body_)
         # print(body)
-        if len(body) < 400:
+        if len(body) < 600:
             article.status = 'd'
             # self.delete_article(article)
             # return item
