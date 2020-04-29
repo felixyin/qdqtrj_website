@@ -22,11 +22,13 @@ class Jb51Pipeline:
 
         body_ = item['body']
         if "https://www.jb51.cc/" in body_:
+            if article.id is not None: article.delete()
             return item
 
         body = html2text.html2text(body_)
         # print(body)
         if len(body) < 250:
+            if article.id is not None: article.delete()
             return item
         # print('\n\n\n\n\n\n\n\nstart _________________________________________________________________________________________________')
         # print(body)
