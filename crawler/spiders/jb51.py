@@ -11,27 +11,12 @@ from crawler.items import Jb51Item
 class Jb51Spider(scrapy.Spider):
     name = 'jb51'
     allowed_domains = ['www.jb51.cc']
-    start_urls = ['http://www.jb51.cc/']
+    # start_urls = ['http://www.jb51.cc/']
+    start_urls = ['https://www.jb51.cc/vue/485434.html']
 
     def parse(self, response):
-        # category_list = response.xpath('//ul[@class="nav navbar-nav"]/li/a/@href').extract()
-        # category_list = category_list[1:len(category_list) - 2]
-        # category_list1 = response.xpath('//ul[@class="nav navbar-nav"]/li/a/text()').extract()
-        # category_list1 = category_list1[1:len(category_list1) - 2]
-
-        # x = response.xpath('//ul[@class="nav navbar-nav"]/li/a')
-        # category_list = x.xpath('./@href').extract()
-        # category_list = category_list[1:len(category_list) - 2]
-        # category_list1 = x.xpath('./text()').extract()
-        # category_list1 = category_list1[1:len(category_list1) - 2]
-        #
-        # for index in range(len(category_list)):
-        #     # yield {'href': c}
-        #     # print(category_href)
-        #     item = Jb51Item()
-        #     item['category1'] = category_list1[index]
-        #     # print(category_list[index], category_list1[index])
-        #     yield scrapy.Request(response.urljoin(category_list[index]), self.parse_menu, meta={'item': item})
+        # self.parse_doc(response)
+        # return
 
         alist = response.xpath('//ul[@class="nav navbar-nav"]/li')
         categorys = []
@@ -56,8 +41,8 @@ class Jb51Spider(scrapy.Spider):
         list = response.xpath('//div[@class="col-sm-7"]/div[@class="panel panel-default"]/ul/li[@class="list-group-item"]/a/@href').extract()
         # print(list)
         for doc_href in list:
-            if Article.objects.filter(reference_url=doc_href).exists():
-                continue
+            # if Article.objects.filter(reference_url=doc_href).exists():
+            #     continue
             # print(doc_href)
             yield scrapy.Request(response.urljoin(doc_href), self.parse_doc, meta={'item': response.meta['item']})
 
@@ -72,6 +57,7 @@ class Jb51Spider(scrapy.Spider):
         结息文章内容
         '''
         item = response.meta['item']
+        # item = Jb51Item()
 
         title = response.xpath('//div[@class="panel-heading font-weight-bold text-center"]/h3/text()').extract_first()
         item['title'] = title
@@ -80,12 +66,11 @@ class Jb51Spider(scrapy.Spider):
         item['category2'] = category2
 
         body = response.xpath('//div[@class="jb51box"]').extract()
+        # print(body)
         doc = pd(''.join(body))
         jq = doc('*')
-        jq.find('blockquote:first').remove()
-        jq.find('blockquote:last').remove()
-        jq.find('p:last').remove()
-        jq.find('h2:last').remove()
+        jq.filter(self.remove_filter).remove()
+        jq.find('h2').filter(lambda i, this: '总结' in pd(this).text()).remove()
         body_str = jq.html()
         # print('\n\n\n\n\n\n\n\n_________________________________________________________________________________________________')
         # print(body_str)
@@ -97,3 +82,7 @@ class Jb51Spider(scrapy.Spider):
         item['pub_time'] = pub_time.replace(' 发布网站：脚本之家', '').replace('发布时间：', '')
 
         yield item
+
+    def remove_filter(self, i, this):
+        text = pd(this).text()
+        return ('脚本之家' in text) or ('总结' in text)

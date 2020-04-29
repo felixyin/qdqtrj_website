@@ -21,7 +21,7 @@ class Jb51Pipeline:
         article.title = title
 
         body_ = item['body']
-        if "https://www.jb51.cc/" in body_:
+        if "www.jb51.cc" in body_:
             article.status = 'd'
             # self.delete_article(article)
             # return item
