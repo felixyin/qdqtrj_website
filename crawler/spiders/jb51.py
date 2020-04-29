@@ -11,8 +11,8 @@ from crawler.items import Jb51Item
 class Jb51Spider(scrapy.Spider):
     name = 'jb51'
     allowed_domains = ['www.jb51.cc']
-    # start_urls = ['http://www.jb51.cc/']
-    start_urls = ['https://www.jb51.cc/vue/485434.html']
+    start_urls = ['http://www.jb51.cc/']
+    # start_urls = ['https://www.jb51.cc/vue/485434.html']
 
     def parse(self, response):
         # self.parse_doc(response)

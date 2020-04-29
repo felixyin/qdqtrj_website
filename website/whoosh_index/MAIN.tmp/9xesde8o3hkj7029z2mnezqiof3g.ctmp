@@ -1,0 +1,652 @@
+rails应用ajax之三:进一步完善ajax动画特效果
+admin
+  * [上一篇：【AJAX】Ajax 跨域请求解决方案 - ](https://www.jb51.cc/ajax/163880.html &quot;【AJAX】Ajax 跨域请求解决方案 - Using CORS&quot;)[下一篇：.net MVC4 ajax分页技术实现](https://www.jb51.cc/ajax/163878.html &quot;.net MVC4 ajax分页技术实现&quot;)
+
+猜你在找的Ajax相关文章
+
+  * [· AJAX 实现页面跳转简单示例](https://www.jb51.cc/ajax/527504.html &quot;AJAX 实现页面跳转简单示例&quot;)12-11
+  * [· Ajax修改页面数据信息的实现方式](https://www.jb51.cc/ajax/527503.html &quot;Ajax修改页面数据信息的实现方式&quot;)12-11
+  * [· ajax回调函数刷新页面的简单示例](https://www.jb51.cc/ajax/527502.html &quot;ajax回调函数刷新页面的简单示例&quot;)12-11
+  * [· Ajax修改的简单示例](https://www.jb51.cc/ajax/527501.html &quot;Ajax修改的简单示例&quot;)12-11
+  * [· AJAX实例：用callback函数的AJAX实例](https://www.jb51.cc/ajax/527500.html &quot;AJAX实例：用callback函数的AJAX实例&quot;)12-11
+  * [· AJAX实例：用AJAX从XML 文件返回数据](https://www.jb51.cc/ajax/527499.html &quot;AJAX实例：用AJAX从XML 文件返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX从数据库返回数据](https://www.jb51.cc/ajax/527498.html &quot;AJAX实例：用AJAX从数据库返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX从ASP 文件返回数据](https://www.jb51.cc/ajax/527497.html &quot;AJAX实例：用AJAX从ASP 文件返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX进行一次指定的 HEAD 请求](https://www.jb51.cc/ajax/527496.html &quot;AJAX实例：用AJAX进行一次指定的 HEAD 请求&quot;)12-11
+  * [· AJAX实例：用AJAX进行一次 HEAD 请求](https://www.jb51.cc/ajax/527495.html &quot;AJAX实例：用AJAX进行一次 HEAD 请求&quot;)12-11
+  * [· AJAX实例：用AJAX加载 XML 文件](https://www.jb51.cc/ajax/527494.html &quot;AJAX实例：用AJAX加载 XML 文件&quot;)12-11
+  * [· AJAX实例：创建一个简单的XMLHttpRequest，从一个TXT文件返回数据](https://www.jb51.cc/ajax/527493.html &quot;AJAX实例：创建一个简单的XMLHttpRequest，从一个TXT文件返回数据&quot;)12-11
+
+[其他相关热搜词](https://www.jb51.cc/all)[更多](https://www.jb51.cc/all)
+
+[CSS](https://www.jb51.cc/tag/CSS/ &quot;CSS&quot;)[HTML](https://www.jb51.cc/tag/HTML/
+&quot;HTML&quot;)[Node.js](https://www.jb51.cc/tag/Nodejs/
+&quot;Node.js&quot;)[cocos](https://www.jb51.cc/tag/cocos/
+&quot;cocos&quot;)[vue.js](https://www.jb51.cc/tag/vuejs/
+&quot;vue.js&quot;)[rails](https://www.jb51.cc/tag/rails/
+&quot;rails&quot;)[angularJS](https://www.jb51.cc/tag/angularJS/
+&quot;angularJS&quot;)[Js](https://www.jb51.cc/tag/Js/
+&quot;Js&quot;)[HTML5](https://www.jb51.cc/tag/HTML5/
+&quot;HTML5&quot;)[bash](https://www.jb51.cc/tag/bash/
+&quot;bash&quot;)[react](https://www.jb51.cc/tag/preact/
+&quot;react&quot;)[angular](https://www.jb51.cc/tag/angular/
+&quot;angular&quot;)[CSS3](https://www.jb51.cc/tag/CSS3/
+&quot;CSS3&quot;)[实现](https://www.jb51.cc/tag/shixian/
+&quot;实现&quot;)[脚本](https://www.jb51.cc/tag/jiaoben/
+&quot;脚本&quot;)[依赖](https://www.jb51.cc/tag/yilai/
+&quot;依赖&quot;)[Lua](https://www.jb51.cc/tag/Lua/
+&quot;Lua&quot;)[spring](https://www.jb51.cc/tag/spring/
+&quot;spring&quot;)[bootstrap](https://www.jb51.cc/tag/bootstrap/
+&quot;bootstrap&quot;)[问题](https://www.jb51.cc/tag/wenti/ &quot;问题&quot;)
+
+掌握 Ajax，第 7 部分: 在请求和响应中使用 XML（1）
+admin
+  * [上一篇：掌握 Ajax，第 6 部分: 建立基于 D](https://www.jb51.cc/ajax/163955.html &quot;掌握 Ajax，第 6 部分: 建立基于 DOM 的 Web 应用程序&quot;)[下一篇：掌握 Ajax，第 8 部分: 在请求和响](https://www.jb51.cc/ajax/163953.html &quot;掌握 Ajax，第 8 部分: 在请求和响应中使用 XML（2）&quot;)
+
+猜你在找的Ajax相关文章
+
+  * [· AJAX 实现页面跳转简单示例](https://www.jb51.cc/ajax/527504.html &quot;AJAX 实现页面跳转简单示例&quot;)12-11
+  * [· Ajax修改页面数据信息的实现方式](https://www.jb51.cc/ajax/527503.html &quot;Ajax修改页面数据信息的实现方式&quot;)12-11
+  * [· ajax回调函数刷新页面的简单示例](https://www.jb51.cc/ajax/527502.html &quot;ajax回调函数刷新页面的简单示例&quot;)12-11
+  * [· Ajax修改的简单示例](https://www.jb51.cc/ajax/527501.html &quot;Ajax修改的简单示例&quot;)12-11
+  * [· AJAX实例：用callback函数的AJAX实例](https://www.jb51.cc/ajax/527500.html &quot;AJAX实例：用callback函数的AJAX实例&quot;)12-11
+  * [· AJAX实例：用AJAX从XML 文件返回数据](https://www.jb51.cc/ajax/527499.html &quot;AJAX实例：用AJAX从XML 文件返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX从数据库返回数据](https://www.jb51.cc/ajax/527498.html &quot;AJAX实例：用AJAX从数据库返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX从ASP 文件返回数据](https://www.jb51.cc/ajax/527497.html &quot;AJAX实例：用AJAX从ASP 文件返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX进行一次指定的 HEAD 请求](https://www.jb51.cc/ajax/527496.html &quot;AJAX实例：用AJAX进行一次指定的 HEAD 请求&quot;)12-11
+  * [· AJAX实例：用AJAX进行一次 HEAD 请求](https://www.jb51.cc/ajax/527495.html &quot;AJAX实例：用AJAX进行一次 HEAD 请求&quot;)12-11
+  * [· AJAX实例：用AJAX加载 XML 文件](https://www.jb51.cc/ajax/527494.html &quot;AJAX实例：用AJAX加载 XML 文件&quot;)12-11
+  * [· AJAX实例：创建一个简单的XMLHttpRequest，从一个TXT文件返回数据](https://www.jb51.cc/ajax/527493.html &quot;AJAX实例：创建一个简单的XMLHttpRequest，从一个TXT文件返回数据&quot;)12-11
+
+[其他相关热搜词](https://www.jb51.cc/all)[更多](https://www.jb51.cc/all)
+
+[CSS](https://www.jb51.cc/tag/CSS/ &quot;CSS&quot;)[HTML](https://www.jb51.cc/tag/HTML/
+&quot;HTML&quot;)[Node.js](https://www.jb51.cc/tag/Nodejs/
+&quot;Node.js&quot;)[cocos](https://www.jb51.cc/tag/cocos/
+&quot;cocos&quot;)[vue.js](https://www.jb51.cc/tag/vuejs/
+&quot;vue.js&quot;)[rails](https://www.jb51.cc/tag/rails/
+&quot;rails&quot;)[angularJS](https://www.jb51.cc/tag/angularJS/
+&quot;angularJS&quot;)[Js](https://www.jb51.cc/tag/Js/
+&quot;Js&quot;)[HTML5](https://www.jb51.cc/tag/HTML5/
+&quot;HTML5&quot;)[bash](https://www.jb51.cc/tag/bash/
+&quot;bash&quot;)[react](https://www.jb51.cc/tag/preact/
+&quot;react&quot;)[angular](https://www.jb51.cc/tag/angular/
+&quot;angular&quot;)[CSS3](https://www.jb51.cc/tag/CSS3/
+&quot;CSS3&quot;)[实现](https://www.jb51.cc/tag/shixian/
+&quot;实现&quot;)[脚本](https://www.jb51.cc/tag/jiaoben/
+&quot;脚本&quot;)[依赖](https://www.jb51.cc/tag/yilai/
+&quot;依赖&quot;)[Lua](https://www.jb51.cc/tag/Lua/
+&quot;Lua&quot;)[spring](https://www.jb51.cc/tag/spring/
+&quot;spring&quot;)[bootstrap](https://www.jb51.cc/tag/bootstrap/
+&quot;bootstrap&quot;)[问题](https://www.jb51.cc/tag/wenti/ &quot;问题&quot;)
+
+Ajax中文乱码
+admin
+  * [上一篇：Ajax技术简单案例](https://www.jb51.cc/ajax/163973.html &quot;Ajax技术简单案例&quot;)[下一篇：如何让ajax技术显示数据的jsp页面第](https://www.jb51.cc/ajax/163971.html &quot;如何让ajax技术显示数据的jsp页面第一次加载就加载默认查询数据&quot;)
+
+猜你在找的Ajax相关文章
+
+  * [· AJAX 实现页面跳转简单示例](https://www.jb51.cc/ajax/527504.html &quot;AJAX 实现页面跳转简单示例&quot;)12-11
+  * [· Ajax修改页面数据信息的实现方式](https://www.jb51.cc/ajax/527503.html &quot;Ajax修改页面数据信息的实现方式&quot;)12-11
+  * [· ajax回调函数刷新页面的简单示例](https://www.jb51.cc/ajax/527502.html &quot;ajax回调函数刷新页面的简单示例&quot;)12-11
+  * [· Ajax修改的简单示例](https://www.jb51.cc/ajax/527501.html &quot;Ajax修改的简单示例&quot;)12-11
+  * [· AJAX实例：用callback函数的AJAX实例](https://www.jb51.cc/ajax/527500.html &quot;AJAX实例：用callback函数的AJAX实例&quot;)12-11
+  * [· AJAX实例：用AJAX从XML 文件返回数据](https://www.jb51.cc/ajax/527499.html &quot;AJAX实例：用AJAX从XML 文件返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX从数据库返回数据](https://www.jb51.cc/ajax/527498.html &quot;AJAX实例：用AJAX从数据库返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX从ASP 文件返回数据](https://www.jb51.cc/ajax/527497.html &quot;AJAX实例：用AJAX从ASP 文件返回数据&quot;)12-11
+  * [· AJAX实例：用AJAX进行一次指定的 HEAD 请求](https://www.jb51.cc/ajax/527496.html &quot;AJAX实例：用AJAX进行一次指定的 HEAD 请求&quot;)12-11
+  * [· AJAX实例：用AJAX进行一次 HEAD 请求](https://www.jb51.cc/ajax/527495.html &quot;AJAX实例：用AJAX进行一次 HEAD 请求&quot;)12-11
+  * [· AJAX实例：用AJAX加载 XML 文件](https://www.jb51.cc/ajax/527494.html &quot;AJAX实例：用AJAX加载 XML 文件&quot;)12-11
+  * [· AJAX实例：创建一个简单的XMLHttpRequest，从一个TXT文件返回数据](https://www.jb51.cc/ajax/527493.html &quot;AJAX实例：创建一个简单的XMLHttpRequest，从一个TXT文件返回数据&quot;)12-11
+
+[其他相关热搜词](https://www.jb51.cc/all)[更多](https://www.jb51.cc/all)
+
+[CSS](https://www.jb51.cc/tag/CSS/ &quot;CSS&quot;)[HTML](https://www.jb51.cc/tag/HTML/
+&quot;HTML&quot;)[Node.js](https://www.jb51.cc/tag/Nodejs/
+&quot;Node.js&quot;)[cocos](https://www.jb51.cc/tag/cocos/
+&quot;cocos&quot;)[vue.js](https://www.jb51.cc/tag/vuejs/
+&quot;vue.js&quot;)[rails](https://www.jb51.cc/tag/rails/
+&quot;rails&quot;)[angularJS](https://www.jb51.cc/tag/angularJS/
+&quot;angularJS&quot;)[Js](https://www.jb51.cc/tag/Js/
+&quot;Js&quot;)[HTML5](https://www.jb51.cc/tag/HTML5/
+&quot;HTML5&quot;)[bash](https://www.jb51.cc/tag/bash/
+&quot;bash&quot;)[react](https://www.jb51.cc/tag/preact/
+&quot;react&quot;)[angular](https://www.jb51.cc/tag/angular/
+&quot;angular&quot;)[CSS3](https://www.jb51.cc/tag/CSS3/
+&quot;CSS3&quot;)[实现](https://www.jb51.cc/tag/shixian/
+&quot;实现&quot;)[脚本](https://www.jb51.cc/tag/jiaoben/
+&quot;脚本&quot;)[依赖](https://www.jb51.cc/tag/yilai/
+&quot;依赖&quot;)[Lua](https://www.jb51.cc/tag/Lua/
+&quot;Lua&quot;)[spring](https://www.jb51.cc/tag/spring/
+&quot;spring&quot;)[bootstrap](https://www.jb51.cc/tag/bootstrap/
+&quot;bootstrap&quot;)[问题](https://www.jb51.cc/tag/wenti/ &quot;问题&quot;)
+
+oracle 共享内存查看 ipcs命令详解
+admin
+  * [上一篇：Oracle数据库体系结构、启动过程、](https://www.jb51.cc/oracle/211329.html &quot;Oracle数据库体系结构、启动过程、关闭过程&quot;)[下一篇：oracle 内存参数示意图](https://www.jb51.cc/oracle/211327.html &quot;oracle 内存参数示意图&quot;)
+
+猜你在找的Oracle相关文章
+
+  * [· Navicat Premium11连接Oracle出现ORA-28547：connection to server failed](https://www.jb51.cc/oracle/539221.html &quot;Navicat Premium11连接Oracle出现ORA-28547：connection to server failed&quot;)02-23
+  * [· oracle基本查询入门(一)](https://www.jb51.cc/oracle/539220.html &quot;oracle基本查询入门\(一\)&quot;)02-23
+  * [· win10下安装oracle11G Examples出错[INS-32025][INS-52001]](https://www.jb51.cc/oracle/539219.html &quot;win10下安装oracle11G Examples出错\[INS-32025\]\[INS-52001\]&quot;)02-23
+  * [· oracle基本查询入门(二) 子查询](https://www.jb51.cc/oracle/539218.html &quot;oracle基本查询入门\(二\)  子查询&quot;)02-23
+  * [· oralce 存储过程、函数和触发器](https://www.jb51.cc/oracle/539217.html &quot;oralce 存储过程、函数和触发器&quot;)02-23
+  * [· oracle pl/sql程序](https://www.jb51.cc/oracle/539216.html &quot;oracle pl/sql程序&quot;)02-23
+  * [· node-oracledb下遇到ORA-01704: string literal too long报错](https://www.jb51.cc/oracle/454276.html &quot;node-oracledb下遇到ORA-01704: string literal too long报错&quot;)04-15
+  * [· Oracle中的LOAD DATA INFILE等效项](https://www.jb51.cc/oracle/446692.html &quot;Oracle中的LOAD DATA INFILE等效项&quot;)04-24
+  * [· Oracle数据库更改通知和ROWID](https://www.jb51.cc/oracle/446691.html &quot;Oracle数据库更改通知和ROWID&quot;)04-24
+  * [· Oracle根据to_date(literal)的格式使用或忽略索引列](https://www.jb51.cc/oracle/446690.html &quot;Oracle根据to_date\(literal\)的格式使用或忽略索引列&quot;)04-24
+  * [· 如果机器安装了oracle(oci8和/或pdo_oci),如何使用php检测？](https://www.jb51.cc/oracle/446689.html &quot;如果机器安装了oracle\(oci8和/或pdo_oci\),如何使用php检测？&quot;)04-24
+  * [· 为什么Oracle在导入后锁定了我的架构的统计信息？](https://www.jb51.cc/oracle/446688.html &quot;为什么Oracle在导入后锁定了我的架构的统计信息？&quot;)04-24
+
+[其他相关热搜词](https://www.jb51.cc/all)[更多](https://www.jb51.cc/all)
+
+[ruby](https://www.jb51.cc/tag/ruby/
+&quot;ruby&quot;)[delphi](https://www.jb51.cc/tag/delphi/ &quot;delphi&quot;)[sql-
+server](https://www.jb51.cc/tag/sqlserver/ &quot;sql-
+server&quot;)[swift](https://www.jb51.cc/tag/swift/
+&quot;swift&quot;)[arrays](https://www.jb51.cc/tag/arrays/
+&quot;arrays&quot;)[performanc](https://www.jb51.cc/tag/performance/ &quot;performance&quot;)[sql-
+server](https://www.jb51.cc/tag/sqlserver2008/ &quot;sql-
+server-2008&quot;)[objective-](https://www.jb51.cc/tag/objectivec/
+&quot;objective-c&quot;)[TSQL](https://www.jb51.cc/tag/TSQL/
+&quot;TSQL&quot;)[go](https://www.jb51.cc/tag/go/
+&quot;go&quot;)[ssh](https://www.jb51.cc/tag/ssh/
+&quot;ssh&quot;)[c++11](https://www.jb51.cc/tag/c11/
+&quot;c++11&quot;)[multithrea](https://www.jb51.cc/tag/multithreading/
+&quot;multithreading&quot;)[vb.net](https://www.jb51.cc/tag/vbnet/ &quot;vb.net&quot;)[asp.net-
+mv](https://www.jb51.cc/tag/aspnetmvc/ &quot;asp.net-
+mvc&quot;)[regex](https://www.jb51.cc/tag/regex/
+&quot;regex&quot;)[linq](https://www.jb51.cc/tag/linq/
+&quot;linq&quot;)[integer](https://www.jb51.cc/tag/integer/ &quot;integer&quot;)[sql-
+server](https://www.jb51.cc/tag/sqlserver2005/ &quot;sql-
+server-2005&quot;)[系列](https://www.jb51.cc/tag/xilie/ &quot;系列&quot;)
+
+NoSQL 数据库汇总
+admin
+  
+
+Wide Column Store / Column Families
+
+[Hadoop / HBase](javascript:void\(\)): API:Java / any writer,Protocol:any
+write call,Query Method:MapReduce Java / any exec,Replication:HDFS
+Replication,Written in:Java,Concurrency: ?,Misc:Links: 3 Books
+[[1](javascript:void\(\)),[2](javascript:void\(\)),[3](javascript:void\(\))]  
+  
+[Cassandra](javascript:void\(\)):
+API:manyThrift[»](javascript:void\(\))languages,Protocol: ?,Query
+Method:MapReduce,Replicaton:,Concurrency:eventually consistent,Misc: like
+&quot;Big-Table on Amazon Dynamo alike&quot;,initiated by
+Facebook,Slides[»](javascript:void\(\)),Clients[»](javascript:void\(\))  
+  
+[Hypertable](javascript:void\(\)):
+API:Thrift(Java,PHP,Perl,Python,Ruby,etc.),Protocol:Thrift,Query
+Method:HQL,native Thrift API,Concurrency:MVCC,Consistency Model:Fully
+consistentMisc: High performance C++ implementation of Google&#x27;s Bigtable.
+Commercial support[»](javascript:void\(\))  
+  
+[Amazon SimpleDB](javascript:void\(\)):Misc: not open source / part of
+AWS,Book[»](javascript:void\(\))  
+  
+[Cloudata](javascript:void\(\)): Google&#x27;s Big table clone like HBase.
+Article[»](javascript:void\(\))  
+[Cloudera](javascript:void\(\)): Professional Software &amp; Services based on
+Hadoop.  
+[SciDB](javascript:void\(\)):ArrayData Model for Scientists,paper[»  
+](javascript:void\(\))[HPCC](javascript:void\(\)):
+from[LexisNexis](javascript:void\(\)),[info](javascript:void\(\)),[article](javascript:void\(\))  
+[Stratosphere:](javascript:void\(\))(research system) massive parallel &amp;
+flexible execution,M/R generalization and extention
+([paper](javascript:void\(\)),[poster](javascript:void\(\))).  
+[OpenNeptune,Qbase,KDI]:
+
+  
+
+Document Store
+
+[MongoDB](javascript:void\(\)): API:BSON,Protocol:lots of langs,Query
+Method:dynamic object-based language &amp; MapReduce,Replication:Master Slave &amp;
+Auto-Sharding,Written in:C++,Concurrency:Update in Place. Misc:Indexing,GridFS
+Links:Talk[»](javascript:void\(\))  
+  
+[C](javascript:void\(\))[ouchDB](javascript:void\(\)):
+API:JSON,Protocol:REST,Query Method:MapReduceR of JavaScript
+Funcs,Replication:Master Master,Written in:Erlang,Misc:  
+Links: 3 CouchDB books[»](javascript:void\(\))(partitioning / clusering),Dr.
+Dobbs[»](javascript:void\(\))  
+  
+[OrientDB](javascript:void\(\)): Languages:Java,Schema:Has features of an
+Object-Database,DocumentDB,GraphDB or Key-Value DB,Query Method:Native and
+SQL,Misc:really fast,lightweight,ACID with recovery.  
+  
+[RavenDB](javascript:void\(\)):.Net solution.
+ProvidesHTTP/JSONaccess.LINQqueries &amp;Shardingsupported.
+Misc:[»](javascript:void\(\))  
+  
+[Citrusleaf:](javascript:void\(\))  
+  
+[Clusterpoint Server](javascript:void\(\)): (freeware+commercial)
+API:XML,Java,.NETProtocols:HTTP,REST,native TCP/IPQuery Method:full text
+search,XML,range and Xpath queries; Written inC++Concurrency:ACID-
+compliant,transactional,multi-master clusterMisc:Petabyte-scalable document
+store and full text search engine. Information ranking. Replication.
+Cloudable.  
+  
+[ThruDB](javascript:void\(\)): (please help provide more facts!) Uses
+Apache[Thrift](javascript:void\(\))to integrate multiple backend databases as
+BerkeleyDB,Disk,MySQL,S3.  
+  
+[Terrastore](javascript:void\(\)): API:Java &amp;
+http,Protocol:http,Language:Java,Querying:Range
+queries,Predicates,Replication:Partitioned with consistent
+hashing,Consistency:Per-record strict consistency,Misc: Based on Terracotta  
+  
+[SisoDB](javascript:void\(\)): A Document Store on top of SQL-Server.  
+[[RaptorDB](javascript:void\(\)),CloudKit,Perservere,Jackrabbit[»](javascript:void\(\))]
+
+Key Value / Tuple Store
+
+[Azure Table Storage](javascript:void\(\)):Collections of free form entities
+(row key,partition key,timestamp). Blob and Queue Storage available,3 times
+redundant. Accessible via REST or ATOM.  
+  
+[MEMBASE:](javascript:void\(\))API:Memcached API+protocol(binary and
+ASCII),most languages,Protocol:Memcached REST interface for cluster conf +
+management,Written in:C/C+++Erlang(clustering),Replication:Peer to Peer,fully
+consistent,Misc:Transparent topology changes during operation,provides
+memcached-compatible caching buckets,commercially supported version
+available,Links: Wiki[  
+](javascript:void\(\))[Riak](javascript:void\(\)): API:JSON,Query
+Method:MapReduce term matching,Scaling:Multiple Masters; Written
+in:Erlang,Concurrency:eventually consistent(stronger then MVCC via Vector
+Clocks),Misc:...Links: talk[Redis](javascript:void\(\)):API:Tons of
+languages,Written in:C,Concurrency:in memoryand saves asynchronous disk after
+a defined time. Append only mode available. Different kinds of fsync policies.
+Replication:Master / Slave,Misc:also lists,sets,sorted sets,hashes,queues.
+Cheat-Sheet:[»](javascript:void\(\))Admin UI[»](javascript:void\(\))From the
+Ground up[»](javascript:void\(\))  
+  
+[LevelDB:](javascript:void\(\))Fast&amp; Batch updates. DB fromGoogle.
+Blog[»](javascript:void\(\))(in German).  
+  
+[Chordless](javascript:void\(\)):API:Java &amp; simple RPC to
+vals,Protocol:internal,Query Method:M/R inside value objects,Scaling:every
+node is master for its slice of namespace,Concurrency:serializable transaction
+isolation,Links:  
+  
+[GenieDB](javascript:void\(\)): Immediate consistency sharded KV store with an
+eventually consistent AP store bringing eventual consistency issues down to
+the theoretical minimum. It features efficient record coalescing.
+GenieDBspeaks SQL and co-exists / do intertable joins with SQL RDBMs.  
+  
+[Scalaris](javascript:void\(\)):(please help provide more facts!) Written
+in:Erlang,Replication:Strong consistency over replicas,Concurrency:non
+blocking Paxos.  
+  
+[Tokyo Cabinet / Tyrant](javascript:void\(\)):Links: nice
+talk[Cabinet](javascript:void\(\))[»](javascript:void\(\))  
+  
+[GT.M](javascript:void\(\)): API:M,C,Protocol:native,inprocess C,Misc:
+Wrappers:M/DB for SimpleDB compatible HTTP[Links: Slides[  
+](javascript:void\(\))[Scalien](javascript:void\(\))](javascript:void\(\)):
+API / Protocol:http(text,html,JSON),C++,Perl. Concurrency:Paxos.  
+  
+[Berkeley DB](javascript:void\(\)): API:Many languages,Replication:Master /
+Slave,License:Sleepycat,[Berkeley DB Java Edition]():
+API:Java,License:Sleepycat  
+  
+[MemcacheDB](javascript:void\(\)): API:Memcache
+protocol(get,set,add,replace,Data Model:Blob,Misc: Is Memcached writing to
+BerkleyDB.  
+  
+[Faircom C-Tree](javascript:void\(\)): API:C,C#,C++. Misc:Transaction logging.
+Client/server. Embedded. SQL wrapper(not core). Been around since 1979.  
+  
+[HamsterDB](javascript:void\(\)): (embedded solution) ACID Compliance,Lock
+Free Architecture (transactions fail on conflict rather than
+block),Transaction logging &amp; fail recovery (redo logs),In Memory support – can
+be used as a non-persisted cache,B+ Trees – supported [Source: Tony
+Bain[»](javascript:void\(\))]  
+  
+[STSdb](javascript:void\(\)):API:C#,Written inC#,embedded solution,generic
+XTable&lt;TKey,TRecord&gt; implementation,  
+ACID transactions,snapshots,table versions,shared records,vertical data
+compression,custom compression,composite &amp; custom primary keys,available
+backend file system layer,works over multiple volumes,petabyte
+scalability,LINQ.  
+  
+[Tarantool/Box](javascript:void\(\)): API:C,Java and Ruby. Written
+in:Objective C,Protocol:asynchronous binary,memcached,text (Lua console). Data
+model:collections of dimensionless tuples,indexed using primary + secondary
+keys. Concurrency:lock-free in memory,consistent with disk (write ahead
+log).Replication:master/slave,configurable. Other:call Lua stored procedures.  
+  
+[Maxtable](javascript:void\(\)):API:C,Query Method:MQL,native
+API,Replication:DFS Replication,Consistency:strict consistency Written in:C.  
+  
+[Pincaster](javascript:void\(\)): For geolocalized apps. Concurrency:in-memory
+with asynchronous disk writes. API:HTTP/JSON. Written in:C. License:BSD.  
+  
+[RaptorDB:](javascript:void\(\))A pure key value store with optimized b+tree
+and murmur hashing. (In the near future it will be a JSON document database
+much like mongodb and couchdb.)  
+  
+[Mnesia](javascript:void\(\)):(ErlangDB[»](javascript:void\(\)))  
+[LightCloud](javascript:void\(\)): (based on Tokyo Tyrant)  
+[Hibari](javascript:void\(\)): Hibari is a highly available,strongly
+consistent,durable,distributed key-value data store  
+  
+[TIBCO Active Spaces](javascript:void\(\)): peer-to-peer distributed in-memory
+(with persistence) datagrid that implements and expands on the concept of the
+Tuple Space. Has SQL Queries and ACID (=&gt; NewSQL).  
+  
+[allegro-C](javascript:void\(\)): Key-Value concept. Variable number of keys
+per record. Multiple key values,Hierarchic records. Relationships. Diff.
+record types in same DB. Indexing: B*-Tree. All aspects configurable. Full
+scripting language. Multi-user ACID. Web interfaces (PHP,ActionScript) plus
+Windows client.  
+  
+[Scality[»](javascript:void\(\)),Kumofs[»](javascript:void\(\)),NMDB,luxio,actord,keyspace,flare,schema-
+free,RAMCloud]
+
+Eventually Consistent Key Value Store
+
+[Amazon Dynamo](javascript:void\(\)):Misc: not open source (see KAI below)  
+  
+[Voldemort](javascript:void\(\)): Open-Source implementation of Amazons Dynamo
+Key-Value Store.  
+  
+[Dynomite](javascript:void\(\)):Open-Source implementation of Amazons Dynamo
+Key-Value Store. written in Erlang. With &quot;data partitioning,versioning,and
+read repair,and user-provided storage engines provide persistence and query
+processing&quot;.  
+  
+[KAI](javascript:void\(\)): Open Source Amazon Dnamo
+implementation,Misc:[slides](javascript:void\(\)),  
+  
+[SubRecord,Mo8onDb,Dovetaildb]
+
+Graph Databases[»](javascript:void\(\))
+
+[Neo4J](javascript:void\(\)): API:lots of langs,Protocol:Java embedded /
+REST,Query Method:SparQL,nativeJavaAPI,JRuby,Replication:typical MySQL style
+master/slave,Concurrency:non-block reads,writes locks involved
+nodes/relationships until commit,Misc:ACIDpossible,Links:
+Video[»](javascript:void\(\))  
+  
+[Infinite Graph](javascript:void\(\)): (by Objectivity)
+API:Java,Protocol:Direct Language Binding,Query Method:Graph Navigation
+API,Predicate Language Qualification,Written in:Java (Core C++),Data
+Model:Labeled Directed Multi Graph,Concurrency:Update locking on
+subgraphs,concurrent non-blocking ingest,Misc:Free for Qualified Startups.  
+  
+[Sones](javascript:void\(\)): OO Graph DB,API:.NET,Protocol:.NET
+embedded,WebServices,Query Method:Graph Query Language,LINQ
+(M/R),Replication:Master-Master,Written in:C#,Concurrency:MVCC  
+  
+[InfoGrid](javascript:void\(\)):API:Java,http/REST,Protocol:as API +
+XPRISO,OpenID,RSS,Atom,JSON,Java embedded,Query Method:Web user interface with
+html,JSON output,Java native,Replication:peer-to-peer,Concurrency:concurrent
+reads,write lock within one MeshBase,Misc:
+Presentation[»](javascript:void\(\))  
+  
+[HyperGraphDB](javascript:void\(\)): API:Java(and Java Langs),Query
+Method:Javaor P2P,Replication:P2P,Concurrency:STM,Misc: Open-Source,Especially
+for AI and Semantic Web.  
+  
+[Trinity:](javascript:void\(\))API:C#,Protocol:C# Language
+Binding,Replication:P2P with Master Node,Concurrency:Yes (Transactional update
+in online query mode,Non-blocking read in Batch Mode)Misc:distributed in-
+memory storage,parallel graph computation platform  
+  
+[AllegroGraph](javascript:void\(\)): API:Java,Clojure,LispProtocol:REST,Query
+Method:SPARQLandProlog,Libraries:Social Networking
+Analytics&amp;GeoSpatial,Written in:CommonLisp,Links: Learning
+Center[»](javascript:void\(\))  
+  
+[Bigdata](javascript:void\(\)): API:Java,Jini service
+discovery,Concurrency:very high(MVCC),Misc: GPL + commercial,Data:RDF data
+with inference,dynamic key-range sharding of indices,Misc:
+Blog[»](javascript:void\(\))(paralleldatabase,high-availability
+architecture,immortal database with historical views)  
+  
+[DEX](javascript:void\(\)): API:Java,Protocol:Java Embedded,Query Method:Java
+API,Written in: Java / C++,Data Model:Labeled Directed Attributed
+Multigraph,Concurrency:yes,Misc: Free community edition up to 1 Mio
+nodes,Links: Intro[»](javascript:void\(\))  
+  
+[OpenLink Virtuoso](javascript:void\(\)):HybridDBMS covering the following
+models:Relational,Document,Graph.  
+[VertexDB](javascript:void\(\)):  
+[FlockDB](javascript:void\(\)):by
+twitter[»](javascript:void\(\))[»](javascript:void\(\))  
+AllegroGraph:  
+[Java Universal Network / Graph
+Framework,Sesame,Filament,OWLim,NetworkX,iGraph]
+
+_Soft NoSQL Systems:  
+_[Mostly NOT originalted out of a Web 2.0 need butworth a look for great non
+relational solutions]
+
+Object Databases (more info at[ODBMS.org](javascript:void\(\)))
+
+[**db4o**](javascript:void\(\)) : API:Java,.Net Langs,Protocol:language,Query
+Method:QBE (by Example),Soda,Native Queries,LINQ (.NET),Replication:db4o2db4o
+&amp; dRS to relationals,Written in:Java,Cuncurrency:ACID serialized,Misc:embedded
+lib,Links: DZone Refcard #53[
+**Versant**](javascript:void\(\)):Languages/Protocol:Java,Python.
+Schema:language class model (easy changable). Modes:always consistent and
+eventually consistentReplication:synchronous fault tolerant and peer to peer
+asynchronous. Concurrency:optimistic and object based locks.Scaling:can add
+physical nodes on fly for scale out/inand migrate objects between nodes
+without impact to application code. Misc:MapReduce via parallel SQL like query
+across logical database groupings.  
+  
+[**Objectivity**](javascript:void\(\)): Languages:Java,Smalltalk,SQL access
+through ODBC. Schema:native language class model,direct support for
+references,interoperable across all language bindings. 64 bit unique object ID
+(OID) supports multi exa-byte. Platforms:32 and 64 bit Windows,Linux,Mac
+OSX,*Unix. Modes:always consistent (ACID). Concurrency:locks at cluster of
+objects (container) level.Scaling:unique distributed architecture,dynamic
+addition/removal of clients &amp; servers,cloud environment
+ready.Replication:synchronous with quorum fault tolerant across peer to peer
+partitions.  
+  
+[**Starcounter** :](javascript:void\(\))API:C# (.NET languages),Schema:Native
+language class model,Query method:SQL,Concurrency:Fully ACID
+compliant,Storage:In-memory with transactions secured on disk,Reliability:Full
+checkpoint recovery,Misc:VMDBMS - Integrating the DBMS with the virtual
+machine for maximal performance and ease of use.  
+  
+[**Perst**](javascript:void\(\)) :API:Java,Java ME,Mono. Query method:OO via
+Perst collections,QBE,LINQ,native full-text search,JSQLReplication:Async+sync
+(master-slave)Written in:Java,C#.  
+Caching:Object cache (LRU,weak,strong),page pool,in-memory
+databaseConcurrency:Pessimistic+optimistic (MVCC)\+ async or sync (ACID)Index
+types:Many tree models + Time Series. Misc.:Embedded lib.,encryption,automatic
+recovery,native full text search,on-line or off-line backup.  
+  
+[**Magma**](javascript:void\(\)): Smalltalk DB,optimistic
+locking,Transactions,etc.  
+  
+[**NEO** :](javascript:void\(\))API:Python - ZODB &quot;Storage&quot;
+interface,Protocol:native,Query Method:transactionalkey-
+value,Replication:native,Written
+in:Python,Concurrency:MVCC(internally),License:GPL &quot;v2 or later&quot;,Misc: Load
+balancing,fault tolerant,hot-extensible.  
+  
+[**PicoLisp**](javascript:void\(\)): Language and Object Database,can be
+viewed as a Database Development Framework. Schema:native language class model
+with relations + various indexes. Queries:language build in + a small Prolog
+like DSLPilog. Concurrency:synchronization + locks. Replication,distribution
+and fault tolerance is not implemented per default but can be implemented with
+native functionality. Written in C (32bit) or assembly (64bit).  
+  
+[**Sterling**](javascript:void\(\)): is a lightweight object-oriented database
+for .NET with support for Silverlight and Windows Phone 7. It features in-
+memory keys and indexes,triggers,and support for compressing and encrypting
+the underlying data.  
+  
+[Morantex](javascript:void\(\)): Stores .NET classes in a datapool. Build for
+speed. SQL Server integration. LINQ support.  
+[[Gemstone](javascript:void\(\)),[Progress](javascript:void\(\))]  
+  
+[EyeDB](javascript:void\(\)):EyeDB is anLGPL OODBMS,provides an advanced
+object model
+(inheritance,collections,arrays,methods,constraints,reflexivity),an object
+definition language based on ODMG ODL,an object query and manipulation
+language based on ODMG OQL. Programming interfaces for C++ and Java.  
+  
+[StupidDB[»](javascript:void\(\))(Perl solution),Durus[  
+](javascript:void\(\))
+
+Grid &amp; Cloud Database Solutions
+
+[**GigaSpaces**](javascript:void\(\)) : PopularSpaceBased Grid Solution.  
+  
+[Queplix](javascript:void\(\)): NOSQL Data Integration Environment,can
+integrate relational,object,BigData – NOSQL easily and without any SQL.  
+  
+[**Hazelcast**](javascript:void\(\)):P2P Data Grid Solution on java.util.*,On
+a 100 NoceEC2 Cluster[»](javascript:void\(\))  
+  
+[Joafip](javascript:void\(\)):  
+  
+**[GridGain,Infinispan,Coherence,eXtremeScale** **]**
+
+  
+XML Databases
+
+[Mark Logic Server](javascript:void\(\)): (commercial system)
+API:Java,.NETProtocols:HTTP,RESTQuery Method:XQuery,XSLTWritten in:C++(code
+closed,API open) Concurrency:Share-nothing cluster architectureMisc: Petabyte-
+scalable XML server. Cloudable. Combines application server,transactional
+persistent storage (XML,text,and binary),and a full-text search engine.
+Developer Network[»](javascript:void\(\))  
+  
+[**EMC Documentum xDB**](javascript:void\(\)): (commercial system)
+API:Java,XQuery,Protocol:WebDAV,web services,Query
+method:XQuery,XPath,XPointer,Replication:lazy primary copy replication
+(master/replicas),Concurrency:concurrent reads,writes with lock; transaction
+isolation,Misc: Fully transactional persistent DOM; versioning; multiple index
+types; metadata and non-XML data support; unlimited horizontal scaling.
+Developer Network[»](javascript:void\(\))  
+  
+[eXist](javascript:void\(\)): API:XQuery,XML:DB
+API,DOM,SAX,Protocols:HTTP/REST,WebDAV,SOAP,XML-RPC,Atom,Query
+Method:XQuery,Written in:Java(open source),Concurrency:Concurrent reads,lock
+on write; Misc: Entire web applications can be written in XQuery,using
+XSLT,XHTML,CSS,and Javascript (for AJAX functionality).(1.4) adds a new full
+text search index based on Apache Lucene,a lightweight URL rewriting and MVC
+framework,and support for XProc.  
+  
+[**Sedna**](javascript:void\(\)): Misc: ACID transactions,security,indices,hot
+backup. Flexible XML processing facilities include W3C XQuery
+implementation,tight integration of XQuery with full-text search facilities
+and a node-level update language.  
+  
+[**BaseX**](javascript:void\(\)): BaseX is a fast,powerful,lightweight XML
+database system and XPath/XQuery processor with highly conformant support for
+the latest W3C Update and Full Text Recommendations. Client/Server
+architecture,ACID transaction support,user management,logging,Open Source,BSD-
+license,written in Java,runs out of the box.  
+  
+[**Qizx**](javascript:void\(\)): commercial and open source
+version,API:Java,Protocols:HTTP,REST,Query Method:XQuery,XQuery Full-
+Text,XQuery Update,Written in: Java,full source can be
+purchased,Concurrency:Concurrent reads &amp; writes,isolation,Misc:Terabyte
+scalable,emphasizes query speed.  
+  
+[**Berkeley DB XML**](javascript:void\(\)):API:Many languages,Written
+in:C++,Replication:Master / Slave,Concurrency:MVCC,License:Sleepycat  
+  
+[[Xindice](javascript:void\(\))[Tamino](javascript:void\(\))]
+
+  
+Multivalue Databases
+
+[**U2**](javascript:void\(\))(UniVerse,UniData):MultiValue Databases,Data
+Structure:MultiValued,Supports nested entities,Virtual
+Metadata,API:BASIC,InterCall,Socket,.NET and Java API&#x27;s,IDE:Native,Record
+Oriented,Scalability:automatic table space allocation,Protocol:Client
+Server,SOA,Terminal Line,X-OFF/X-ON,Written in:C,Query Method:Native
+mvQuery,(Retrieve/UniQuery) and SQL,Replication:yes,Hot
+standby,Concurrency:Record and File Locking(Fine and Coarse Granularity)  
+  
+[**OpenInsight**](javascript:void\(\)):
+API:Basic+,.Net,COM,ODBC,Protocol:TCP/IP,Named Pipes,Telnet,VT100. HTTP/SQuery
+Method:RList,SQL &amp; XPathWritten in:Native 4GL,Basic+,JavaReplication:Hot
+StandbyConcurrency:table &amp;/or row locking,optionally transaction based &amp;
+commit &amp; rollbackData structure:Relational &amp;/or MultiValue,supports nested
+entitiesScalability:rows and tables size dynamically  
+  
+[Reality](javascript:void\(\))(Northgate IS): The original MultiValue data set
+database,virtual machine,enquiry and rapid development environment. Delivers
+ultra efficiency,scalability and resilience while extended for the web and
+with built-in auto sizing,failsafe and more. Interoperability includesWeb
+Services,Java Classes,ActiveX,Sockets,Cand,for those that have to interoperate
+with theSQLworld,ODBC/JDBCand two-way transparent SQL data access.  
+  
+[OpenQM](javascript:void\(\)):Supports nested data. Fully automated table
+space allocation. Concurrency control via task locks,file locks &amp;
+shareable/exclusive record locks. Case insensitivity option. Secondary key
+indices. Integrated data replication. QMBasic programming language for rapid
+development. OO programming integrated into QMBasic. QMClient connectivity
+from Visual Basic,PowerBasic,Delphi,PureBasic,ASP,C and more. Extended
+multivalue query language.  
+  
+[Globals:](javascript:void\(\))by Intersystems,multidimensional  
+  
+[**ESENT**](javascript:void\(\)): (by Microsoft) ISAM storage technology.
+Access using index or cursor navigation. Denormalized schemas,wide tables with
+sparse columns,multi-valued columns,and sparse and rich indexes. C# and Delphi
+drivers available. Backend for a number of MS Products as Exchange.
+
+other NoSQL related databases
+
+[IBM Lotus/Domino](javascript:void\(\)): Type:Document
+Store,API:Java,HTTP,IIOP,C API,REST Web
+Services,DXL,Languages:Java,JavaScript,LotusScript,@Formulas,Protocol:HTTP,NRPC,Replication:Master/Master,Written
+in:C  
+Concurrency:Eventually Consistent,Scaling:Replication Clusters  
+  
+[Intersystems Cache](javascript:void\(\)):Postrelational System. Caché has
+JDBC,ODBC and sql interfaces,several programming languages and many more. The
+system is availible for Windows,Linux and OpenVMS.  
+  
+[eXtremeDB](javascript:void\(\)):Type:In-Memory Database; Written in:C;
+API:C/C++,SQL,JNI,C#(.NET),JDBC; Replication:Async+sync (master-
+slave),Cluster;Scalability:64-bit and MVCC  
+  
+[RDM Embedded](javascript:void\(\) &quot;RDM Embedded | Product Overview&quot;):
+APIs:C++,Navigational C. Embedded Solution that is ACID Compliant with Multi-
+Core,On-Disk &amp; In-Memory Support. Distributed Capabilities,Hot Online
+Backup,supports all Main Platforms.Supported B Tree &amp; Hash Indexing.
+Replication:Master/Slave,Concurrency:MVCC. Client/Server:In-process/Built-in.  
+  
+[ISIS Family](javascript:void\(\)): (semistructured
+databases)[»](javascript:void\(\))  
+[Prevayler](javascript:void\(\)):Java RAM Data structure journalling.  
+[Yserial](javascript:void\(\)): Python wrapper over sqlite3
+
+unresolved and uncategorized
+
+[VMware vFabric GemFire](javascript:void\(\)):» (coming soon!)  
+  
+Btrieve: (by Pervasive Software) key/index/tupel DB. Using Pages.
+[»](javascript:void\(\))(faq[»](javascript:void\(\)))  
+  
+[Tokutek:](javascript:void\(\))  
+  
+[Recutils:](javascript:void\(\))GNU Tool for text files containing records and
+fields. Manual[»](javascript:void\(\))  
+  
+[FileDB:](javascript:void\(\))Mainly targeted to Silverlight/Windows Phone
+developers but its also great for any .NET application where a simple local
+database is required,extremely Lightweight - less than 50K,stores one table
+per file,including index,compiled versions for Windows Phone 7,Silverlight and
+.NET,fast,free to use in your applications
+
+from:[http://www.cnblogs.com/haippy/archive/2011/12/08/2280933.html](javascript:void\(\))
+
