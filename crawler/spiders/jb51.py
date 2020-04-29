@@ -4,6 +4,7 @@ from locale import str
 import scrapy
 from pyquery import PyQuery as pd
 
+from blog.models import Article
 from crawler.items import Jb51Item
 
 
@@ -55,6 +56,8 @@ class Jb51Spider(scrapy.Spider):
         list = response.xpath('//div[@class="col-sm-7"]/div[@class="panel panel-default"]/ul/li[@class="list-group-item"]/a/@href').extract()
         # print(list)
         for doc_href in list:
+            if Article.objects.filter(reference_url=doc_href).exists():
+                continue
             # print(doc_href)
             yield scrapy.Request(response.urljoin(doc_href), self.parse_doc, meta={'item': response.meta['item']})
 
@@ -88,6 +91,7 @@ class Jb51Spider(scrapy.Spider):
         # print(body_str)
         # print('_________________________________________________________________________________________________\n\n\n\n\n\n\n\n')
         item['body'] = body_str
+        item['reference_url'] = response.request.url
 
         pub_time = response.xpath('//div[@class="time text-center"]/text()').extract_first()
         item['pub_time'] = pub_time.replace(' 发布网站：脚本之家', '').replace('发布时间：', '')

@@ -70,6 +70,7 @@ class Article(BaseModel):
     pub_time = models.DateTimeField('发布时间', blank=False, null=False, default=now)
     status = models.CharField('文章状态', max_length=1, choices=STATUS_CHOICES, default='p')
     comment_status = models.CharField('评论状态', max_length=1, choices=COMMENT_STATUS, default='o')
+    reference_url = models.URLField('引用地址', max_length=200, null=True, blank=True)
     type = models.CharField('类型', max_length=1, choices=TYPE, default='a')
     views = models.PositiveIntegerField('浏览量', default=0)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='作者', blank=True, null=True,

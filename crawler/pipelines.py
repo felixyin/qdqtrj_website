@@ -22,13 +22,13 @@ class Jb51Pipeline:
 
         body_ = item['body']
         if "https://www.jb51.cc/" in body_:
-            if article.id is not None: article.delete()
+            self.delete_article(article)
             return item
 
         body = html2text.html2text(body_)
         # print(body)
-        if len(body) < 350:
-            if article.id is not None: article.delete()
+        if len(body) < 400:
+            self.delete_article(article)
             return item
         # print('\n\n\n\n\n\n\n\nstart _________________________________________________________________________________________________')
         # print(body)
@@ -41,21 +41,32 @@ class Jb51Pipeline:
         # print('-----------------')
 
         article.category = self.findOrCreateCategory(item['category1'], item['category2'])
+        article.reference_url = item['reference_url']
         article.save()
 
-        tag_list = Tag.objects.filter(name=item['category2'])
-        if len(tag_list) == 1:
-            article.tags.add(tag_list[0])
-        else:
-            t = Tag(name=item['category2'])
-            t.save()
-            article.tags.add(t)
+        tag = self.findOrCreateTag(item)
+        article.tags.add(tag)
 
         article.save()
         print('%s\t-\t%s' % (title, article.category.name))
 
         # print(article.id)
         return item
+
+    def findOrCreateTag(self, item):
+        tag_list = Tag.objects.filter(name=item['category2'])
+        if len(tag_list) == 1:
+            tag = tag_list[0]
+        else:
+            t = Tag(name=item['category2'])
+            t.save()
+            tag = t
+        return tag
+
+    def delete_article(self, article):
+        if article.id is not None:
+            article.delete()
+            Tag.objects.filter(article__id=article.id).delete()
 
     def findOrCreateCategory(self, parentc, subc):
         category_list = Category.objects.filter(name=subc)

@@ -12,6 +12,7 @@ class Jb51Item(scrapy.Item):
     title = scrapy.Field()
     body = scrapy.Field()
     pub_time = scrapy.Field()
+    reference_url = scrapy.Field()
     category1 = scrapy.Field()
     category2 = scrapy.Field()
     category3 = scrapy.Field()
