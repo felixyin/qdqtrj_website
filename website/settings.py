@@ -449,6 +449,7 @@ SIMPLEUI_CONFIG = {
 p = platform.platform()
 print('您的运行平台是：%s' % p)
 if operator.contains(p.lower(), 'macOS'.lower()):
+    # DEBUG = True
     DEBUG = False
     SIMPLEUI_CONFIG = None
     COMPRESS_ENABLED = False

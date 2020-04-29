@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from locale import str
+
 import scrapy
 from pyquery import PyQuery as pd
 
@@ -15,19 +17,33 @@ class Jb51Spider(scrapy.Spider):
         # category_list = category_list[1:len(category_list) - 2]
         # category_list1 = response.xpath('//ul[@class="nav navbar-nav"]/li/a/text()').extract()
         # category_list1 = category_list1[1:len(category_list1) - 2]
-        x = response.xpath('//ul[@class="nav navbar-nav"]/li/a')
-        category_list = x.xpath('./@href').extract()
-        category_list = category_list[1:len(category_list) - 2]
-        category_list1 = x.xpath('./text()').extract()
-        category_list1 = category_list1[1:len(category_list1) - 2]
 
-        for index in range(len(category_list)):
-            # yield {'href': c}
-            # print(category_href)
+        # x = response.xpath('//ul[@class="nav navbar-nav"]/li/a')
+        # category_list = x.xpath('./@href').extract()
+        # category_list = category_list[1:len(category_list) - 2]
+        # category_list1 = x.xpath('./text()').extract()
+        # category_list1 = category_list1[1:len(category_list1) - 2]
+        #
+        # for index in range(len(category_list)):
+        #     # yield {'href': c}
+        #     # print(category_href)
+        #     item = Jb51Item()
+        #     item['category1'] = category_list1[index]
+        #     # print(category_list[index], category_list1[index])
+        #     yield scrapy.Request(response.urljoin(category_list[index]), self.parse_menu, meta={'item': item})
+
+        alist = response.xpath('//ul[@class="nav navbar-nav"]/li')
+        categorys = []
+        for a in alist:
+            href = a.xpath('./a/@href').extract_first()
+            title = a.xpath('./a/text()').extract_first()
+            categorys.append({'href': href, 'title': title})
+        categorys = categorys[1:len(categorys) - 2]
+        for c in categorys:
             item = Jb51Item()
-            item['category1'] = category_list1[index]
+            item['category1'] = c.get('title')
             # print(category_list[index], category_list1[index])
-            yield scrapy.Request(response.urljoin(category_list[index]), self.parse_menu, meta={'item': item})
+            yield scrapy.Request(response.urljoin(c.get('href')), self.parse_menu, meta={'item': item})
 
     def parse_menu(self, response):
         menu_list = response.xpath('//div[@class="panel-body leftmenu"]/a/@href').extract()
@@ -60,8 +76,8 @@ class Jb51Spider(scrapy.Spider):
         category2 = response.xpath('//div[@class="col-sm-7"]/ul[@class="breadcrumb"]/li[2]/a/text()').extract_first()
         item['category2'] = category2
 
-        body = response.xpath('//div[@class="jb51box"]').extract_first()
-        doc = pd(body)
+        body = response.xpath('//div[@class="jb51box"]').extract()
+        doc = pd(''.join(body))
         jq = doc('*')
         jq.find('blockquote:first').remove()
         jq.find('blockquote:last').remove()
