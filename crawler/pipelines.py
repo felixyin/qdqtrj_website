@@ -27,7 +27,7 @@ class Jb51Pipeline:
 
         body = html2text.html2text(body_)
         # print(body)
-        if len(body) < 250:
+        if len(body) < 350:
             if article.id is not None: article.delete()
             return item
         # print('\n\n\n\n\n\n\n\nstart _________________________________________________________________________________________________')
