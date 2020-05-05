@@ -1,5 +1,5 @@
 coverage==5.1
-Django==3.0.5
+Django==3.0.6
 django-appconf==1.0.4
 django-autoslug==1.9.7
 django-compressor==2.4
@@ -11,7 +11,7 @@ django-extensions==2.2.9
 django-ckeditor==5.9.0
 django-js-asset==1.2.2
 elasticsearch==7.6.0
-elasticsearch-dsl==7.1.0
+elasticsearch-dsl==7.2.0
 jieba==0.42.1
 jsonpickle==1.4.1
 lazy-object-proxy==1.4.3
@@ -29,11 +29,11 @@ raven==6.10.0
 rcssmin==1.0.6
 requests==2.23.0
 rjsmin==1.1.0
-WeRoBot==1.12.haystack0
+WeRoBot==1.12.0
 Whoosh==2.7.4
 python-logstash==0.4.6
 pysolr==3.9.0
-simpleui==3.9
+simpleui==4.0
 mysqlclient==1.4.6
 scrapy==2.1.0
 PyQuery==1.4.1
