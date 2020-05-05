@@ -41,8 +41,8 @@ class Jb51Spider(scrapy.Spider):
         list = response.xpath('//div[@class="col-sm-7"]/div[@class="panel panel-default"]/ul/li[@class="list-group-item"]/a/@href').extract()
         # print(list)
         for doc_href in list:
-            # if Article.objects.filter(reference_url=doc_href).exists():
-            #     continue
+            if Article.objects.filter(reference_url=doc_href).exists():
+                continue
             # print(doc_href)
             yield scrapy.Request(response.urljoin(doc_href), self.parse_doc, meta={'item': response.meta['item']})
 
